@@ -19,12 +19,14 @@ export default function CalcuatorTabs({ onTabChange }: CalculatorTabsProps) {
   };
 
   return (
-    <div className="flex space-x-4 bg-white rounded-full p-2 shadow-md">
+    <div className="flex justify-center space-x-4 bg-white rounded-full p-2 shadow-md">
       {tabs.map((tab) => (
         <button
           key={tab.name}
           onClick={() => handleTabClick(tab.name)}
-          className={selectedTab === tab.name ? "tab-active" :"tab-inactive"}
+          className={`px-4 py-2 rounded-full ${
+            selectedTab === tab.name ? "bg-[#e5e7eb] font-bold" : "bg-transparent"
+          }`}
         >
           <span>{tab.name}</span>
           <span className="text-sm text-gray-500">{tab.info}</span>
