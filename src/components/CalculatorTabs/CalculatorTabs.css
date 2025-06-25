@@ -1,0 +1,8 @@
+.tab-active {
+  background-color: #e5e7eb;
+  font-weight: bold;
+}
+
+.tab-inactive {
+  background-color: transparent;
+}
