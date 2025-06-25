@@ -1,5 +1,5 @@
 import React from "react";
-import '../components/CalculatorTabs/CalculatorTabs.css'
+import './CalculatorTabs.css'
 
 type CalculatorTabsProps = {
   onTabChange: (tab: string) => void;
@@ -19,7 +19,7 @@ export default function CalcuatorTabs({ onTabChange }: CalculatorTabsProps) {
   };
 
   return (
-    <div>
+    <div className="flex space-x-4 bg-white rounded-full p-2 shadow-md">
       {tabs.map((tab) => (
         <button
           key={tab.name}
@@ -27,7 +27,7 @@ export default function CalcuatorTabs({ onTabChange }: CalculatorTabsProps) {
           className={selectedTab === tab.name ? "tab-active" :"tab-inactive"}
         >
           <span>{tab.name}</span>
-          <span>{tab.info}</span>
+          <span className="text-sm text-gray-500">{tab.info}</span>
         </button>
       ))}
     </div>
