@@ -21,7 +21,8 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
     }
   };
   return (
-    <div className="bg-[#ffffff] relative rounded-2xl w-full max-w-[594.77px] p-8">
+    <div className="bg-[#ffffff] relative rounded-2xl w-full max-w-[594.77px] p-8 flex flex-left">
+      <p className="text-14 font-bold">세후 급여 계산기</p>
       {renderContent()}
     </div>
   )

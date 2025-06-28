@@ -23,8 +23,8 @@ export default function CalcuatorTabs({ onTabChange, selectedTab }: CalculatorTa
             selectedTab === tab.name ? "bg-[#e5e7eb] font-bold" : "bg-transparent"
           }`}
         >
-          <span>{tab.name}</span>
-          <span className="text-sm text-gray-500">{tab.info}</span>
+          <span className="text-14">{tab.name}</span>
+          <span className="text-sm text-gray-500 pl-3">{tab.info}</span>
         </button>
       ))}
     </div>
