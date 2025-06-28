@@ -3,27 +3,22 @@ import './CalculatorTabs.css'
 
 type CalculatorTabsProps = {
   onTabChange: (tab: string) => void;
+  selectedTab: string;
 };
 
-export default function CalcuatorTabs({ onTabChange }: CalculatorTabsProps) {
+export default function CalcuatorTabs({ onTabChange, selectedTab }: CalculatorTabsProps) {
   const tabs = [
   { name: "프리랜서", info: "3.3%" },
   { name: "상용직", info: "근로소득" },
   { name: "일용직", info: "일용근로" },
 ];
-  const [selectedTab, setSelectedTab] = React.useState("프리랜서");
-
-  const handleTabClick = (tabName: string) => {
-    setSelectedTab(tabName);
-    onTabChange(tabName);
-  };
 
   return (
     <div className="flex justify-center space-x-4 bg-white rounded-full p-2 shadow-md">
-      {tabs.map((tab) => (
+       {tabs.map((tab) => (
         <button
           key={tab.name}
-          onClick={() => handleTabClick(tab.name)}
+          onClick={() => onTabChange(tab.name)} // 부모의 상태 변경 함수 호출
           className={`px-4 py-2 rounded-full ${
             selectedTab === tab.name ? "bg-[#e5e7eb] font-bold" : "bg-transparent"
           }`}

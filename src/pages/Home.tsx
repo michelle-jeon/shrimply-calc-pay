@@ -8,9 +8,9 @@ export default function Home(){
   return (
     <div>
       <Header />
-      <div>
-        <CalcuatorTabs onTabChange={setSelectedTab} />
-        <CalcuatorSection />
+      <div className="container flex flex-col gap-[53px] items-center justify-start w-full max-w-[1440px] mx-auto py-0">
+        <CalcuatorTabs selectedTab={selectedTab} onTabChange={setSelectedTab} />
+        <CalcuatorSection selectedTab={selectedTab} />
       </div>
     </div>
   )
