@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import FreeCalc from "../Calculators/FreeCalc";
 import RegularCalc from "../Calculators/RegularCalc";
 import DayCalc from "../Calculators/DayCalc";
@@ -16,10 +16,12 @@ type FreeCalcData = {
 };
 
 type RegularCalcData = {
+  amount: number;
   isValid: boolean;
 }
 
 type DayCalcData = {
+  amount: number;
   isValid: boolean;
   
 }
@@ -58,7 +60,8 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
           break;
         case "상용직":
           // 상용직 계산 로직 추가
-          result = calculateRegular();
+          const regulData = calculatorData as RegularCalcData;
+          result = calculateRegular(regulData.amount);
           break;
         case "일용직":
           // 일용직 계산 로직 추가
@@ -83,6 +86,20 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
     };
   };
 
+  const calculateRegular = (amt:number): CalcResultData =>{
+    const withholdingTax = amt * 0.03;
+    const localTax = amt * 0.003;
+    const netSalary = amt - withholdingTax - localTax;
+
+    return {
+      totSalary:amt,
+      withholdingTax,
+      localTax,
+      netSalary,
+      type:"상용직"
+    }
+  }
+
   const isButtonEnabled = calculatorData?.isValid ?? false;
 
   const renderCalculatorInput = () => {
@@ -98,8 +115,8 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
     }
   };
   return (
-    <div className="bg-[#ffffff] relative rounded-2xl w-full max-w-[594.77px] p-8 flex flex-left">
-      <p className="text-14 font-bold">세후 급여 계산기</p>
+    <div className="bg-[#ffffff] relative rounded-2xl w-full max-w-[594.77px] p-8">
+      <p className="text-14 font-bold text-left">세후 급여 계산기</p>
       {/* 메인 컨텐츠 영역 */}
       {currentScreen === 'calculator' && (
         <>
@@ -112,6 +129,9 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
                 ? 'bg-blue-500 hover:bg-blue-600 cursor-pointer'
                 : 'bg-gray-300 cursor-not-allowed'
             }`}
+            style={{
+              cursor: !isButtonEnabled || isCalculating ? 'default' : 'pointer',
+            }}
           >
             {isCalculating ? '계산 중...' : '계산하기'}
           </button>
