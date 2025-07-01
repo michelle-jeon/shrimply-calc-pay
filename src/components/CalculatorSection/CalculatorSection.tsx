@@ -50,6 +50,7 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
   
   //계산
   const calculateAsType = () =>{
+    console.log(calculatorData)
     if (!calculatorData || !calculatorData.isValid) return;
     setIsCalculating(true);
     let result:CalcResultData;
@@ -59,17 +60,19 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
           result = calculateFree(freeData.amount);
           break;
         case "상용직":
-          // 상용직 계산 로직 추가
           const regulData = calculatorData as RegularCalcData;
           result = calculateRegular(regulData.amount);
           break;
         case "일용직":
-          // 일용직 계산 로직 추가
-          result = calculateDay();
+          const dayData = calculatorData as DayCalcData;
+          result = calculateDay(dayData.amount);
           break;
         default:
           throw new Error("알 수 없는 계산 타입");
       }
+    setCalculatedResult(result);
+    setCurrentScreen("result");
+    setIsCalculating(false);
   }
 
   const calculateFree = (amt: number): CalcResultData => {
@@ -100,6 +103,20 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
     }
   }
 
+  const calculateDay = (amt:number): CalcResultData =>{
+    const withholdingTax = amt * 0.03;
+    const localTax = amt * 0.003;
+    const netSalary = amt - withholdingTax - localTax;
+
+    return {
+      totSalary:amt,
+      withholdingTax,
+      localTax,
+      netSalary,
+      type:"일용직"
+    }
+  }
+
   const isButtonEnabled = calculatorData?.isValid ?? false;
 
   const renderCalculatorInput = () => {
@@ -116,7 +133,7 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
   };
   return (
     <div className="bg-[#ffffff] relative rounded-2xl w-full max-w-[594.77px] p-8">
-      <p className="text-14 font-bold text-left">세후 급여 계산기</p>
+      <p className="text-14 font-bold text-left text-gray-900 mb-4">세후 급여 계산기</p>
       {/* 메인 컨텐츠 영역 */}
       {currentScreen === 'calculator' && (
         <>
@@ -124,9 +141,9 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
           <button
             onClick={calculateAsType}
             disabled={!isButtonEnabled || isCalculating}
-            className={`w-full py-4 rounded-lg text-white font-medium text-lg mt-6 transition-all duration-200 ${
+            className={`w-full py-3 rounded-xl text-white font-medium text-lg mt-6 transition-all duration-200 ${
               isButtonEnabled && !isCalculating
-                ? 'bg-blue-500 hover:bg-blue-600 cursor-pointer'
+                ? 'bg-orange-500 hover:bg-orange-600 cursor-pointer'
                 : 'bg-gray-300 cursor-not-allowed'
             }`}
             style={{
