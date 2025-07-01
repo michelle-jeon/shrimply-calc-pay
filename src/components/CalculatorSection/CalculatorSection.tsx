@@ -97,8 +97,8 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
   }
 
   const calculateFree = (amt: number): CalcResultData => {
-    const withholdingTax = amt * 0.03;
-    const localTax = amt * 0.003;
+    const withholdingTax = Math.floor((amt * 0.03) / 10) * 10;
+    const localTax =  Math.floor((amt * 0.003) / 10) * 10;
     const netSalary = amt - withholdingTax - localTax;
     
     return {
@@ -111,8 +111,8 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
   };
 
   const calculateRegular = (amt:number): CalcResultData =>{
-    const withholdingTax = amt * 0.03;
-    const localTax = amt * 0.003;
+    const withholdingTax = Math.floor((amt * 0.03) / 10) * 10;
+    const localTax =  Math.floor((amt * 0.003) / 10) * 10;
     const netSalary = amt - withholdingTax - localTax;
 
     return {
@@ -125,8 +125,8 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
   }
 
   const calculateDay = (amt:number): CalcResultData =>{
-    const withholdingTax = amt * 0.03;
-    const localTax = amt * 0.003;
+    const withholdingTax = Math.floor((amt * 0.03) / 10) * 10;
+    const localTax =  Math.floor((amt * 0.003) / 10) * 10;
     const netSalary = amt - withholdingTax - localTax;
 
     return {
