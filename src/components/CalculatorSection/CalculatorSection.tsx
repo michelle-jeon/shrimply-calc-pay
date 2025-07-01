@@ -29,11 +29,32 @@ type DayCalcData = {
 type CalculatorData = FreeCalcData | RegularCalcData | DayCalcData;
 
 type CalcResultData = {
+  type: string;
   totSalary: number;
   withholdingTax: number;
   localTax: number;
   netSalary: number;
-  type: string;
+  //상용직만 있는 값
+  baseSalary?: number;
+  allowance?: {
+    sumAllowance?:number;//수당합계
+    mealAllowance?: number;//식대(비과세)
+    vehicleAllowance?: number;//차량비(비과세)
+    productionOverTimeAllowance?:number;//생산직추가근로수당(비과세)
+    childcareAllowance?:number;//출산육아수당(비과세)
+    researchAllowance?:number;//연구비(비과세)
+    bonusAllowance?:number;//상여금(과세)
+    positionAllowance?:number;//직급수당(과세)
+    annualLeaveAllowance?:number;//연차수당(과세)
+    overTimeAllowance?:number;//초과근로수당(과세)
+    holidayAllowance?:number;//휴일근로수당(과세)
+    nightAllowance?:number;//야간근로수당(과세)
+  };
+  //보험료 (고용보험 제외하고는 상용직만 있는 값)
+  nationalPension?: number;//국민연금
+  healthInsurance?: number;//건강보험
+  longTermCareInsurance?: number;//장기요양보험
+  employmentInsurance?: number;//고용보험 (일용, 상용)
 };
 
 type ScreenState = 'calculator' | 'result' | 'payslip';
@@ -48,7 +69,7 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
     setCalculatorData(data);
   }, []);
   
-  //계산
+  //*********계산*********
   const calculateAsType = () =>{
     console.log(calculatorData)
     if (!calculatorData || !calculatorData.isValid) return;
@@ -116,6 +137,11 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
       type:"일용직"
     }
   }
+  //*********계산 끝*********
+
+  const handleRecalculate = () => {
+
+  }
 
   const isButtonEnabled = calculatorData?.isValid ?? false;
 
@@ -156,7 +182,9 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
       )}
 
       {currentScreen === 'result' && calculatedResult && (
-        <CalcaulationResult  />
+        <CalcaulationResult 
+        result={calculatedResult}
+        onRecalculate={handleRecalculate}  />
       )}
 
       {currentScreen === 'payslip' && calculatedResult && (
