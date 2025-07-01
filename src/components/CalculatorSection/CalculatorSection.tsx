@@ -140,7 +140,8 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
   //*********계산 끝*********
 
   const handleRecalculate = () => {
-
+    setCurrentScreen('calculator');
+    setCalculatedResult(null);
   }
 
   const isButtonEnabled = calculatorData?.isValid ?? false;
