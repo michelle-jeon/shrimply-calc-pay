@@ -53,30 +53,30 @@ export default function CalcaulationResult ({ result, onRecalculate }: Calculati
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4 sm:p-6 bg-white rounded-3xl shadow-sm">
-      <div className="mb-8">
+    <div className="w-full max-w-4xl mx-auto p-4 sm:p-6 bg-white">
+      <div>
         {/* 실수령액 */}
-        <div className="mb-8">
+        <div className="mb-6">
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 pb-6 border-b border-gray-200">
-            <span className="text-base font-bold text-gray-800">실수령액</span>
-            <span className="text-base font-bold text-green-500">
+            <span className="text-lg font-bold text-gray-800">실수령액</span>
+            <span className="text-lg font-bold text-green-500">
               {formatNumber(Math.round(result.netSalary))} 원
             </span>
           </div>
         </div>
 
         {/* 지급합계/공제합계 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 mb-4">
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 pb-4 border-b border-gray-200">
-            <span className="text-sm font-medium text-gray-700">지급합계</span>
-            <span className="text-sm font-bold text-red-500">
+            <span className="text-base font-semibold text-gray-500">지급합계</span>
+            <span className="text-base font-bold text-red-500">
               {formatNumber(result.totSalary)} 원
             </span>
           </div>
           
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 pb-4 border-b border-gray-200">
-            <span className="text-sm font-medium text-gray-700">공제합계</span>
-            <span className="text-sm font-bold text-blue-500">
+            <span className="text-base font-semibold text-gray-500">공제합계</span>
+            <span className="text-base font-bold text-blue-500">
               {formatNumber(Math.round(getTotalDeduction()))} 원
             </span>
           </div>
@@ -88,111 +88,111 @@ export default function CalcaulationResult ({ result, onRecalculate }: Calculati
             {/* 지급 내역 */}
             <div className="space-y-3">
               {result.baseSalary && (
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-gray-700">기본급</span>
-                  <span className="font-medium text-red-500">{formatNumber(result.baseSalary)} 원</span>
+                <div className="flex justify-between items-center py-2 text-base text-gray-700">
+                  <span className="">기본급</span>
+                  <span className="">{formatNumber(result.baseSalary)} 원</span>
                 </div>
               )}
               {result.allowance?.mealAllowance && (
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-gray-700">식대</span>
-                  <span className="font-medium text-red-500">{formatNumber(result.allowance.mealAllowance)} 원</span>
+                <div className="flex justify-between items-center py-2 text-base text-gray-700">
+                  <span className="">식대</span>
+                  <span className="">{formatNumber(result.allowance.mealAllowance)} 원</span>
                 </div>
               )}
               {result.allowance?.vehicleAllowance && (
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-gray-700">차량수당</span>
-                  <span className="font-medium text-red-500">{formatNumber(result.allowance.vehicleAllowance)} 원</span>
+                <div className="flex justify-between items-center py-2 text-base text-gray-700">
+                  <span className="">차량수당</span>
+                  <span className="">{formatNumber(result.allowance.vehicleAllowance)} 원</span>
                 </div>
               )}
               {result.allowance?.productionOverTimeAllowance && (
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-gray-700">생산연장근로수당</span>
-                  <span className="font-medium text-red-500">{formatNumber(result.allowance.productionOverTimeAllowance)} 원</span>
+                <div className="flex justify-between items-center py-2 text-base text-gray-700">
+                  <span className="">생산연장근로수당</span>
+                  <span className="">{formatNumber(result.allowance.productionOverTimeAllowance)} 원</span>
                 </div>
               )}
               {result.allowance?.childcareAllowance && (
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-gray-700">육아수당</span>
-                  <span className="font-medium text-red-500">{formatNumber(result.allowance.childcareAllowance)} 원</span>
+                <div className="flex justify-between items-center py-2 text-base text-gray-700">
+                  <span className="">육아수당</span>
+                  <span className="">{formatNumber(result.allowance.childcareAllowance)} 원</span>
                 </div>
               )}
               {result.allowance?.researchAllowance && (
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-gray-700">연구수당</span>
-                  <span className="font-medium text-red-500">{formatNumber(result.allowance.researchAllowance)} 원</span>
+                <div className="flex justify-between items-center py-2 text-base text-gray-700">
+                  <span className="">연구수당</span>
+                  <span className="">{formatNumber(result.allowance.researchAllowance)} 원</span>
                 </div>
               )}
               {result.allowance?.bonusAllowance && (
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-gray-700">상여수당</span>
-                  <span className="font-medium text-red-500">{formatNumber(result.allowance.bonusAllowance)} 원</span>
+                <div className="flex justify-between items-center py-2 text-base text-gray-700">
+                  <span className="">상여수당</span>
+                  <span className="">{formatNumber(result.allowance.bonusAllowance)} 원</span>
                 </div>
               )}
               {result.allowance?.positionAllowance && (
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-gray-700">직책수당</span>
-                  <span className="font-medium text-red-500">{formatNumber(result.allowance.positionAllowance)} 원</span>
+                <div className="flex justify-between items-center py-2 text-base text-gray-700">
+                  <span className="">직책수당</span>
+                  <span className="">{formatNumber(result.allowance.positionAllowance)} 원</span>
                 </div>
               )}
               {result.allowance?.annualLeaveAllowance && (
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-gray-700">연차수당</span>
-                  <span className="font-medium text-red-500">{formatNumber(result.allowance.annualLeaveAllowance)} 원</span>
+                <div className="flex justify-between items-center py-2 text-base text-gray-700">
+                  <span className="">연차수당</span>
+                  <span className="">{formatNumber(result.allowance.annualLeaveAllowance)} 원</span>
                 </div>
               )}
               {result.allowance?.overTimeAllowance && (
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-gray-700">연장근로수당</span>
-                  <span className="font-medium text-red-500">{formatNumber(result.allowance.overTimeAllowance)} 원</span>
+                <div className="flex justify-between items-center py-2 text-base text-gray-700">
+                  <span className="">연장근로수당</span>
+                  <span className="">{formatNumber(result.allowance.overTimeAllowance)} 원</span>
                 </div>
               )}
               {result.allowance?.holidayAllowance && (
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-gray-700">휴일근로수당</span>
-                  <span className="font-medium text-red-500">{formatNumber(result.allowance.holidayAllowance)} 원</span>
+                <div className="flex justify-between items-center py-2 text-base text-gray-700">
+                  <span className="">휴일근로수당</span>
+                  <span className="">{formatNumber(result.allowance.holidayAllowance)} 원</span>
                 </div>
               )}
               {result.allowance?.nightAllowance && (
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-gray-700">야간근로수당</span>
-                  <span className="font-medium text-red-500">{formatNumber(result.allowance.nightAllowance)} 원</span>
+                <div className="flex justify-between items-center py-2 text-base text-gray-700">
+                  <span className="">야간근로수당</span>
+                  <span className="">{formatNumber(result.allowance.nightAllowance)} 원</span>
                 </div>
               )}
             </div>
             
             {/* 공제 내역 */}
             <div className="space-y-3">
-              <div className="flex justify-between items-center py-2">
-                <span className="text-gray-700">소득세</span>
-                <span className="font-medium text-blue-500">{formatNumber(Math.round(result.withholdingTax))} 원</span>
+              <div className="flex justify-between items-center py-2 text-base text-gray-700 text-base text-gray-700">
+                <span className="">소득세</span>
+                <span className="">{formatNumber(Math.round(result.withholdingTax))} 원</span>
               </div>
-              <div className="flex justify-between items-center py-2">
-                <span className="text-gray-700">지방세</span>
-                <span className="font-medium text-blue-500">{formatNumber(Math.round(result.localTax))} 원</span>
+              <div className="flex justify-between items-center py-2 text-base text-gray-700">
+                <span className="">지방세</span>
+                <span className="">{formatNumber(Math.round(result.localTax))} 원</span>
               </div>
               {result.nationalPension && (
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-gray-700">국민연금</span>
-                  <span className="font-medium text-blue-500">{formatNumber(Math.round(result.nationalPension))} 원</span>
+                <div className="flex justify-between items-center py-2 text-base text-gray-700">
+                  <span className="">국민연금</span>
+                  <span className="">{formatNumber(Math.round(result.nationalPension))} 원</span>
                 </div>
               )}
               {result.healthInsurance && (
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-gray-700">건강보험</span>
-                  <span className="font-medium text-blue-500">{formatNumber(Math.round(result.healthInsurance))} 원</span>
+                <div className="flex justify-between items-center py-2 text-base text-gray-700">
+                  <span className="">건강보험</span>
+                  <span className="">{formatNumber(Math.round(result.healthInsurance))} 원</span>
                 </div>
               )}
               {result.longTermCareInsurance && (
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-gray-700">장기요양보험</span>
-                  <span className="font-medium text-blue-500">{formatNumber(Math.round(result.longTermCareInsurance))} 원</span>
+                <div className="flex justify-between items-center py-2 text-base text-gray-700">
+                  <span className="">장기요양보험</span>
+                  <span className="">{formatNumber(Math.round(result.longTermCareInsurance))} 원</span>
                 </div>
               )}
               {result.employmentInsurance && (
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-gray-700">고용보험</span>
-                  <span className="font-medium text-blue-500">{formatNumber(Math.round(result.employmentInsurance))} 원</span>
+                <div className="flex justify-between items-center py-2 text-base text-gray-700">
+                  <span className="">고용보험</span>
+                  <span className="">{formatNumber(Math.round(result.employmentInsurance))} 원</span>
                 </div>
               )}
             </div>
@@ -204,21 +204,21 @@ export default function CalcaulationResult ({ result, onRecalculate }: Calculati
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
             {/* 지급 내역 */}
             <div className="space-y-3">
-              <div className="flex justify-between items-center py-2">
-                <span className="text-gray-700">지급액</span>
-                <span className="font-medium text-red-500">{formatNumber(result.totSalary)} 원</span>
+              <div className="flex justify-between items-center py-2 text-base text-gray-700">
+                <span className="">지급액</span>
+                <span className="">{formatNumber(result.totSalary)} 원</span>
               </div>
             </div>
             
             {/* 공제 내역 */}
             <div className="space-y-3">
-              <div className="flex justify-between items-center py-2">
-                <span className="text-gray-700">소득세</span>
-                <span className="font-medium text-blue-500">{formatNumber(Math.round(result.withholdingTax))} 원</span>
+              <div className="flex justify-between items-center py-2 text-base text-gray-700">
+                <span className="">소득세</span>
+                <span className="">{formatNumber(Math.round(result.withholdingTax))} 원</span>
               </div>
-              <div className="flex justify-between items-center py-2">
-                <span className="text-gray-700">지방세</span>
-                <span className="font-medium text-blue-500">{formatNumber(Math.round(result.localTax))} 원</span>
+              <div className="flex justify-between items-center py-2 text-base text-gray-700">
+                <span className="">지방세</span>
+                <span className="">{formatNumber(Math.round(result.localTax))} 원</span>
               </div>
             </div>
           </div>
@@ -235,7 +235,7 @@ export default function CalcaulationResult ({ result, onRecalculate }: Calculati
         </button>
         <button
           onClick={handlePayslipClick}
-          className="flex-1 py-4 px-6 rounded-2xl text-white font-semibold text-lg bg-red-500 hover:bg-red-600 transition-all duration-200"
+          className="flex-1 py-4 px-6 rounded-2xl text-white font-semibold text-lg bg-orange-500 hover:bg-orange-600 transition-all duration-200"
         >
           입금명세서
         </button>
