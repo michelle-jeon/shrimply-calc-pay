@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import FreeCalc from "../Calculators/FreeCalc";
 import RegularCalc from "../Calculators/RegularCalc";
 import DayCalc from "../Calculators/DayCalc";
@@ -64,6 +64,11 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
   const [isCalculating, setIsCalculating] = useState(false);
   const [calculatedResult,setCalculatedResult] = useState<CalcResultData | null>(null);
   const [currentScreen,setCurrentScreen] = useState<ScreenState>('calculator')
+
+  useEffect(() => {
+    setCurrentScreen("calculator");
+    setCalculatedResult(null);
+  }, [selectedTab]);
   
   const handleDataChange = useCallback((data: CalculatorData) => {
     setCalculatorData(data);
