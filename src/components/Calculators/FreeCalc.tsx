@@ -2,11 +2,17 @@ import { useEffect, useState } from 'react';
 
 type FreeCalcProps = {
   onDataChange: (data: {amount: number; isValid: boolean}) => void;
+  selectedTab: string;
 }
 
-export default function FreeCalc({onDataChange}:FreeCalcProps) {
+export default function FreeCalc({onDataChange, selectedTab}:FreeCalcProps) {
   const [amount, setAmount] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(false);
+
+  useEffect(() => {
+    setAmount('');
+    setIsValid(false);
+  }, [selectedTab]);
 
   // 유효성 검사
   const validateAmount = (value:string): boolean => {

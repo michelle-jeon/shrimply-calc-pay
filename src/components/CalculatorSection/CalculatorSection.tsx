@@ -68,6 +68,7 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
   useEffect(() => {
     setCurrentScreen("calculator");
     setCalculatedResult(null);
+    setCalculatorData(null);
   }, [selectedTab]);
   
   const handleDataChange = useCallback((data: CalculatorData) => {
@@ -154,11 +155,11 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
   const renderCalculatorInput = () => {
     switch (selectedTab) {
       case "프리랜서":
-        return <FreeCalc onDataChange={handleDataChange} />;
+        return <FreeCalc onDataChange={handleDataChange} selectedTab={selectedTab} />;
       case "상용직":
-        return <RegularCalc />;
+        return <RegularCalc onDataChange={handleDataChange} selectedTab={selectedTab} />;
       case "일용직":
-        return <DayCalc />;
+        return <DayCalc onDataChange={handleDataChange} selectedTab={selectedTab} />;
       default:
         return null;
     }
