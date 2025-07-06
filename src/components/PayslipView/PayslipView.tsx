@@ -1,3 +1,7 @@
 export default function PayslipView () {
-  return <></>
+  return (
+    <div>
+      급여명세서ㅓㅓㅓ
+    </div>
+  )
 }

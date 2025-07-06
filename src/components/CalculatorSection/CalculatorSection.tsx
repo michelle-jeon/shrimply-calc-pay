@@ -74,6 +74,10 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
   const handleDataChange = useCallback((data: CalculatorData) => {
     setCalculatorData(data);
   }, []);
+
+  const handleShowPayslip = () =>{
+    setCurrentScreen('payslip');
+  }
   
   //*********계산*********
   const calculateAsType = () =>{
@@ -191,7 +195,9 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
       {currentScreen === 'result' && calculatedResult && (
         <CalcaulationResult 
         result={calculatedResult}
-        onRecalculate={handleRecalculate}  />
+        onRecalculate={handleRecalculate}
+        onShowPayslip={handleShowPayslip}
+        />
       )}
 
       {currentScreen === 'payslip' && calculatedResult && (

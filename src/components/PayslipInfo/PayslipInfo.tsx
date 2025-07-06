@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-type PayslipInfoData = {
+export type PayslipInfoData = {
   companyName: string;
   workerName: string;
   workYear: string;
@@ -10,7 +10,7 @@ type PayslipInfoData = {
   payDay: string;
 }
 
-export default function PayslipInfo({isOpen}){
+export default function PayslipInfo({isOpen,onClose,onSubmit}){
   const [payslipInfo,setPayslipInfo] = useState<PayslipInfoData>({
     companyName: '',
     workerName: '',
@@ -208,6 +208,11 @@ export default function PayslipInfo({isOpen}){
     });
   };
 
+  //만들기
+  const handleSubmit =()=>{
+    onSubmit(payslipInfo);
+  }
+
   // 닫힘
   if(!isOpen) return null;
 
@@ -314,11 +319,13 @@ export default function PayslipInfo({isOpen}){
         {/* 버튼들 */}
         <div className="flex space-x-3">
           <button
+            onClick={onClose}
             className="flex-1 py-4 rounded-lg text-gray-700 font-medium text-lg border border-gray-300 hover:bg-gray-50 transition-all duration-200"
           >
             취소
           </button>
           <button
+            onClick={handleSubmit}
             className={`flex-1 py-4 rounded-lg text-white font-medium text-lg transition-all duration-200 ${
               payslipInfo.companyName && payslipInfo.workerName && payslipInfo.workYear && payslipInfo.workMonth && payslipInfo.payYear && payslipInfo.payMonth && payslipInfo.payDay
                 ? 'bg-red-500 hover:bg-red-600'

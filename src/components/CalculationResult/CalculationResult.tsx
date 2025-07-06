@@ -1,5 +1,5 @@
 import { useState } from "react";
-import PayslipInfo from "../PayslipInfo/PayslipInfo";
+import PayslipInfo, { PayslipInfoData } from "../PayslipInfo/PayslipInfo";
 
 type CalcResultData = {
   type: string;
@@ -33,9 +33,10 @@ type CalcResultData = {
 type CalculationResultProps = {
   result: CalcResultData;
   onRecalculate: () => void;
+  onShowPayslip: () => void; 
 };
 
-export default function CalcaulationResult ({ result, onRecalculate }: CalculationResultProps) {
+export default function CalcaulationResult ({ result, onRecalculate,onShowPayslip }: CalculationResultProps) {
   const [payslipOpen,setPayslipOpen] = useState(false);
 
   const formatNumber = (num: number) => {
@@ -51,9 +52,17 @@ export default function CalcaulationResult ({ result, onRecalculate }: Calculati
     return total;
   };
 
+  // 급여명세서 인풋 모달 관련
   const handlePayslipClick = () => {
     setPayslipOpen(true);
   };
+  const handlePayslipInfoClose =() =>{
+    setPayslipOpen(false);
+  }
+  const handlePayslipInfoSubmit=(payslipInfo:PayslipInfoData)=>{
+    onShowPayslip();
+    setPayslipOpen(false);
+  }
 
   return (
     <div className="w-full max-w-4xl mx-auto p-4 sm:p-6 bg-white">
@@ -246,7 +255,8 @@ export default function CalcaulationResult ({ result, onRecalculate }: Calculati
       {/*  */}
       <PayslipInfo 
         isOpen={payslipOpen}
-        
+        onClose={handlePayslipInfoClose}
+        onSubmit={handlePayslipInfoSubmit}
       />
     </div>
   )
