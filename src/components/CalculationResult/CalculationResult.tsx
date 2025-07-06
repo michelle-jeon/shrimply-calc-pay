@@ -1,3 +1,5 @@
+import { useState } from "react";
+import PayslipInfo from "../PayslipInfo/PayslipInfo";
 
 type CalcResultData = {
   type: string;
@@ -34,6 +36,7 @@ type CalculationResultProps = {
 };
 
 export default function CalcaulationResult ({ result, onRecalculate }: CalculationResultProps) {
+  const [payslipOpen,setPayslipOpen] = useState(false);
 
   const formatNumber = (num: number) => {
     return num.toLocaleString('ko-KR');
@@ -49,7 +52,7 @@ export default function CalcaulationResult ({ result, onRecalculate }: Calculati
   };
 
   const handlePayslipClick = () => {
-    
+    setPayslipOpen(true);
   };
 
   return (
@@ -237,9 +240,14 @@ export default function CalcaulationResult ({ result, onRecalculate }: Calculati
           onClick={handlePayslipClick}
           className="flex-1 py-4 px-6 rounded-2xl text-white font-semibold text-lg bg-orange-500 hover:bg-orange-600 transition-all duration-200"
         >
-          입금명세서
+          임금명세서
         </button>
       </div>
+      {/*  */}
+      <PayslipInfo 
+        isOpen={payslipOpen}
+        
+      />
     </div>
   )
 }
