@@ -71,7 +71,7 @@ export default function PayslipInfo({isOpen}){
     return months;
   };
 
-// 지급일 연도 목록 (근무년월 이후만 가능)
+  // 지급일 연도 목록 (근무년월 이후만 가능)
   const getAvailablePayYears = () => {
     if (!payslipInfo.workYear) return getAvailableYears();
     
@@ -139,8 +139,79 @@ export default function PayslipInfo({isOpen}){
     return days;
   };
 
+  //근무 연도 변경 : 월 초기화, 지급일 검증
+  const handleWorkYearChange =(newYear:string)=>{
+    const newInfo = {
+      ...payslipInfo,
+      workYear:newYear,
+      workMonth:''
+    };
+
+    if(payslipInfo.payYear && payslipInfo.payMonth){
+      if(parseInt(payslipInfo.payYear) < parseInt(newYear)){
+        newInfo.payYear='';
+        newInfo.payMonth='';
+        newInfo.payDay='';
+      }
+    }
+    setPayslipInfo(newInfo);
+  }
+
+  //근무월 변경
+  const handleWorkMonthChange =(newMonth:string) =>{
+    const newInfo={
+      ...payslipInfo,
+      workMonth:newMonth,
+    }
+
+    if(payslipInfo.payYear && payslipInfo.payMonth){
+      const payYearNum = parseInt(payslipInfo.payYear);
+      const payMonthNum = parseInt(payslipInfo.payMonth);
+      const workYearNum = parseInt(payslipInfo.workYear);
+      const newWorkMonthNum = parseInt(newMonth);
+      
+      if (payYearNum === workYearNum && payMonthNum < newWorkMonthNum){
+        newInfo.payMonth = '';
+        newInfo.payDay = '';
+      }
+    }
+    setPayslipInfo(newInfo);
+  }
+
+  // 지급 연도 변경
+  const handlePayYearChange = (newYear: string) => {
+    setPayslipInfo({
+      ...payslipInfo,
+      payYear: newYear,
+      payMonth: '',
+      payDay: '' 
+    });
+  };
+
+  //지급월 변경
+  const handlePayMonthChange = (newMonth: string) => {
+    const availableDays = getAvailableDays(payslipInfo.payYear, newMonth);
+    const currentDay = parseInt(payslipInfo.payDay);
+    
+    setPayslipInfo({
+      ...payslipInfo,
+      payMonth: newMonth,
+      payDay: availableDays.includes(currentDay) && !isNaN(currentDay) ? payslipInfo.payDay : '' // 현재 선택된 일이 유효하지 않으면 초기화
+    });
+  };
+
+  //지급일 변경
+  const handlePayDayChange = (newDay: string) => {
+    setPayslipInfo({
+      ...payslipInfo,
+      payDay: newDay
+    });
+  };
+
+  // 닫힘
   if(!isOpen) return null;
 
+  //열림
   return (
      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4">
@@ -155,6 +226,7 @@ export default function PayslipInfo({isOpen}){
             <input
               type="text"
               value={payslipInfo.companyName}
+              onChange={(e) => setPayslipInfo({...payslipInfo, companyName: e.target.value})}
               placeholder="사업장명을 입력해주세요"
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
@@ -168,6 +240,7 @@ export default function PayslipInfo({isOpen}){
             <input
               type="text"
               value={payslipInfo.workerName}
+              onChange={(e) => setPayslipInfo({...payslipInfo, workerName: e.target.value})}
               placeholder="소득자명을 입력해주세요"
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
@@ -179,6 +252,7 @@ export default function PayslipInfo({isOpen}){
             <div className="flex space-x-2">
               <select
                 value={payslipInfo.workYear}
+                onChange={(e) => handleWorkYearChange(e.target.value)}
                 className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">선택</option>
@@ -188,6 +262,7 @@ export default function PayslipInfo({isOpen}){
               </select>
               <select
                 value={payslipInfo.workMonth}
+                onChange={(e)=>handleWorkMonthChange(e.target.value)}
                 className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">선택</option>
@@ -204,6 +279,7 @@ export default function PayslipInfo({isOpen}){
             <div className="flex space-x-2">
               <select
                 value={payslipInfo.payYear}
+                onChange={(e)=>handlePayYearChange(e.target.value)}
                 className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">선택</option>
@@ -213,6 +289,7 @@ export default function PayslipInfo({isOpen}){
               </select>
               <select
                 value={payslipInfo.payMonth}
+                onChange={(e)=>handlePayMonthChange(e.target.value)}
                 className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">월 선택</option>
@@ -222,6 +299,7 @@ export default function PayslipInfo({isOpen}){
               </select>
               <select
                 value={payslipInfo.payDay}
+                onChange={(e)=>handlePayDayChange(e.target.value)}
                 className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">일 선택</option>
