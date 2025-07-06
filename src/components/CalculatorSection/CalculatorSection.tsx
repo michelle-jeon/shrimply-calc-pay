@@ -4,6 +4,7 @@ import RegularCalc from "../Calculators/RegularCalc";
 import DayCalc from "../Calculators/DayCalc";
 import CalcaulationResult from "../CalculationResult/CalculationResult";
 import PayslipView from "../PayslipView/PayslipView";
+import { PayslipInfoData } from "../PayslipInfo/PayslipInfo";
 
 
 type CalculatorSectionProps = {
@@ -64,19 +65,32 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
   const [isCalculating, setIsCalculating] = useState(false);
   const [calculatedResult,setCalculatedResult] = useState<CalcResultData | null>(null);
   const [currentScreen,setCurrentScreen] = useState<ScreenState>('calculator')
+   const [payslipInfo, setPayslipInfo] = useState<PayslipInfoData | null>(null);
 
   useEffect(() => {
     setCurrentScreen("calculator");
     setCalculatedResult(null);
     setCalculatorData(null);
+    setPayslipInfo(null);
   }, [selectedTab]);
   
   const handleDataChange = useCallback((data: CalculatorData) => {
     setCalculatorData(data);
   }, []);
 
-  const handleShowPayslip = () =>{
+  const handleShowPayslip = (payslipData: PayslipInfoData) =>{
+    setPayslipInfo(payslipData);
     setCurrentScreen('payslip');
+  }
+
+  const handlePayslipBack = () => {
+    setCurrentScreen('result');
+    setPayslipInfo(null);
+  }
+
+   const handlePayslipDownload = () => {
+    // 저장 로직 구현
+    console.log('급여명세서 저장하기');
   }
   
   //*********계산*********
@@ -152,6 +166,7 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
   const handleRecalculate = () => {
     setCurrentScreen('calculator');
     setCalculatedResult(null);
+    setPayslipInfo(null);
   }
 
   const isButtonEnabled = calculatorData?.isValid ?? false;
@@ -200,8 +215,13 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
         />
       )}
 
-      {currentScreen === 'payslip' && calculatedResult && (
-        <PayslipView  />
+      {currentScreen === 'payslip' && calculatedResult && payslipInfo && (
+        <PayslipView  
+        result={calculatedResult}
+        payslipInfo={payslipInfo}
+        onBack={handlePayslipBack}
+        onDownload={handlePayslipDownload}
+        />
       )}
     </div>
   )

@@ -33,7 +33,7 @@ type CalcResultData = {
 type CalculationResultProps = {
   result: CalcResultData;
   onRecalculate: () => void;
-  onShowPayslip: () => void; 
+   onShowPayslip: (payslipInfo: PayslipInfoData) => void; 
 };
 
 export default function CalcaulationResult ({ result, onRecalculate,onShowPayslip }: CalculationResultProps) {
@@ -60,7 +60,7 @@ export default function CalcaulationResult ({ result, onRecalculate,onShowPaysli
     setPayslipOpen(false);
   }
   const handlePayslipInfoSubmit=(payslipInfo:PayslipInfoData)=>{
-    onShowPayslip();
+    onShowPayslip(payslipInfo);
     setPayslipOpen(false);
   }
 
