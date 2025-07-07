@@ -5,7 +5,7 @@ import DayCalc from "../Calculators/DayCalc";
 import CalcaulationResult from "../CalculationResult/CalculationResult";
 import PayslipView from "../PayslipView/PayslipView";
 import { PayslipInfoData } from "../PayslipInfo/PayslipInfo";
-
+import taxTable from '../data/taxTable.json'
 
 type CalculatorSectionProps = {
   selectedTab: string;
@@ -117,7 +117,7 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
           break;
         case "상용직":
           const regulData = calculatorData as RegularCalcData;
-          result = calculateRegular(regulData.amount);
+          result = calculateRegular(regulData);
           break;
         case "일용직":
           const dayData = calculatorData as DayCalcData;
@@ -133,7 +133,7 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
 
   const calculateFree = (amt: number): CalcResultData => {
     const withholdingTax = Math.floor((amt * 0.03) / 10) * 10;
-    const localTax =  Math.floor((amt * 0.003) / 10) * 10;
+    const localTax =  Math.floor((withholdingTax * 0.1) / 10) * 10;
     const netSalary = amt - withholdingTax - localTax;
     
     return {
@@ -145,19 +145,23 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
     };
   };
 
-  const calculateRegular = (amt:number): CalcResultData =>{
-    const withholdingTax = Math.floor((amt * 0.03) / 10) * 10;
-    const localTax =  Math.floor((amt * 0.003) / 10) * 10;
-    const netSalary = amt - withholdingTax - localTax;
+  const calculateRegular = (regulData: RegularCalcData): CalcResultData => {
+    const taxableIncome = regulData.baseAmount + regulData.taxableAllowances;
+
+    const matchedRow = taxTable.find(row => taxableIncome >= row.min && taxableIncome <= row.max);
+    const withholdingTax = matchedRow ? matchedRow.tax : 0;
+    const localTax = Math.floor((withholdingTax * 0.1) / 10) * 10;
+
+    const netSalary = regulData.amount - withholdingTax - localTax;
 
     return {
-      totSalary:amt,
+      totSalary: regulData.amount,
       withholdingTax,
       localTax,
       netSalary,
-      type:"상용직"
-    }
-  }
+      type: "상용직"
+    };
+  };
 
   const calculateDay = (amt:number): CalcResultData =>{
     const withholdingTax = Math.floor((amt * 0.03) / 10) * 10;
