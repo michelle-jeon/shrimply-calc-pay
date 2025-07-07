@@ -32,6 +32,19 @@ export type RegularCalcData = {
   taxReduction: number;
   durunuri: number; 
   isHealthInsuranceJoin: boolean; 
+  allowances: {
+    meal: string;
+    vehicle: string;
+    childbirth: string;
+    research: string;
+    productionOvertime: string;
+    bonus: string;
+    position: string;
+    annualLeave: string;
+    overtime: string;
+    holiday: string;
+    night: string;
+  };
   deductions: {
     nationalPension: string;
     employmentInsurance: string;
@@ -157,61 +170,61 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
     let withholdingTax = 0;
     
     // 과세 금액이 1,060,000원 미만이면 소득세 0원
-    if (taxableIncome < 1_060_000) {
+    if (taxableIncome < 1060000) {
       withholdingTax = 0;
     }
     // 1,060,000원 이상 10,000,000원 미만 - 간이세액표 사용
-    else if (taxableIncome < 10_000_000) {
+    else if (taxableIncome < 10000000) {
       const matchedRow = taxTable.find((row: TaxRow) => 
         taxableIncome >= row.atLeast && taxableIncome < row.lessThan
       );
       withholdingTax = matchedRow ? matchedRow.tax : 0;
     }
     // 10,000,000원 - 소득세 1,507,400원
-    else if (taxableIncome === 10_000_000) {
-      withholdingTax = 1_507_400;
+    else if (taxableIncome === 10000000) {
+      withholdingTax = 1507400;
     }
     // 10,000,000원 초과 14,000,000원 이하
-    else if (taxableIncome > 10_000_000 && taxableIncome <= 14_000_000) {
-      const baseTax = 1_507_400; // 10,000,000원인 경우의 해당 세액
-      const excessAmount = taxableIncome - 10_000_000;
+    else if (taxableIncome > 10000000 && taxableIncome <= 14000000) {
+      const baseTax = 1507400; // 10,000,000원인 경우의 해당 세액
+      const excessAmount = taxableIncome - 10000000;
       const additionalTax = Math.floor(excessAmount * 0.98 * 0.35);
-      withholdingTax = baseTax + additionalTax + 25_000;
+      withholdingTax = baseTax + additionalTax + 25000;
     }
     // 14,000,000원 초과 28,000,000원 이하
-    else if (taxableIncome > 14_000_000 && taxableIncome <= 28_000_000) {
-      const baseTax = 1_507_400; // 10,000,000원인 경우의 해당 세액
-      const excessAmount = taxableIncome - 14_000_000;
+    else if (taxableIncome > 14000000 && taxableIncome <= 28000000) {
+      const baseTax = 1507400; // 10,000,000원인 경우의 해당 세액
+      const excessAmount = taxableIncome - 14000000;
       const additionalTax = Math.floor(excessAmount * 0.98 * 0.38);
-      withholdingTax = baseTax + 1_397_000 + additionalTax;
+      withholdingTax = baseTax + 1397000 + additionalTax;
     }
     // 28,000,000원 초과 30,000,000원 이하
-    else if (taxableIncome > 28_000_000 && taxableIncome <= 30_000_000) {
-      const baseTax = 1_507_400; // 10,000,000원인 경우의 해당 세액
-      const excessAmount = taxableIncome - 28_000_000;
+    else if (taxableIncome > 28000000 && taxableIncome <= 30000000) {
+      const baseTax = 1507400; // 10,000,000원인 경우의 해당 세액
+      const excessAmount = taxableIncome - 28000000;
       const additionalTax = Math.floor(excessAmount * 0.98 * 0.40);
-      withholdingTax = baseTax + 6_610_600 + additionalTax;
+      withholdingTax = baseTax + 6610600 + additionalTax;
     }
     // 30,000,000원 초과 45,000,000원 이하
-    else if (taxableIncome > 30_000_000 && taxableIncome <= 45_000_000) {
-      const baseTax = 1_507_400; // 10,000,000원인 경우의 해당 세액
-      const excessAmount = taxableIncome - 30_000_000;
+    else if (taxableIncome > 30000000 && taxableIncome <= 45000000) {
+      const baseTax = 1507400; // 10,000,000원인 경우의 해당 세액
+      const excessAmount = taxableIncome - 30000000;
       const additionalTax = Math.floor(excessAmount * 0.40);
-      withholdingTax = baseTax + 7_394_600 + additionalTax;
+      withholdingTax = baseTax + 7394600 + additionalTax;
     }
     // 45,000,000원 초과 87,000,000원 이하
-    else if (taxableIncome > 45_000_000 && taxableIncome <= 87_000_000) {
-      const baseTax = 1_507_400; // 10,000,000원인 경우의 해당 세액
-      const excessAmount = taxableIncome - 45_000_000;
+    else if (taxableIncome > 45000000 && taxableIncome <= 87000000) {
+      const baseTax = 1507400; // 10,000,000원인 경우의 해당 세액
+      const excessAmount = taxableIncome - 45000000;
       const additionalTax = Math.floor(excessAmount * 0.42);
-      withholdingTax = baseTax + 13_394_600 + additionalTax;
+      withholdingTax = baseTax + 13394600 + additionalTax;
     }
     // 87,000,000원 초과
-    else if (taxableIncome > 87_000_000) {
-      const baseTax = 1_507_400; // 10,000,000원인 경우의 해당 세액
-      const excessAmount = taxableIncome - 87_000_000;
+    else if (taxableIncome > 87000000) {
+      const baseTax = 1507400; // 10,000,000원인 경우의 해당 세액
+      const excessAmount = taxableIncome - 87000000;
       const additionalTax = Math.floor(excessAmount * 0.45);
-      withholdingTax = baseTax + 31_034_600 + additionalTax;
+      withholdingTax = baseTax + 31034600 + additionalTax;
     }
 
     const localTax = Math.floor((withholdingTax * 0.1) / 10) * 10;
@@ -220,12 +233,30 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
     console.log(withholdingTax)
     console.log(localTax)
 
+    const allowances = regulData.allowances;
+    const sumAllowance = regulData.nonTaxableAllowances + regulData.taxableAllowances;
+
     return {
       totSalary: regulData.amount,
       withholdingTax,
       localTax,
       netSalary,
-      type: "상용직"
+      type: "상용직",
+      baseSalary: regulData.baseAmount,
+      allowance: {
+        sumAllowance,
+        mealAllowance: parseInt(allowances.meal) || 0,
+        vehicleAllowance: parseInt(allowances.vehicle) || 0,
+        productionOverTimeAllowance: parseInt(allowances.productionOvertime) || 0,
+        childcareAllowance: parseInt(allowances.childbirth) || 0,
+        researchAllowance: parseInt(allowances.research) || 0,
+        bonusAllowance: parseInt(allowances.bonus) || 0,
+        positionAllowance: parseInt(allowances.position) || 0,
+        annualLeaveAllowance: parseInt(allowances.annualLeave) || 0,
+        overTimeAllowance: parseInt(allowances.overtime) || 0,
+        holidayAllowance: parseInt(allowances.holiday) || 0,
+        nightAllowance: parseInt(allowances.night) || 0
+      },
     };
   };
 

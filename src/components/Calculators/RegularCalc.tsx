@@ -133,7 +133,8 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
       taxReduction,
       durunuri,
       isHealthInsuranceJoin,
-      deductions
+      deductions,
+      allowances: allowances
     });
   },[amount, isValid, allowances, taxReduction, durunuri, isHealthInsuranceJoin, deductions, onDataChange]);
 
