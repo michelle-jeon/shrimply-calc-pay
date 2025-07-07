@@ -33,10 +33,10 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
   },[amount, isValid, onDataChange]);
 
   return (
-    <div className='text-left'>
+    <div className='text-left pb-5 border-b border-gray-200'>
       <div className="flex w-full items-center space-x-4">
         <label className='text-gray-700 font-medium'>
-          지급액 <span className="text-red-50">*</span>
+          기본급 <span className="text-red-500">*</span>
         </label>
         <div className="flex grow items-center border border-gray-300 rounded-md px-3 py-2">
           <input 
@@ -50,7 +50,7 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
         </div>
       </div>
       {amount && !isValid && (
-        <p className="">
+        <p className="pt-2 text-red-500">
           1원 이상 입력해주세요.
         </p>
       )}

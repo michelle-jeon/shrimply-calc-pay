@@ -36,7 +36,7 @@ export default function FreeCalc({onDataChange, selectedTab}:FreeCalcProps) {
     <div className='text-left'>
       <div className="flex w-full items-center space-x-4">
         <label className='text-gray-700 font-medium'>
-          지급액 <span className="text-red-50">*</span>
+          지급액 <span className="text-red-500">*</span>
         </label>
         <div className="flex grow items-center border border-gray-300 rounded-md px-3 py-2">
           <input 
