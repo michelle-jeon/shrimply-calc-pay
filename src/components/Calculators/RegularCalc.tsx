@@ -28,7 +28,7 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
   });
   const [taxReduction, setTaxReduction] = useState(0);
   const [durunuri, setDurunuri] = useState(0);
-  const [isHealthInsuranceJoin, setIsHealthInsuranceJoin] = useState(false);
+  const [isHealthInsuranceJoin, setIsHealthInsuranceJoin] = useState(true);
 
   //탭 선택될때마다 데이터날리기
   useEffect(() => {
@@ -53,7 +53,7 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
     });
     setTaxReduction(0);
     setDurunuri(0);
-    setIsHealthInsuranceJoin(false);
+    setIsHealthInsuranceJoin(true);
   }, [selectedTab]);
 
   // 유효성 검사... 그런데 기본급 0원일수도 있었던듯?

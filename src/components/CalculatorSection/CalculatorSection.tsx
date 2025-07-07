@@ -247,21 +247,20 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
     let employmentInsurance = 0;
     
     if (regulData.isHealthInsuranceJoin) {
-      // 국민연금 기준소득월액은 regulData.deductions.nationalPension에서 천원단위 절사한 값이고 이게 0이면(없으면) taxableIncome을 천원단위 절사한 값을 기준소득월액으로 사용함.(예를들어 1055000이면 1050000으로.) 그런데pensionBase의 하한액이 400000 이고 상한액이 6370000임. 그러니까 기준소득월액이 400000보다 작으면(미만) 400000으로 치고 계산하고, 기준소득월액이 6370000보다 크면(초과) 6370000로 치고 계산.
       // 국민연금 (기준소득월액의 4.5%)
-      let pensionBase = parseInt(regulData.deductions.nationalPension) || Math.floor(taxableIncome / 1000) * 1000;
+      let pensionBase = Math.floor(parseInt(regulData.deductions.nationalPension)/ 10000) * 10000 || Math.floor(taxableIncome / 1000) * 1000;
+      console.log(pensionBase);
       if (pensionBase < 400000) pensionBase = 400000;
       if (pensionBase > 6370000) pensionBase = 6370000;
       nationalPension = Math.floor(pensionBase * 0.045);
-          
-      // 건강 보험 기준소득월액은 taxableIncome. 건강보험 기준소득월액(월보수액)도 하한액과 상한액이 있음. 하한액은 279266원 상한액은 127056982원. (국민연금과 다르게 건강보험의 기준소득월액은 절사하지 않고 그대로 사용함)
-      // 건강보험 (기준소득월액의 3.545%)
+      
+      // 건강보험 (월보수액의 3.545%)
       let healthBase = taxableIncome;
       if (healthBase < 279266) healthBase = 279266;
       if (healthBase > 12705698) healthBase = 12705698;
       healthInsurance = Math.floor(healthBase * 0.03545 / 10) * 10;
-      //요양 보험 기준소득월액은 taxableIncome
-      // 장기요양보험 (건강보험 월보수액의 0.4591%)
+      
+      // 장기요양보험 (월보수액의 0.4591%)
       longTermCareInsurance = Math.floor(taxableIncome * 0.004591/10)*10;
     }
 
