@@ -1,5 +1,2947 @@
 [
-  { "min": 0, "max": 1000000, "tax": 10000 },
-  { "min": 1000001, "max": 2000000, "tax": 20000 },
-  { "min": 2000001, "max": 3000000, "tax": 30000 }
+  {
+    "atLeast": 1060000,
+    "lessThan": 1065000,
+    "tax": 1040
+  },
+  {
+    "atLeast": 1065000,
+    "lessThan": 1070000,
+    "tax": 1110
+  },
+  {
+    "atLeast": 1070000,
+    "lessThan": 1075000,
+    "tax": 1180
+  },
+  {
+    "atLeast": 1075000,
+    "lessThan": 1080000,
+    "tax": 1250
+  },
+  {
+    "atLeast": 1080000,
+    "lessThan": 1085000,
+    "tax": 1320
+  },
+  {
+    "atLeast": 1085000,
+    "lessThan": 1090000,
+    "tax": 1390
+  },
+  {
+    "atLeast": 1090000,
+    "lessThan": 1095000,
+    "tax": 1460
+  },
+  {
+    "atLeast": 1095000,
+    "lessThan": 1100000,
+    "tax": 1530
+  },
+  {
+    "atLeast": 1100000,
+    "lessThan": 1105000,
+    "tax": 1600
+  },
+  {
+    "atLeast": 1105000,
+    "lessThan": 1110000,
+    "tax": 1670
+  },
+  {
+    "atLeast": 1110000,
+    "lessThan": 1115000,
+    "tax": 1740
+  },
+  {
+    "atLeast": 1115000,
+    "lessThan": 1120000,
+    "tax": 1810
+  },
+  {
+    "atLeast": 1120000,
+    "lessThan": 1125000,
+    "tax": 1880
+  },
+  {
+    "atLeast": 1125000,
+    "lessThan": 1130000,
+    "tax": 1950
+  },
+  {
+    "atLeast": 1130000,
+    "lessThan": 1135000,
+    "tax": 2020
+  },
+  {
+    "atLeast": 1135000,
+    "lessThan": 1140000,
+    "tax": 2090
+  },
+  {
+    "atLeast": 1140000,
+    "lessThan": 1145000,
+    "tax": 2160
+  },
+  {
+    "atLeast": 1145000,
+    "lessThan": 1150000,
+    "tax": 2230
+  },
+  {
+    "atLeast": 1150000,
+    "lessThan": 1155000,
+    "tax": 2300
+  },
+  {
+    "atLeast": 1155000,
+    "lessThan": 1160000,
+    "tax": 2370
+  },
+  {
+    "atLeast": 1160000,
+    "lessThan": 1165000,
+    "tax": 2440
+  },
+  {
+    "atLeast": 1165000,
+    "lessThan": 1170000,
+    "tax": 2500
+  },
+  {
+    "atLeast": 1170000,
+    "lessThan": 1175000,
+    "tax": 2570
+  },
+  {
+    "atLeast": 1175000,
+    "lessThan": 1180000,
+    "tax": 2640
+  },
+  {
+    "atLeast": 1180000,
+    "lessThan": 1185000,
+    "tax": 2710
+  },
+  {
+    "atLeast": 1185000,
+    "lessThan": 1190000,
+    "tax": 2780
+  },
+  {
+    "atLeast": 1190000,
+    "lessThan": 1195000,
+    "tax": 2850
+  },
+  {
+    "atLeast": 1195000,
+    "lessThan": 1200000,
+    "tax": 2920
+  },
+  {
+    "atLeast": 1200000,
+    "lessThan": 1205000,
+    "tax": 2990
+  },
+  {
+    "atLeast": 1205000,
+    "lessThan": 1210000,
+    "tax": 3060
+  },
+  {
+    "atLeast": 1210000,
+    "lessThan": 1215000,
+    "tax": 3130
+  },
+  {
+    "atLeast": 1215000,
+    "lessThan": 1220000,
+    "tax": 3200
+  },
+  {
+    "atLeast": 1220000,
+    "lessThan": 1225000,
+    "tax": 3270
+  },
+  {
+    "atLeast": 1225000,
+    "lessThan": 1230000,
+    "tax": 3340
+  },
+  {
+    "atLeast": 1230000,
+    "lessThan": 1235000,
+    "tax": 3410
+  },
+  {
+    "atLeast": 1235000,
+    "lessThan": 1240000,
+    "tax": 3480
+  },
+  {
+    "atLeast": 1240000,
+    "lessThan": 1245000,
+    "tax": 3550
+  },
+  {
+    "atLeast": 1245000,
+    "lessThan": 1250000,
+    "tax": 3620
+  },
+  {
+    "atLeast": 1250000,
+    "lessThan": 1255000,
+    "tax": 3700
+  },
+  {
+    "atLeast": 1255000,
+    "lessThan": 1260000,
+    "tax": 3810
+  },
+  {
+    "atLeast": 1260000,
+    "lessThan": 1265000,
+    "tax": 3910
+  },
+  {
+    "atLeast": 1265000,
+    "lessThan": 1270000,
+    "tax": 4010
+  },
+  {
+    "atLeast": 1270000,
+    "lessThan": 1275000,
+    "tax": 4120
+  },
+  {
+    "atLeast": 1275000,
+    "lessThan": 1280000,
+    "tax": 4220
+  },
+  {
+    "atLeast": 1280000,
+    "lessThan": 1285000,
+    "tax": 4320
+  },
+  {
+    "atLeast": 1285000,
+    "lessThan": 1290000,
+    "tax": 4430
+  },
+  {
+    "atLeast": 1290000,
+    "lessThan": 1295000,
+    "tax": 4530
+  },
+  {
+    "atLeast": 1295000,
+    "lessThan": 1300000,
+    "tax": 4630
+  },
+  {
+    "atLeast": 1300000,
+    "lessThan": 1305000,
+    "tax": 4740
+  },
+  {
+    "atLeast": 1305000,
+    "lessThan": 1310000,
+    "tax": 4840
+  },
+  {
+    "atLeast": 1310000,
+    "lessThan": 1315000,
+    "tax": 4940
+  },
+  {
+    "atLeast": 1315000,
+    "lessThan": 1320000,
+    "tax": 5050
+  },
+  {
+    "atLeast": 1320000,
+    "lessThan": 1325000,
+    "tax": 5150
+  },
+  {
+    "atLeast": 1325000,
+    "lessThan": 1330000,
+    "tax": 5250
+  },
+  {
+    "atLeast": 1330000,
+    "lessThan": 1335000,
+    "tax": 5360
+  },
+  {
+    "atLeast": 1335000,
+    "lessThan": 1340000,
+    "tax": 5460
+  },
+  {
+    "atLeast": 1340000,
+    "lessThan": 1345000,
+    "tax": 5560
+  },
+  {
+    "atLeast": 1345000,
+    "lessThan": 1350000,
+    "tax": 5670
+  },
+  {
+    "atLeast": 1350000,
+    "lessThan": 1355000,
+    "tax": 5770
+  },
+  {
+    "atLeast": 1355000,
+    "lessThan": 1360000,
+    "tax": 5870
+  },
+  {
+    "atLeast": 1360000,
+    "lessThan": 1365000,
+    "tax": 5980
+  },
+  {
+    "atLeast": 1365000,
+    "lessThan": 1370000,
+    "tax": 6080
+  },
+  {
+    "atLeast": 1370000,
+    "lessThan": 1375000,
+    "tax": 6180
+  },
+  {
+    "atLeast": 1375000,
+    "lessThan": 1380000,
+    "tax": 6290
+  },
+  {
+    "atLeast": 1380000,
+    "lessThan": 1385000,
+    "tax": 6390
+  },
+  {
+    "atLeast": 1385000,
+    "lessThan": 1390000,
+    "tax": 6490
+  },
+  {
+    "atLeast": 1390000,
+    "lessThan": 1395000,
+    "tax": 6600
+  },
+  {
+    "atLeast": 1395000,
+    "lessThan": 1400000,
+    "tax": 6700
+  },
+  {
+    "atLeast": 1400000,
+    "lessThan": 1405000,
+    "tax": 6800
+  },
+  {
+    "atLeast": 1405000,
+    "lessThan": 1410000,
+    "tax": 6910
+  },
+  {
+    "atLeast": 1410000,
+    "lessThan": 1415000,
+    "tax": 7010
+  },
+  {
+    "atLeast": 1415000,
+    "lessThan": 1420000,
+    "tax": 7110
+  },
+  {
+    "atLeast": 1420000,
+    "lessThan": 1425000,
+    "tax": 7210
+  },
+  {
+    "atLeast": 1425000,
+    "lessThan": 1430000,
+    "tax": 7320
+  },
+  {
+    "atLeast": 1430000,
+    "lessThan": 1435000,
+    "tax": 7420
+  },
+  {
+    "atLeast": 1435000,
+    "lessThan": 1440000,
+    "tax": 7520
+  },
+  {
+    "atLeast": 1440000,
+    "lessThan": 1445000,
+    "tax": 7630
+  },
+  {
+    "atLeast": 1445000,
+    "lessThan": 1450000,
+    "tax": 7730
+  },
+  {
+    "atLeast": 1450000,
+    "lessThan": 1455000,
+    "tax": 7830
+  },
+  {
+    "atLeast": 1455000,
+    "lessThan": 1460000,
+    "tax": 7940
+  },
+  {
+    "atLeast": 1460000,
+    "lessThan": 1465000,
+    "tax": 8040
+  },
+  {
+    "atLeast": 1465000,
+    "lessThan": 1470000,
+    "tax": 8140
+  },
+  {
+    "atLeast": 1470000,
+    "lessThan": 1475000,
+    "tax": 8250
+  },
+  {
+    "atLeast": 1475000,
+    "lessThan": 1480000,
+    "tax": 8350
+  },
+  {
+    "atLeast": 1480000,
+    "lessThan": 1485000,
+    "tax": 8450
+  },
+  {
+    "atLeast": 1485000,
+    "lessThan": 1490000,
+    "tax": 8560
+  },
+  {
+    "atLeast": 1490000,
+    "lessThan": 1495000,
+    "tax": 8660
+  },
+  {
+    "atLeast": 1495000,
+    "lessThan": 1500000,
+    "tax": 8760
+  },
+  {
+    "atLeast": 1500000,
+    "lessThan": 1510000,
+    "tax": 8920
+  },
+  {
+    "atLeast": 1510000,
+    "lessThan": 1520000,
+    "tax": 9120
+  },
+  {
+    "atLeast": 1520000,
+    "lessThan": 1530000,
+    "tax": 9330
+  },
+  {
+    "atLeast": 1530000,
+    "lessThan": 1540000,
+    "tax": 9540
+  },
+  {
+    "atLeast": 1540000,
+    "lessThan": 1550000,
+    "tax": 9740
+  },
+  {
+    "atLeast": 1550000,
+    "lessThan": 1560000,
+    "tax": 9950
+  },
+  {
+    "atLeast": 1560000,
+    "lessThan": 1570000,
+    "tax": 10160
+  },
+  {
+    "atLeast": 1570000,
+    "lessThan": 1580000,
+    "tax": 10360
+  },
+  {
+    "atLeast": 1580000,
+    "lessThan": 1590000,
+    "tax": 10570
+  },
+  {
+    "atLeast": 1590000,
+    "lessThan": 1600000,
+    "tax": 10780
+  },
+  {
+    "atLeast": 1600000,
+    "lessThan": 1610000,
+    "tax": 10980
+  },
+  {
+    "atLeast": 1610000,
+    "lessThan": 1620000,
+    "tax": 11190
+  },
+  {
+    "atLeast": 1620000,
+    "lessThan": 1630000,
+    "tax": 11400
+  },
+  {
+    "atLeast": 1630000,
+    "lessThan": 1640000,
+    "tax": 11600
+  },
+  {
+    "atLeast": 1640000,
+    "lessThan": 1650000,
+    "tax": 11810
+  },
+  {
+    "atLeast": 1650000,
+    "lessThan": 1660000,
+    "tax": 12020
+  },
+  {
+    "atLeast": 1660000,
+    "lessThan": 1670000,
+    "tax": 12220
+  },
+  {
+    "atLeast": 1670000,
+    "lessThan": 1680000,
+    "tax": 12430
+  },
+  {
+    "atLeast": 1680000,
+    "lessThan": 1690000,
+    "tax": 12640
+  },
+  {
+    "atLeast": 1690000,
+    "lessThan": 1700000,
+    "tax": 12840
+  },
+  {
+    "atLeast": 1700000,
+    "lessThan": 1710000,
+    "tax": 13050
+  },
+  {
+    "atLeast": 1710000,
+    "lessThan": 1720000,
+    "tax": 13260
+  },
+  {
+    "atLeast": 1720000,
+    "lessThan": 1730000,
+    "tax": 13460
+  },
+  {
+    "atLeast": 1730000,
+    "lessThan": 1740000,
+    "tax": 13670
+  },
+  {
+    "atLeast": 1740000,
+    "lessThan": 1750000,
+    "tax": 13880
+  },
+  {
+    "atLeast": 1750000,
+    "lessThan": 1760000,
+    "tax": 14080
+  },
+  {
+    "atLeast": 1760000,
+    "lessThan": 1770000,
+    "tax": 14290
+  },
+  {
+    "atLeast": 1770000,
+    "lessThan": 1780000,
+    "tax": 14500
+  },
+  {
+    "atLeast": 1780000,
+    "lessThan": 1790000,
+    "tax": 14700
+  },
+  {
+    "atLeast": 1790000,
+    "lessThan": 1800000,
+    "tax": 14910
+  },
+  {
+    "atLeast": 1800000,
+    "lessThan": 1810000,
+    "tax": 15110
+  },
+  {
+    "atLeast": 1810000,
+    "lessThan": 1820000,
+    "tax": 15320
+  },
+  {
+    "atLeast": 1820000,
+    "lessThan": 1830000,
+    "tax": 15530
+  },
+  {
+    "atLeast": 1830000,
+    "lessThan": 1840000,
+    "tax": 15730
+  },
+  {
+    "atLeast": 1840000,
+    "lessThan": 1850000,
+    "tax": 15940
+  },
+  {
+    "atLeast": 1850000,
+    "lessThan": 1860000,
+    "tax": 16150
+  },
+  {
+    "atLeast": 1860000,
+    "lessThan": 1870000,
+    "tax": 16350
+  },
+  {
+    "atLeast": 1870000,
+    "lessThan": 1880000,
+    "tax": 16560
+  },
+  {
+    "atLeast": 1880000,
+    "lessThan": 1890000,
+    "tax": 16770
+  },
+  {
+    "atLeast": 1890000,
+    "lessThan": 1900000,
+    "tax": 16970
+  },
+  {
+    "atLeast": 1900000,
+    "lessThan": 1910000,
+    "tax": 17180
+  },
+  {
+    "atLeast": 1910000,
+    "lessThan": 1920000,
+    "tax": 17390
+  },
+  {
+    "atLeast": 1920000,
+    "lessThan": 1930000,
+    "tax": 17590
+  },
+  {
+    "atLeast": 1930000,
+    "lessThan": 1940000,
+    "tax": 17800
+  },
+  {
+    "atLeast": 1940000,
+    "lessThan": 1950000,
+    "tax": 18010
+  },
+  {
+    "atLeast": 1950000,
+    "lessThan": 1960000,
+    "tax": 18210
+  },
+  {
+    "atLeast": 1960000,
+    "lessThan": 1970000,
+    "tax": 18420
+  },
+  {
+    "atLeast": 1970000,
+    "lessThan": 1980000,
+    "tax": 18630
+  },
+  {
+    "atLeast": 1980000,
+    "lessThan": 1990000,
+    "tax": 18880
+  },
+  {
+    "atLeast": 1990000,
+    "lessThan": 2000000,
+    "tax": 19200
+  },
+  {
+    "atLeast": 2000000,
+    "lessThan": 2010000,
+    "tax": 19520
+  },
+  {
+    "atLeast": 2010000,
+    "lessThan": 2020000,
+    "tax": 19850
+  },
+  {
+    "atLeast": 2020000,
+    "lessThan": 2030000,
+    "tax": 20170
+  },
+  {
+    "atLeast": 2030000,
+    "lessThan": 2040000,
+    "tax": 20490
+  },
+  {
+    "atLeast": 2040000,
+    "lessThan": 2050000,
+    "tax": 20810
+  },
+  {
+    "atLeast": 2050000,
+    "lessThan": 2060000,
+    "tax": 21130
+  },
+  {
+    "atLeast": 2060000,
+    "lessThan": 2070000,
+    "tax": 21450
+  },
+  {
+    "atLeast": 2070000,
+    "lessThan": 2080000,
+    "tax": 21770
+  },
+  {
+    "atLeast": 2080000,
+    "lessThan": 2090000,
+    "tax": 22090
+  },
+  {
+    "atLeast": 2090000,
+    "lessThan": 2100000,
+    "tax": 22420
+  },
+  {
+    "atLeast": 2100000,
+    "lessThan": 2110000,
+    "tax": 22740
+  },
+  {
+    "atLeast": 2110000,
+    "lessThan": 2120000,
+    "tax": 23060
+  },
+  {
+    "atLeast": 2120000,
+    "lessThan": 2130000,
+    "tax": 23380
+  },
+  {
+    "atLeast": 2130000,
+    "lessThan": 2140000,
+    "tax": 23700
+  },
+  {
+    "atLeast": 2140000,
+    "lessThan": 2150000,
+    "tax": 24020
+  },
+  {
+    "atLeast": 2150000,
+    "lessThan": 2160000,
+    "tax": 24340
+  },
+  {
+    "atLeast": 2160000,
+    "lessThan": 2170000,
+    "tax": 24660
+  },
+  {
+    "atLeast": 2170000,
+    "lessThan": 2180000,
+    "tax": 24990
+  },
+  {
+    "atLeast": 2180000,
+    "lessThan": 2190000,
+    "tax": 25310
+  },
+  {
+    "atLeast": 2190000,
+    "lessThan": 2200000,
+    "tax": 25630
+  },
+  {
+    "atLeast": 2200000,
+    "lessThan": 2210000,
+    "tax": 25950
+  },
+  {
+    "atLeast": 2210000,
+    "lessThan": 2220000,
+    "tax": 26270
+  },
+  {
+    "atLeast": 2220000,
+    "lessThan": 2230000,
+    "tax": 26590
+  },
+  {
+    "atLeast": 2230000,
+    "lessThan": 2240000,
+    "tax": 26910
+  },
+  {
+    "atLeast": 2240000,
+    "lessThan": 2250000,
+    "tax": 27240
+  },
+  {
+    "atLeast": 2250000,
+    "lessThan": 2260000,
+    "tax": 27560
+  },
+  {
+    "atLeast": 2260000,
+    "lessThan": 2270000,
+    "tax": 27880
+  },
+  {
+    "atLeast": 2270000,
+    "lessThan": 2280000,
+    "tax": 28200
+  },
+  {
+    "atLeast": 2280000,
+    "lessThan": 2290000,
+    "tax": 28520
+  },
+  {
+    "atLeast": 2290000,
+    "lessThan": 2300000,
+    "tax": 28840
+  },
+  {
+    "atLeast": 2300000,
+    "lessThan": 2310000,
+    "tax": 29160
+  },
+  {
+    "atLeast": 2310000,
+    "lessThan": 2320000,
+    "tax": 29480
+  },
+  {
+    "atLeast": 2320000,
+    "lessThan": 2330000,
+    "tax": 29810
+  },
+  {
+    "atLeast": 2330000,
+    "lessThan": 2340000,
+    "tax": 30130
+  },
+  {
+    "atLeast": 2340000,
+    "lessThan": 2350000,
+    "tax": 30450
+  },
+  {
+    "atLeast": 2350000,
+    "lessThan": 2360000,
+    "tax": 30770
+  },
+  {
+    "atLeast": 2360000,
+    "lessThan": 2370000,
+    "tax": 31090
+  },
+  {
+    "atLeast": 2370000,
+    "lessThan": 2380000,
+    "tax": 31410
+  },
+  {
+    "atLeast": 2380000,
+    "lessThan": 2390000,
+    "tax": 31730
+  },
+  {
+    "atLeast": 2390000,
+    "lessThan": 2400000,
+    "tax": 32050
+  },
+  {
+    "atLeast": 2400000,
+    "lessThan": 2410000,
+    "tax": 32380
+  },
+  {
+    "atLeast": 2410000,
+    "lessThan": 2420000,
+    "tax": 32700
+  },
+  {
+    "atLeast": 2420000,
+    "lessThan": 2430000,
+    "tax": 33020
+  },
+  {
+    "atLeast": 2430000,
+    "lessThan": 2440000,
+    "tax": 33340
+  },
+  {
+    "atLeast": 2440000,
+    "lessThan": 2450000,
+    "tax": 33660
+  },
+  {
+    "atLeast": 2450000,
+    "lessThan": 2460000,
+    "tax": 33980
+  },
+  {
+    "atLeast": 2460000,
+    "lessThan": 2470000,
+    "tax": 34300
+  },
+  {
+    "atLeast": 2470000,
+    "lessThan": 2480000,
+    "tax": 34630
+  },
+  {
+    "atLeast": 2480000,
+    "lessThan": 2490000,
+    "tax": 34950
+  },
+  {
+    "atLeast": 2490000,
+    "lessThan": 2500000,
+    "tax": 35270
+  },
+  {
+    "atLeast": 2500000,
+    "lessThan": 2510000,
+    "tax": 35600
+  },
+  {
+    "atLeast": 2510000,
+    "lessThan": 2520000,
+    "tax": 35940
+  },
+  {
+    "atLeast": 2520000,
+    "lessThan": 2530000,
+    "tax": 36280
+  },
+  {
+    "atLeast": 2530000,
+    "lessThan": 2540000,
+    "tax": 36630
+  },
+  {
+    "atLeast": 2540000,
+    "lessThan": 2550000,
+    "tax": 36970
+  },
+  {
+    "atLeast": 2550000,
+    "lessThan": 2560000,
+    "tax": 37310
+  },
+  {
+    "atLeast": 2560000,
+    "lessThan": 2570000,
+    "tax": 37650
+  },
+  {
+    "atLeast": 2570000,
+    "lessThan": 2580000,
+    "tax": 38000
+  },
+  {
+    "atLeast": 2580000,
+    "lessThan": 2590000,
+    "tax": 38340
+  },
+  {
+    "atLeast": 2590000,
+    "lessThan": 2600000,
+    "tax": 38830
+  },
+  {
+    "atLeast": 2600000,
+    "lessThan": 2610000,
+    "tax": 39690
+  },
+  {
+    "atLeast": 2610000,
+    "lessThan": 2620000,
+    "tax": 40540
+  },
+  {
+    "atLeast": 2620000,
+    "lessThan": 2630000,
+    "tax": 41400
+  },
+  {
+    "atLeast": 2630000,
+    "lessThan": 2640000,
+    "tax": 42260
+  },
+  {
+    "atLeast": 2640000,
+    "lessThan": 2650000,
+    "tax": 43110
+  },
+  {
+    "atLeast": 2650000,
+    "lessThan": 2660000,
+    "tax": 43970
+  },
+  {
+    "atLeast": 2660000,
+    "lessThan": 2670000,
+    "tax": 44820
+  },
+  {
+    "atLeast": 2670000,
+    "lessThan": 2680000,
+    "tax": 45680
+  },
+  {
+    "atLeast": 2680000,
+    "lessThan": 2690000,
+    "tax": 46540
+  },
+  {
+    "atLeast": 2690000,
+    "lessThan": 2700000,
+    "tax": 47390
+  },
+  {
+    "atLeast": 2700000,
+    "lessThan": 2710000,
+    "tax": 48250
+  },
+  {
+    "atLeast": 2710000,
+    "lessThan": 2720000,
+    "tax": 49100
+  },
+  {
+    "atLeast": 2720000,
+    "lessThan": 2730000,
+    "tax": 49960
+  },
+  {
+    "atLeast": 2730000,
+    "lessThan": 2740000,
+    "tax": 50810
+  },
+  {
+    "atLeast": 2740000,
+    "lessThan": 2750000,
+    "tax": 51670
+  },
+  {
+    "atLeast": 2750000,
+    "lessThan": 2760000,
+    "tax": 52530
+  },
+  {
+    "atLeast": 2760000,
+    "lessThan": 2770000,
+    "tax": 53380
+  },
+  {
+    "atLeast": 2770000,
+    "lessThan": 2780000,
+    "tax": 54240
+  },
+  {
+    "atLeast": 2780000,
+    "lessThan": 2790000,
+    "tax": 55090
+  },
+  {
+    "atLeast": 2790000,
+    "lessThan": 2800000,
+    "tax": 55950
+  },
+  {
+    "atLeast": 2800000,
+    "lessThan": 2810000,
+    "tax": 56800
+  },
+  {
+    "atLeast": 2810000,
+    "lessThan": 2820000,
+    "tax": 57660
+  },
+  {
+    "atLeast": 2820000,
+    "lessThan": 2830000,
+    "tax": 58520
+  },
+  {
+    "atLeast": 2830000,
+    "lessThan": 2840000,
+    "tax": 59370
+  },
+  {
+    "atLeast": 2840000,
+    "lessThan": 2850000,
+    "tax": 60230
+  },
+  {
+    "atLeast": 2850000,
+    "lessThan": 2860000,
+    "tax": 61080
+  },
+  {
+    "atLeast": 2860000,
+    "lessThan": 2870000,
+    "tax": 61940
+  },
+  {
+    "atLeast": 2870000,
+    "lessThan": 2880000,
+    "tax": 62790
+  },
+  {
+    "atLeast": 2880000,
+    "lessThan": 2890000,
+    "tax": 63650
+  },
+  {
+    "atLeast": 2890000,
+    "lessThan": 2900000,
+    "tax": 64510
+  },
+  {
+    "atLeast": 2900000,
+    "lessThan": 2910000,
+    "tax": 65360
+  },
+  {
+    "atLeast": 2910000,
+    "lessThan": 2920000,
+    "tax": 66220
+  },
+  {
+    "atLeast": 2920000,
+    "lessThan": 2930000,
+    "tax": 67070
+  },
+  {
+    "atLeast": 2930000,
+    "lessThan": 2940000,
+    "tax": 67930
+  },
+  {
+    "atLeast": 2940000,
+    "lessThan": 2950000,
+    "tax": 68780
+  },
+  {
+    "atLeast": 2950000,
+    "lessThan": 2960000,
+    "tax": 69640
+  },
+  {
+    "atLeast": 2960000,
+    "lessThan": 2970000,
+    "tax": 70500
+  },
+  {
+    "atLeast": 2970000,
+    "lessThan": 2980000,
+    "tax": 71350
+  },
+  {
+    "atLeast": 2980000,
+    "lessThan": 2990000,
+    "tax": 72210
+  },
+  {
+    "atLeast": 2990000,
+    "lessThan": 3000000,
+    "tax": 73060
+  },
+  {
+    "atLeast": 3000000,
+    "lessThan": 3020000,
+    "tax": 74350
+  },
+  {
+    "atLeast": 3020000,
+    "lessThan": 3040000,
+    "tax": 76060
+  },
+  {
+    "atLeast": 3040000,
+    "lessThan": 3060000,
+    "tax": 77770
+  },
+  {
+    "atLeast": 3060000,
+    "lessThan": 3080000,
+    "tax": 79480
+  },
+  {
+    "atLeast": 3080000,
+    "lessThan": 3100000,
+    "tax": 81190
+  },
+  {
+    "atLeast": 3100000,
+    "lessThan": 3120000,
+    "tax": 82900
+  },
+  {
+    "atLeast": 3120000,
+    "lessThan": 3140000,
+    "tax": 84620
+  },
+  {
+    "atLeast": 3140000,
+    "lessThan": 3160000,
+    "tax": 86330
+  },
+  {
+    "atLeast": 3160000,
+    "lessThan": 3180000,
+    "tax": 88040
+  },
+  {
+    "atLeast": 3180000,
+    "lessThan": 3200000,
+    "tax": 89750
+  },
+  {
+    "atLeast": 3200000,
+    "lessThan": 3220000,
+    "tax": 91460
+  },
+  {
+    "atLeast": 3220000,
+    "lessThan": 3240000,
+    "tax": 93170
+  },
+  {
+    "atLeast": 3240000,
+    "lessThan": 3260000,
+    "tax": 95430
+  },
+  {
+    "atLeast": 3260000,
+    "lessThan": 3280000,
+    "tax": 97880
+  },
+  {
+    "atLeast": 3280000,
+    "lessThan": 3300000,
+    "tax": 100320
+  },
+  {
+    "atLeast": 3300000,
+    "lessThan": 3320000,
+    "tax": 102770
+  },
+  {
+    "atLeast": 3320000,
+    "lessThan": 3340000,
+    "tax": 105210
+  },
+  {
+    "atLeast": 3340000,
+    "lessThan": 3360000,
+    "tax": 107660
+  },
+  {
+    "atLeast": 3360000,
+    "lessThan": 3380000,
+    "tax": 110100
+  },
+  {
+    "atLeast": 3380000,
+    "lessThan": 3400000,
+    "tax": 112550
+  },
+  {
+    "atLeast": 3400000,
+    "lessThan": 3420000,
+    "tax": 114990
+  },
+  {
+    "atLeast": 3420000,
+    "lessThan": 3440000,
+    "tax": 117440
+  },
+  {
+    "atLeast": 3440000,
+    "lessThan": 3460000,
+    "tax": 119880
+  },
+  {
+    "atLeast": 3460000,
+    "lessThan": 3480000,
+    "tax": 122330
+  },
+  {
+    "atLeast": 3480000,
+    "lessThan": 3500000,
+    "tax": 124770
+  },
+  {
+    "atLeast": 3500000,
+    "lessThan": 3520000,
+    "tax": 127220
+  },
+  {
+    "atLeast": 3520000,
+    "lessThan": 3540000,
+    "tax": 129660
+  },
+  {
+    "atLeast": 3540000,
+    "lessThan": 3560000,
+    "tax": 132110
+  },
+  {
+    "atLeast": 3560000,
+    "lessThan": 3580000,
+    "tax": 134550
+  },
+  {
+    "atLeast": 3580000,
+    "lessThan": 3600000,
+    "tax": 137000
+  },
+  {
+    "atLeast": 3600000,
+    "lessThan": 3620000,
+    "tax": 139440
+  },
+  {
+    "atLeast": 3620000,
+    "lessThan": 3640000,
+    "tax": 141890
+  },
+  {
+    "atLeast": 3640000,
+    "lessThan": 3660000,
+    "tax": 144330
+  },
+  {
+    "atLeast": 3660000,
+    "lessThan": 3680000,
+    "tax": 146780
+  },
+  {
+    "atLeast": 3680000,
+    "lessThan": 3700000,
+    "tax": 149220
+  },
+  {
+    "atLeast": 3700000,
+    "lessThan": 3720000,
+    "tax": 151670
+  },
+  {
+    "atLeast": 3720000,
+    "lessThan": 3740000,
+    "tax": 154110
+  },
+  {
+    "atLeast": 3740000,
+    "lessThan": 3760000,
+    "tax": 156560
+  },
+  {
+    "atLeast": 3760000,
+    "lessThan": 3780000,
+    "tax": 163920
+  },
+  {
+    "atLeast": 3780000,
+    "lessThan": 3800000,
+    "tax": 166590
+  },
+  {
+    "atLeast": 3800000,
+    "lessThan": 3820000,
+    "tax": 169260
+  },
+  {
+    "atLeast": 3820000,
+    "lessThan": 3840000,
+    "tax": 171930
+  },
+  {
+    "atLeast": 3840000,
+    "lessThan": 3860000,
+    "tax": 174600
+  },
+  {
+    "atLeast": 3860000,
+    "lessThan": 3880000,
+    "tax": 177270
+  },
+  {
+    "atLeast": 3880000,
+    "lessThan": 3900000,
+    "tax": 179940
+  },
+  {
+    "atLeast": 3900000,
+    "lessThan": 3920000,
+    "tax": 182610
+  },
+  {
+    "atLeast": 3920000,
+    "lessThan": 3940000,
+    "tax": 185280
+  },
+  {
+    "atLeast": 3940000,
+    "lessThan": 3960000,
+    "tax": 187950
+  },
+  {
+    "atLeast": 3960000,
+    "lessThan": 3980000,
+    "tax": 190620
+  },
+  {
+    "atLeast": 3980000,
+    "lessThan": 4000000,
+    "tax": 193290
+  },
+  {
+    "atLeast": 4000000,
+    "lessThan": 4020000,
+    "tax": 195960
+  },
+  {
+    "atLeast": 4020000,
+    "lessThan": 4040000,
+    "tax": 198630
+  },
+  {
+    "atLeast": 4040000,
+    "lessThan": 4060000,
+    "tax": 201300
+  },
+  {
+    "atLeast": 4060000,
+    "lessThan": 4080000,
+    "tax": 203970
+  },
+  {
+    "atLeast": 4080000,
+    "lessThan": 4100000,
+    "tax": 206640
+  },
+  {
+    "atLeast": 4100000,
+    "lessThan": 4120000,
+    "tax": 209310
+  },
+  {
+    "atLeast": 4120000,
+    "lessThan": 4140000,
+    "tax": 211980
+  },
+  {
+    "atLeast": 4140000,
+    "lessThan": 4160000,
+    "tax": 214650
+  },
+  {
+    "atLeast": 4160000,
+    "lessThan": 4180000,
+    "tax": 217320
+  },
+  {
+    "atLeast": 4180000,
+    "lessThan": 4200000,
+    "tax": 219990
+  },
+  {
+    "atLeast": 4200000,
+    "lessThan": 4220000,
+    "tax": 222660
+  },
+  {
+    "atLeast": 4220000,
+    "lessThan": 4240000,
+    "tax": 225330
+  },
+  {
+    "atLeast": 4240000,
+    "lessThan": 4260000,
+    "tax": 228000
+  },
+  {
+    "atLeast": 4260000,
+    "lessThan": 4280000,
+    "tax": 230670
+  },
+  {
+    "atLeast": 4280000,
+    "lessThan": 4300000,
+    "tax": 233340
+  },
+  {
+    "atLeast": 4300000,
+    "lessThan": 4320000,
+    "tax": 236010
+  },
+  {
+    "atLeast": 4320000,
+    "lessThan": 4340000,
+    "tax": 238680
+  },
+  {
+    "atLeast": 4340000,
+    "lessThan": 4360000,
+    "tax": 241350
+  },
+  {
+    "atLeast": 4360000,
+    "lessThan": 4380000,
+    "tax": 244020
+  },
+  {
+    "atLeast": 4380000,
+    "lessThan": 4400000,
+    "tax": 246690
+  },
+  {
+    "atLeast": 4400000,
+    "lessThan": 4420000,
+    "tax": 249360
+  },
+  {
+    "atLeast": 4420000,
+    "lessThan": 4440000,
+    "tax": 252030
+  },
+  {
+    "atLeast": 4440000,
+    "lessThan": 4460000,
+    "tax": 254700
+  },
+  {
+    "atLeast": 4460000,
+    "lessThan": 4480000,
+    "tax": 257370
+  },
+  {
+    "atLeast": 4480000,
+    "lessThan": 4500000,
+    "tax": 260040
+  },
+  {
+    "atLeast": 4500000,
+    "lessThan": 4520000,
+    "tax": 262840
+  },
+  {
+    "atLeast": 4520000,
+    "lessThan": 4540000,
+    "tax": 265650
+  },
+  {
+    "atLeast": 4540000,
+    "lessThan": 4560000,
+    "tax": 268450
+  },
+  {
+    "atLeast": 4560000,
+    "lessThan": 4580000,
+    "tax": 271260
+  },
+  {
+    "atLeast": 4580000,
+    "lessThan": 4600000,
+    "tax": 276560
+  },
+  {
+    "atLeast": 4600000,
+    "lessThan": 4620000,
+    "tax": 279370
+  },
+  {
+    "atLeast": 4620000,
+    "lessThan": 4640000,
+    "tax": 282170
+  },
+  {
+    "atLeast": 4640000,
+    "lessThan": 4660000,
+    "tax": 284980
+  },
+  {
+    "atLeast": 4660000,
+    "lessThan": 4680000,
+    "tax": 287780
+  },
+  {
+    "atLeast": 4680000,
+    "lessThan": 4700000,
+    "tax": 290590
+  },
+  {
+    "atLeast": 4700000,
+    "lessThan": 4720000,
+    "tax": 293390
+  },
+  {
+    "atLeast": 4720000,
+    "lessThan": 4740000,
+    "tax": 296200
+  },
+  {
+    "atLeast": 4740000,
+    "lessThan": 4760000,
+    "tax": 299000
+  },
+  {
+    "atLeast": 4760000,
+    "lessThan": 4780000,
+    "tax": 301810
+  },
+  {
+    "atLeast": 4780000,
+    "lessThan": 4800000,
+    "tax": 304610
+  },
+  {
+    "atLeast": 4800000,
+    "lessThan": 4820000,
+    "tax": 307420
+  },
+  {
+    "atLeast": 4820000,
+    "lessThan": 4840000,
+    "tax": 310220
+  },
+  {
+    "atLeast": 4840000,
+    "lessThan": 4860000,
+    "tax": 313030
+  },
+  {
+    "atLeast": 4860000,
+    "lessThan": 4880000,
+    "tax": 315830
+  },
+  {
+    "atLeast": 4880000,
+    "lessThan": 4900000,
+    "tax": 318640
+  },
+  {
+    "atLeast": 4900000,
+    "lessThan": 4920000,
+    "tax": 321440
+  },
+  {
+    "atLeast": 4920000,
+    "lessThan": 4940000,
+    "tax": 324250
+  },
+  {
+    "atLeast": 4940000,
+    "lessThan": 4960000,
+    "tax": 327050
+  },
+  {
+    "atLeast": 4960000,
+    "lessThan": 4980000,
+    "tax": 329860
+  },
+  {
+    "atLeast": 4980000,
+    "lessThan": 5000000,
+    "tax": 332660
+  },
+  {
+    "atLeast": 5000000,
+    "lessThan": 5020000,
+    "tax": 335470
+  },
+  {
+    "atLeast": 5020000,
+    "lessThan": 5040000,
+    "tax": 338270
+  },
+  {
+    "atLeast": 5040000,
+    "lessThan": 5060000,
+    "tax": 341080
+  },
+  {
+    "atLeast": 5060000,
+    "lessThan": 5080000,
+    "tax": 343880
+  },
+  {
+    "atLeast": 5080000,
+    "lessThan": 5100000,
+    "tax": 346690
+  },
+  {
+    "atLeast": 5100000,
+    "lessThan": 5120000,
+    "tax": 349490
+  },
+  {
+    "atLeast": 5120000,
+    "lessThan": 5140000,
+    "tax": 352300
+  },
+  {
+    "atLeast": 5140000,
+    "lessThan": 5160000,
+    "tax": 355100
+  },
+  {
+    "atLeast": 5160000,
+    "lessThan": 5180000,
+    "tax": 357910
+  },
+  {
+    "atLeast": 5180000,
+    "lessThan": 5200000,
+    "tax": 360710
+  },
+  {
+    "atLeast": 5200000,
+    "lessThan": 5220000,
+    "tax": 363520
+  },
+  {
+    "atLeast": 5220000,
+    "lessThan": 5240000,
+    "tax": 366320
+  },
+  {
+    "atLeast": 5240000,
+    "lessThan": 5260000,
+    "tax": 369130
+  },
+  {
+    "atLeast": 5260000,
+    "lessThan": 5280000,
+    "tax": 371930
+  },
+  {
+    "atLeast": 5280000,
+    "lessThan": 5300000,
+    "tax": 374740
+  },
+  {
+    "atLeast": 5300000,
+    "lessThan": 5320000,
+    "tax": 377540
+  },
+  {
+    "atLeast": 5320000,
+    "lessThan": 5340000,
+    "tax": 380350
+  },
+  {
+    "atLeast": 5340000,
+    "lessThan": 5360000,
+    "tax": 383150
+  },
+  {
+    "atLeast": 5360000,
+    "lessThan": 5380000,
+    "tax": 385960
+  },
+  {
+    "atLeast": 5380000,
+    "lessThan": 5400000,
+    "tax": 388760
+  },
+  {
+    "atLeast": 5400000,
+    "lessThan": 5420000,
+    "tax": 391570
+  },
+  {
+    "atLeast": 5420000,
+    "lessThan": 5440000,
+    "tax": 394370
+  },
+  {
+    "atLeast": 5440000,
+    "lessThan": 5460000,
+    "tax": 397180
+  },
+  {
+    "atLeast": 5460000,
+    "lessThan": 5480000,
+    "tax": 399980
+  },
+  {
+    "atLeast": 5480000,
+    "lessThan": 5500000,
+    "tax": 402790
+  },
+  {
+    "atLeast": 5500000,
+    "lessThan": 5520000,
+    "tax": 405590
+  },
+  {
+    "atLeast": 5520000,
+    "lessThan": 5540000,
+    "tax": 408400
+  },
+  {
+    "atLeast": 5540000,
+    "lessThan": 5560000,
+    "tax": 411200
+  },
+  {
+    "atLeast": 5560000,
+    "lessThan": 5580000,
+    "tax": 414010
+  },
+  {
+    "atLeast": 5580000,
+    "lessThan": 5600000,
+    "tax": 416810
+  },
+  {
+    "atLeast": 5600000,
+    "lessThan": 5620000,
+    "tax": 419620
+  },
+  {
+    "atLeast": 5620000,
+    "lessThan": 5640000,
+    "tax": 422420
+  },
+  {
+    "atLeast": 5640000,
+    "lessThan": 5660000,
+    "tax": 425230
+  },
+  {
+    "atLeast": 5660000,
+    "lessThan": 5680000,
+    "tax": 428030
+  },
+  {
+    "atLeast": 5680000,
+    "lessThan": 5700000,
+    "tax": 430840
+  },
+  {
+    "atLeast": 5700000,
+    "lessThan": 5720000,
+    "tax": 433640
+  },
+  {
+    "atLeast": 5720000,
+    "lessThan": 5740000,
+    "tax": 436450
+  },
+  {
+    "atLeast": 5740000,
+    "lessThan": 5760000,
+    "tax": 439250
+  },
+  {
+    "atLeast": 5760000,
+    "lessThan": 5780000,
+    "tax": 442060
+  },
+  {
+    "atLeast": 5780000,
+    "lessThan": 5800000,
+    "tax": 444860
+  },
+  {
+    "atLeast": 5800000,
+    "lessThan": 5820000,
+    "tax": 447670
+  },
+  {
+    "atLeast": 5820000,
+    "lessThan": 5840000,
+    "tax": 450470
+  },
+  {
+    "atLeast": 5840000,
+    "lessThan": 5860000,
+    "tax": 470380
+  },
+  {
+    "atLeast": 5860000,
+    "lessThan": 5880000,
+    "tax": 475720
+  },
+  {
+    "atLeast": 5880000,
+    "lessThan": 5900000,
+    "tax": 478690
+  },
+  {
+    "atLeast": 5900000,
+    "lessThan": 5920000,
+    "tax": 483220
+  },
+  {
+    "atLeast": 5920000,
+    "lessThan": 5940000,
+    "tax": 487760
+  },
+  {
+    "atLeast": 5940000,
+    "lessThan": 5960000,
+    "tax": 492300
+  },
+  {
+    "atLeast": 5960000,
+    "lessThan": 5980000,
+    "tax": 496830
+  },
+  {
+    "atLeast": 5980000,
+    "lessThan": 6000000,
+    "tax": 501370
+  },
+  {
+    "atLeast": 6000000,
+    "lessThan": 6020000,
+    "tax": 505900
+  },
+  {
+    "atLeast": 6020000,
+    "lessThan": 6040000,
+    "tax": 510440
+  },
+  {
+    "atLeast": 6040000,
+    "lessThan": 6060000,
+    "tax": 514980
+  },
+  {
+    "atLeast": 6060000,
+    "lessThan": 6080000,
+    "tax": 519510
+  },
+  {
+    "atLeast": 6080000,
+    "lessThan": 6100000,
+    "tax": 524050
+  },
+  {
+    "atLeast": 6100000,
+    "lessThan": 6120000,
+    "tax": 528580
+  },
+  {
+    "atLeast": 6120000,
+    "lessThan": 6140000,
+    "tax": 533120
+  },
+  {
+    "atLeast": 6140000,
+    "lessThan": 6160000,
+    "tax": 537660
+  },
+  {
+    "atLeast": 6160000,
+    "lessThan": 6180000,
+    "tax": 542190
+  },
+  {
+    "atLeast": 6180000,
+    "lessThan": 6200000,
+    "tax": 546730
+  },
+  {
+    "atLeast": 6200000,
+    "lessThan": 6220000,
+    "tax": 551260
+  },
+  {
+    "atLeast": 6220000,
+    "lessThan": 6240000,
+    "tax": 555800
+  },
+  {
+    "atLeast": 6240000,
+    "lessThan": 6260000,
+    "tax": 560340
+  },
+  {
+    "atLeast": 6260000,
+    "lessThan": 6280000,
+    "tax": 564870
+  },
+  {
+    "atLeast": 6280000,
+    "lessThan": 6300000,
+    "tax": 569410
+  },
+  {
+    "atLeast": 6300000,
+    "lessThan": 6320000,
+    "tax": 573940
+  },
+  {
+    "atLeast": 6320000,
+    "lessThan": 6340000,
+    "tax": 578480
+  },
+  {
+    "atLeast": 6340000,
+    "lessThan": 6360000,
+    "tax": 583020
+  },
+  {
+    "atLeast": 6360000,
+    "lessThan": 6380000,
+    "tax": 587550
+  },
+  {
+    "atLeast": 6380000,
+    "lessThan": 6400000,
+    "tax": 592090
+  },
+  {
+    "atLeast": 6400000,
+    "lessThan": 6420000,
+    "tax": 596620
+  },
+  {
+    "atLeast": 6420000,
+    "lessThan": 6440000,
+    "tax": 601160
+  },
+  {
+    "atLeast": 6440000,
+    "lessThan": 6460000,
+    "tax": 605700
+  },
+  {
+    "atLeast": 6460000,
+    "lessThan": 6480000,
+    "tax": 610230
+  },
+  {
+    "atLeast": 6480000,
+    "lessThan": 6500000,
+    "tax": 614770
+  },
+  {
+    "atLeast": 6500000,
+    "lessThan": 6520000,
+    "tax": 619300
+  },
+  {
+    "atLeast": 6520000,
+    "lessThan": 6540000,
+    "tax": 623840
+  },
+  {
+    "atLeast": 6540000,
+    "lessThan": 6560000,
+    "tax": 628380
+  },
+  {
+    "atLeast": 6560000,
+    "lessThan": 6580000,
+    "tax": 632910
+  },
+  {
+    "atLeast": 6580000,
+    "lessThan": 6600000,
+    "tax": 637450
+  },
+  {
+    "atLeast": 6600000,
+    "lessThan": 6620000,
+    "tax": 641980
+  },
+  {
+    "atLeast": 6620000,
+    "lessThan": 6640000,
+    "tax": 646520
+  },
+  {
+    "atLeast": 6640000,
+    "lessThan": 6660000,
+    "tax": 651060
+  },
+  {
+    "atLeast": 6660000,
+    "lessThan": 6680000,
+    "tax": 655590
+  },
+  {
+    "atLeast": 6680000,
+    "lessThan": 6700000,
+    "tax": 660130
+  },
+  {
+    "atLeast": 6700000,
+    "lessThan": 6720000,
+    "tax": 664660
+  },
+  {
+    "atLeast": 6720000,
+    "lessThan": 6740000,
+    "tax": 669200
+  },
+  {
+    "atLeast": 6740000,
+    "lessThan": 6760000,
+    "tax": 673740
+  },
+  {
+    "atLeast": 6760000,
+    "lessThan": 6780000,
+    "tax": 678270
+  },
+  {
+    "atLeast": 6780000,
+    "lessThan": 6800000,
+    "tax": 682810
+  },
+  {
+    "atLeast": 6800000,
+    "lessThan": 6820000,
+    "tax": 687340
+  },
+  {
+    "atLeast": 6820000,
+    "lessThan": 6840000,
+    "tax": 691880
+  },
+  {
+    "atLeast": 6840000,
+    "lessThan": 6860000,
+    "tax": 696420
+  },
+  {
+    "atLeast": 6860000,
+    "lessThan": 6880000,
+    "tax": 700950
+  },
+  {
+    "atLeast": 6880000,
+    "lessThan": 6900000,
+    "tax": 705490
+  },
+  {
+    "atLeast": 6900000,
+    "lessThan": 6920000,
+    "tax": 710020
+  },
+  {
+    "atLeast": 6920000,
+    "lessThan": 6940000,
+    "tax": 714560
+  },
+  {
+    "atLeast": 6940000,
+    "lessThan": 6960000,
+    "tax": 719100
+  },
+  {
+    "atLeast": 6960000,
+    "lessThan": 6980000,
+    "tax": 723630
+  },
+  {
+    "atLeast": 6980000,
+    "lessThan": 7000000,
+    "tax": 728170
+  },
+  {
+    "atLeast": 7000000,
+    "lessThan": 7020000,
+    "tax": 732700
+  },
+  {
+    "atLeast": 7020000,
+    "lessThan": 7040000,
+    "tax": 737240
+  },
+  {
+    "atLeast": 7040000,
+    "lessThan": 7060000,
+    "tax": 741780
+  },
+  {
+    "atLeast": 7060000,
+    "lessThan": 7080000,
+    "tax": 746310
+  },
+  {
+    "atLeast": 7080000,
+    "lessThan": 7100000,
+    "tax": 750850
+  },
+  {
+    "atLeast": 7100000,
+    "lessThan": 7120000,
+    "tax": 755380
+  },
+  {
+    "atLeast": 7120000,
+    "lessThan": 7140000,
+    "tax": 759920
+  },
+  {
+    "atLeast": 7140000,
+    "lessThan": 7160000,
+    "tax": 764460
+  },
+  {
+    "atLeast": 7160000,
+    "lessThan": 7180000,
+    "tax": 768990
+  },
+  {
+    "atLeast": 7180000,
+    "lessThan": 7200000,
+    "tax": 773530
+  },
+  {
+    "atLeast": 7200000,
+    "lessThan": 7220000,
+    "tax": 778060
+  },
+  {
+    "atLeast": 7220000,
+    "lessThan": 7240000,
+    "tax": 782600
+  },
+  {
+    "atLeast": 7240000,
+    "lessThan": 7260000,
+    "tax": 787140
+  },
+  {
+    "atLeast": 7260000,
+    "lessThan": 7280000,
+    "tax": 791670
+  },
+  {
+    "atLeast": 7280000,
+    "lessThan": 7300000,
+    "tax": 796210
+  },
+  {
+    "atLeast": 7300000,
+    "lessThan": 7320000,
+    "tax": 800740
+  },
+  {
+    "atLeast": 7320000,
+    "lessThan": 7340000,
+    "tax": 805280
+  },
+  {
+    "atLeast": 7340000,
+    "lessThan": 7360000,
+    "tax": 809820
+  },
+  {
+    "atLeast": 7360000,
+    "lessThan": 7380000,
+    "tax": 814350
+  },
+  {
+    "atLeast": 7380000,
+    "lessThan": 7400000,
+    "tax": 818890
+  },
+  {
+    "atLeast": 7400000,
+    "lessThan": 7420000,
+    "tax": 823420
+  },
+  {
+    "atLeast": 7420000,
+    "lessThan": 7440000,
+    "tax": 827960
+  },
+  {
+    "atLeast": 7440000,
+    "lessThan": 7460000,
+    "tax": 832500
+  },
+  {
+    "atLeast": 7460000,
+    "lessThan": 7480000,
+    "tax": 837030
+  },
+  {
+    "atLeast": 7480000,
+    "lessThan": 7500000,
+    "tax": 841570
+  },
+  {
+    "atLeast": 7500000,
+    "lessThan": 7520000,
+    "tax": 846100
+  },
+  {
+    "atLeast": 7520000,
+    "lessThan": 7540000,
+    "tax": 850640
+  },
+  {
+    "atLeast": 7540000,
+    "lessThan": 7560000,
+    "tax": 855180
+  },
+  {
+    "atLeast": 7560000,
+    "lessThan": 7580000,
+    "tax": 859710
+  },
+  {
+    "atLeast": 7580000,
+    "lessThan": 7600000,
+    "tax": 864250
+  },
+  {
+    "atLeast": 7600000,
+    "lessThan": 7620000,
+    "tax": 868780
+  },
+  {
+    "atLeast": 7620000,
+    "lessThan": 7640000,
+    "tax": 873320
+  },
+  {
+    "atLeast": 7640000,
+    "lessThan": 7660000,
+    "tax": 877860
+  },
+  {
+    "atLeast": 7660000,
+    "lessThan": 7680000,
+    "tax": 882390
+  },
+  {
+    "atLeast": 7680000,
+    "lessThan": 7700000,
+    "tax": 886930
+  },
+  {
+    "atLeast": 7700000,
+    "lessThan": 7720000,
+    "tax": 891460
+  },
+  {
+    "atLeast": 7720000,
+    "lessThan": 7740000,
+    "tax": 896000
+  },
+  {
+    "atLeast": 7740000,
+    "lessThan": 7760000,
+    "tax": 900540
+  },
+  {
+    "atLeast": 7760000,
+    "lessThan": 7780000,
+    "tax": 905070
+  },
+  {
+    "atLeast": 7780000,
+    "lessThan": 7800000,
+    "tax": 909610
+  },
+  {
+    "atLeast": 7800000,
+    "lessThan": 7820000,
+    "tax": 914140
+  },
+  {
+    "atLeast": 7820000,
+    "lessThan": 7840000,
+    "tax": 918680
+  },
+  {
+    "atLeast": 7840000,
+    "lessThan": 7860000,
+    "tax": 923220
+  },
+  {
+    "atLeast": 7860000,
+    "lessThan": 7880000,
+    "tax": 927750
+  },
+  {
+    "atLeast": 7880000,
+    "lessThan": 7900000,
+    "tax": 932290
+  },
+  {
+    "atLeast": 7900000,
+    "lessThan": 7920000,
+    "tax": 936820
+  },
+  {
+    "atLeast": 7920000,
+    "lessThan": 7940000,
+    "tax": 941360
+  },
+  {
+    "atLeast": 7940000,
+    "lessThan": 7960000,
+    "tax": 945900
+  },
+  {
+    "atLeast": 7960000,
+    "lessThan": 7980000,
+    "tax": 950430
+  },
+  {
+    "atLeast": 7980000,
+    "lessThan": 8000000,
+    "tax": 954970
+  },
+  {
+    "atLeast": 8000000,
+    "lessThan": 8020000,
+    "tax": 959500
+  },
+  {
+    "atLeast": 8020000,
+    "lessThan": 8040000,
+    "tax": 964040
+  },
+  {
+    "atLeast": 8040000,
+    "lessThan": 8060000,
+    "tax": 968580
+  },
+  {
+    "atLeast": 8060000,
+    "lessThan": 8080000,
+    "tax": 973110
+  },
+  {
+    "atLeast": 8080000,
+    "lessThan": 8100000,
+    "tax": 977650
+  },
+  {
+    "atLeast": 8100000,
+    "lessThan": 8120000,
+    "tax": 982180
+  },
+  {
+    "atLeast": 8120000,
+    "lessThan": 8140000,
+    "tax": 986720
+  },
+  {
+    "atLeast": 8140000,
+    "lessThan": 8160000,
+    "tax": 991260
+  },
+  {
+    "atLeast": 8160000,
+    "lessThan": 8180000,
+    "tax": 995790
+  },
+  {
+    "atLeast": 8180000,
+    "lessThan": 8200000,
+    "tax": 1000330
+  },
+  {
+    "atLeast": 8200000,
+    "lessThan": 8220000,
+    "tax": 1004860
+  },
+  {
+    "atLeast": 8220000,
+    "lessThan": 8240000,
+    "tax": 1009400
+  },
+  {
+    "atLeast": 8240000,
+    "lessThan": 8260000,
+    "tax": 1013940
+  },
+  {
+    "atLeast": 8260000,
+    "lessThan": 8280000,
+    "tax": 1018470
+  },
+  {
+    "atLeast": 8280000,
+    "lessThan": 8300000,
+    "tax": 1023010
+  },
+  {
+    "atLeast": 8300000,
+    "lessThan": 8320000,
+    "tax": 1027540
+  },
+  {
+    "atLeast": 8320000,
+    "lessThan": 8340000,
+    "tax": 1032080
+  },
+  {
+    "atLeast": 8340000,
+    "lessThan": 8360000,
+    "tax": 1036740
+  },
+  {
+    "atLeast": 8360000,
+    "lessThan": 8380000,
+    "tax": 1041420
+  },
+  {
+    "atLeast": 8380000,
+    "lessThan": 8400000,
+    "tax": 1046100
+  },
+  {
+    "atLeast": 8400000,
+    "lessThan": 8420000,
+    "tax": 1050780
+  },
+  {
+    "atLeast": 8420000,
+    "lessThan": 8440000,
+    "tax": 1055460
+  },
+  {
+    "atLeast": 8440000,
+    "lessThan": 8460000,
+    "tax": 1060140
+  },
+  {
+    "atLeast": 8460000,
+    "lessThan": 8480000,
+    "tax": 1064820
+  },
+  {
+    "atLeast": 8480000,
+    "lessThan": 8500000,
+    "tax": 1069500
+  },
+  {
+    "atLeast": 8500000,
+    "lessThan": 8520000,
+    "tax": 1074180
+  },
+  {
+    "atLeast": 8520000,
+    "lessThan": 8540000,
+    "tax": 1078860
+  },
+  {
+    "atLeast": 8540000,
+    "lessThan": 8560000,
+    "tax": 1083540
+  },
+  {
+    "atLeast": 8560000,
+    "lessThan": 8580000,
+    "tax": 1088220
+  },
+  {
+    "atLeast": 8580000,
+    "lessThan": 8600000,
+    "tax": 1092900
+  },
+  {
+    "atLeast": 8600000,
+    "lessThan": 8620000,
+    "tax": 1097580
+  },
+  {
+    "atLeast": 8620000,
+    "lessThan": 8640000,
+    "tax": 1102260
+  },
+  {
+    "atLeast": 8640000,
+    "lessThan": 8660000,
+    "tax": 1106940
+  },
+  {
+    "atLeast": 8660000,
+    "lessThan": 8680000,
+    "tax": 1111620
+  },
+  {
+    "atLeast": 8680000,
+    "lessThan": 8700000,
+    "tax": 1116300
+  },
+  {
+    "atLeast": 8700000,
+    "lessThan": 8720000,
+    "tax": 1120980
+  },
+  {
+    "atLeast": 8720000,
+    "lessThan": 8740000,
+    "tax": 1125660
+  },
+  {
+    "atLeast": 8740000,
+    "lessThan": 8760000,
+    "tax": 1130340
+  },
+  {
+    "atLeast": 8760000,
+    "lessThan": 8780000,
+    "tax": 1135020
+  },
+  {
+    "atLeast": 8780000,
+    "lessThan": 8800000,
+    "tax": 1139700
+  },
+  {
+    "atLeast": 8800000,
+    "lessThan": 8820000,
+    "tax": 1144380
+  },
+  {
+    "atLeast": 8820000,
+    "lessThan": 8840000,
+    "tax": 1149060
+  },
+  {
+    "atLeast": 8840000,
+    "lessThan": 8860000,
+    "tax": 1153740
+  },
+  {
+    "atLeast": 8860000,
+    "lessThan": 8880000,
+    "tax": 1158420
+  },
+  {
+    "atLeast": 8880000,
+    "lessThan": 8900000,
+    "tax": 1163100
+  },
+  {
+    "atLeast": 8900000,
+    "lessThan": 8920000,
+    "tax": 1167780
+  },
+  {
+    "atLeast": 8920000,
+    "lessThan": 8940000,
+    "tax": 1172460
+  },
+  {
+    "atLeast": 8940000,
+    "lessThan": 8960000,
+    "tax": 1177140
+  },
+  {
+    "atLeast": 8960000,
+    "lessThan": 8980000,
+    "tax": 1181820
+  },
+  {
+    "atLeast": 8980000,
+    "lessThan": 9000000,
+    "tax": 1186500
+  },
+  {
+    "atLeast": 9000000,
+    "lessThan": 9020000,
+    "tax": 1191180
+  },
+  {
+    "atLeast": 9020000,
+    "lessThan": 9040000,
+    "tax": 1195860
+  },
+  {
+    "atLeast": 9040000,
+    "lessThan": 9060000,
+    "tax": 1200540
+  },
+  {
+    "atLeast": 9060000,
+    "lessThan": 9080000,
+    "tax": 1205220
+  },
+  {
+    "atLeast": 9080000,
+    "lessThan": 9100000,
+    "tax": 1209900
+  },
+  {
+    "atLeast": 9100000,
+    "lessThan": 9120000,
+    "tax": 1214580
+  },
+  {
+    "atLeast": 9120000,
+    "lessThan": 9140000,
+    "tax": 1219260
+  },
+  {
+    "atLeast": 9140000,
+    "lessThan": 9160000,
+    "tax": 1223940
+  },
+  {
+    "atLeast": 9160000,
+    "lessThan": 9180000,
+    "tax": 1228620
+  },
+  {
+    "atLeast": 9180000,
+    "lessThan": 9200000,
+    "tax": 1233300
+  },
+  {
+    "atLeast": 9200000,
+    "lessThan": 9220000,
+    "tax": 1237980
+  },
+  {
+    "atLeast": 9220000,
+    "lessThan": 9240000,
+    "tax": 1244640
+  },
+  {
+    "atLeast": 9240000,
+    "lessThan": 9260000,
+    "tax": 1251470
+  },
+  {
+    "atLeast": 9260000,
+    "lessThan": 9280000,
+    "tax": 1258290
+  },
+  {
+    "atLeast": 9280000,
+    "lessThan": 9300000,
+    "tax": 1265120
+  },
+  {
+    "atLeast": 9300000,
+    "lessThan": 9320000,
+    "tax": 1271940
+  },
+  {
+    "atLeast": 9320000,
+    "lessThan": 9340000,
+    "tax": 1278770
+  },
+  {
+    "atLeast": 9340000,
+    "lessThan": 9360000,
+    "tax": 1285590
+  },
+  {
+    "atLeast": 9360000,
+    "lessThan": 9380000,
+    "tax": 1292420
+  },
+  {
+    "atLeast": 9380000,
+    "lessThan": 9400000,
+    "tax": 1299240
+  },
+  {
+    "atLeast": 9400000,
+    "lessThan": 9420000,
+    "tax": 1306070
+  },
+  {
+    "atLeast": 9420000,
+    "lessThan": 9440000,
+    "tax": 1312890
+  },
+  {
+    "atLeast": 9440000,
+    "lessThan": 9460000,
+    "tax": 1319720
+  },
+  {
+    "atLeast": 9460000,
+    "lessThan": 9480000,
+    "tax": 1326540
+  },
+  {
+    "atLeast": 9480000,
+    "lessThan": 9500000,
+    "tax": 1333370
+  },
+  {
+    "atLeast": 9500000,
+    "lessThan": 9520000,
+    "tax": 1340190
+  },
+  {
+    "atLeast": 9520000,
+    "lessThan": 9540000,
+    "tax": 1347020
+  },
+  {
+    "atLeast": 9540000,
+    "lessThan": 9560000,
+    "tax": 1353840
+  },
+  {
+    "atLeast": 9560000,
+    "lessThan": 9580000,
+    "tax": 1360670
+  },
+  {
+    "atLeast": 9580000,
+    "lessThan": 9600000,
+    "tax": 1367490
+  },
+  {
+    "atLeast": 9600000,
+    "lessThan": 9620000,
+    "tax": 1374320
+  },
+  {
+    "atLeast": 9620000,
+    "lessThan": 9640000,
+    "tax": 1381140
+  },
+  {
+    "atLeast": 9640000,
+    "lessThan": 9660000,
+    "tax": 1387970
+  },
+  {
+    "atLeast": 9660000,
+    "lessThan": 9680000,
+    "tax": 1394790
+  },
+  {
+    "atLeast": 9680000,
+    "lessThan": 9700000,
+    "tax": 1401620
+  },
+  {
+    "atLeast": 9700000,
+    "lessThan": 9720000,
+    "tax": 1408440
+  },
+  {
+    "atLeast": 9720000,
+    "lessThan": 9740000,
+    "tax": 1415270
+  },
+  {
+    "atLeast": 9740000,
+    "lessThan": 9760000,
+    "tax": 1422090
+  },
+  {
+    "atLeast": 9760000,
+    "lessThan": 9780000,
+    "tax": 1428920
+  },
+  {
+    "atLeast": 9780000,
+    "lessThan": 9800000,
+    "tax": 1435740
+  },
+  {
+    "atLeast": 9800000,
+    "lessThan": 9820000,
+    "tax": 1442570
+  },
+  {
+    "atLeast": 9820000,
+    "lessThan": 9840000,
+    "tax": 1449390
+  },
+  {
+    "atLeast": 9840000,
+    "lessThan": 9860000,
+    "tax": 1456220
+  },
+  {
+    "atLeast": 9860000,
+    "lessThan": 9880000,
+    "tax": 1463040
+  },
+  {
+    "atLeast": 9880000,
+    "lessThan": 9900000,
+    "tax": 1469870
+  },
+  {
+    "atLeast": 9900000,
+    "lessThan": 9920000,
+    "tax": 1476690
+  },
+  {
+    "atLeast": 9920000,
+    "lessThan": 9940000,
+    "tax": 1483520
+  },
+  {
+    "atLeast": 9940000,
+    "lessThan": 9960000,
+    "tax": 1490340
+  },
+  {
+    "atLeast": 9960000,
+    "lessThan": 9980000,
+    "tax": 1497170
+  },
+  {
+    "atLeast": 9980000,
+    "lessThan": 10000000,
+    "tax": 1503990
+  },
+  {
+    "atLeast": 10000000,
+    "lessThan": 0,
+    "tax": 1507400
+  }
 ]

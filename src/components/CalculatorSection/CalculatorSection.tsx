@@ -13,8 +13,8 @@ type CalculatorSectionProps = {
 };
 
 type TaxRow = {
-  min: number;
-  max: number;
+  atLeast: number;
+  lessThan: number;
   tax: number;
 };
 
@@ -152,13 +152,73 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
   };
 
   const calculateRegular = (regulData: RegularCalcData): CalcResultData => {
+    console.log(regulData)
     const taxableIncome = regulData.baseAmount + regulData.taxableAllowances;
+    let withholdingTax = 0;
+    
+    // 과세 금액이 1,060,000원 미만이면 소득세 0원
+    if (taxableIncome < 1_060_000) {
+      withholdingTax = 0;
+    }
+    // 1,060,000원 이상 10,000,000원 미만 - 간이세액표 사용
+    else if (taxableIncome < 10_000_000) {
+      const matchedRow = taxTable.find((row: TaxRow) => 
+        taxableIncome >= row.atLeast && taxableIncome < row.lessThan
+      );
+      withholdingTax = matchedRow ? matchedRow.tax : 0;
+    }
+    // 10,000,000원 - 소득세 1,507,400원
+    else if (taxableIncome === 10_000_000) {
+      withholdingTax = 1_507_400;
+    }
+    // 10,000,000원 초과 14,000,000원 이하
+    else if (taxableIncome > 10_000_000 && taxableIncome <= 14_000_000) {
+      const baseTax = 1_507_400; // 10,000,000원인 경우의 해당 세액
+      const excessAmount = taxableIncome - 10_000_000;
+      const additionalTax = Math.floor(excessAmount * 0.98 * 0.35);
+      withholdingTax = baseTax + additionalTax + 25_000;
+    }
+    // 14,000,000원 초과 28,000,000원 이하
+    else if (taxableIncome > 14_000_000 && taxableIncome <= 28_000_000) {
+      const baseTax = 1_507_400; // 10,000,000원인 경우의 해당 세액
+      const excessAmount = taxableIncome - 14_000_000;
+      const additionalTax = Math.floor(excessAmount * 0.98 * 0.38);
+      withholdingTax = baseTax + 1_397_000 + additionalTax;
+    }
+    // 28,000,000원 초과 30,000,000원 이하
+    else if (taxableIncome > 28_000_000 && taxableIncome <= 30_000_000) {
+      const baseTax = 1_507_400; // 10,000,000원인 경우의 해당 세액
+      const excessAmount = taxableIncome - 28_000_000;
+      const additionalTax = Math.floor(excessAmount * 0.98 * 0.40);
+      withholdingTax = baseTax + 6_610_600 + additionalTax;
+    }
+    // 30,000,000원 초과 45,000,000원 이하
+    else if (taxableIncome > 30_000_000 && taxableIncome <= 45_000_000) {
+      const baseTax = 1_507_400; // 10,000,000원인 경우의 해당 세액
+      const excessAmount = taxableIncome - 30_000_000;
+      const additionalTax = Math.floor(excessAmount * 0.40);
+      withholdingTax = baseTax + 7_394_600 + additionalTax;
+    }
+    // 45,000,000원 초과 87,000,000원 이하
+    else if (taxableIncome > 45_000_000 && taxableIncome <= 87_000_000) {
+      const baseTax = 1_507_400; // 10,000,000원인 경우의 해당 세액
+      const excessAmount = taxableIncome - 45_000_000;
+      const additionalTax = Math.floor(excessAmount * 0.42);
+      withholdingTax = baseTax + 13_394_600 + additionalTax;
+    }
+    // 87,000,000원 초과
+    else if (taxableIncome > 87_000_000) {
+      const baseTax = 1_507_400; // 10,000,000원인 경우의 해당 세액
+      const excessAmount = taxableIncome - 87_000_000;
+      const additionalTax = Math.floor(excessAmount * 0.45);
+      withholdingTax = baseTax + 31_034_600 + additionalTax;
+    }
 
-    const matchedRow = taxTable.find((row: TaxRow) => taxableIncome >= row.min && taxableIncome <= row.max);
-    const withholdingTax = matchedRow ? matchedRow.tax : 0;
     const localTax = Math.floor((withholdingTax * 0.1) / 10) * 10;
-
     const netSalary = regulData.amount - withholdingTax - localTax;
+
+    console.log(withholdingTax)
+    console.log(localTax)
 
     return {
       totSalary: regulData.amount,
