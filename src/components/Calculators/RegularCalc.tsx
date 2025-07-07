@@ -274,8 +274,11 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
         </div>
       </div>
       {/* 지급합계 */}
-      <div>
-
+      <div className="flex justify-between items-center py-5">
+        <span className="text-lg font-bold text-gray-900">지급합계</span>
+        <span className="text-xl font-bold text-blue-600">
+          {amount ? formatNumber(parseInt(amount)) : '0'} 원
+        </span>
       </div>
     </div>
   );
