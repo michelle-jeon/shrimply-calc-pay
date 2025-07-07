@@ -26,6 +26,8 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
     nationalPension: '',
     employmentInsurance: ''
   });
+  const [taxReduction, setTaxReduction] = useState(0);
+  const [durunuri, setDurunuri] = useState(0);
 
   useEffect(() => {
     setAmount('');
@@ -89,7 +91,7 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
         )}
       </div>
       {/* 수당 */}
-      <div className="flex flex-col md:flex-row md:space-x-4 text-left md:justify-between">
+      <div className="flex flex-col md:flex-row md:space-x-4 text-left md:justify-between pb-5 border-b border-gray-200">
         <div className='flex flex-col gap-5 grow pt-5'>
           <span className="text-gray-700 font-medium">비과세 수당</span>
           {/* 비과세 수당 */}
@@ -112,7 +114,6 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
                     placeholder={`최대 ${formatNumber(item.max)} 원`}
                   />
                 </div>
-                <span className="text-xs text-gray-400"></span>
               </div>
             ))}
           </div>
@@ -146,12 +147,51 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
         </div>
       </div>
       {/* 공제 */}
-      <div>
+      <div className="flex flex-col md:flex-row text-left gap-5 mt-5 pb-5 border-b border-gray-200">
+        {/* 소득세 감면 */}
+        <div className="flex w-full items-center">
+          <label className="text-sm text-gray-600 w-20">소득세 감면</label>
+          <div className="flex grow bg-gradient-to-r from-[#ed8e5f33] h-9 relative rounded-lg to-70% to-[#0220470d]">
+            {[0, 30, 90].map((value) => (
+              <button
+                key={value}
+                onClick={() => setTaxReduction(value)}
+                className={`px-3 py-1 text-sm rounded m-1 grow ${
+                  taxReduction === value
+                    ? 'bg-white text-orange-600'
+                    : 'text-gray-400 hover:text-gray-600'
+                }`}
+              >
+                {value}%
+              </button>
+            ))}
+          </div>
+        </div>
 
+        {/* 두루누리 */}
+        <div className="flex w-full items-center">
+          <label className="text-sm text-gray-600 w-20">두루누리</label>
+          <div className="flex grow bg-gradient-to-r from-[#ed8e5f33] h-9 relative rounded-lg to-70% to-[#0220470d]">
+            {[0, 80].map((value) => (
+              <button
+                key={value}
+                onClick={() => setDurunuri(value)}
+                className={`px-3 py-1 text-sm rounded m-1 grow ${
+                  durunuri === value
+                    ? 'bg-white text-orange-600'
+                    : 'text-gray-400 hover:text-gray-600'
+                }`}
+              >
+                {value}%
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
+      
       {/* 기준소득월액 */}
       <div>
-
+        
       </div>
     </div>
   );
