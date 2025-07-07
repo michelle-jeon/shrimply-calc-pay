@@ -28,7 +28,7 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
   });
   const [taxReduction, setTaxReduction] = useState(0);
   const [durunuri, setDurunuri] = useState(0);
-  const [isHealthInsuranceExempt, setIsHealthInsuranceExempt] = useState(false);
+  const [isHealthInsuranceJoin, setIsHealthInsuranceJoin] = useState(false);
 
   //탭 선택될때마다 데이터날리기
   useEffect(() => {
@@ -53,7 +53,7 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
     });
     setTaxReduction(0);
     setDurunuri(0);
-    setIsHealthInsuranceExempt(false);
+    setIsHealthInsuranceJoin(false);
   }, [selectedTab]);
 
   // 유효성 검사... 그런데 기본급 0원일수도 있었던듯?
@@ -132,10 +132,10 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
       taxableAllowances: taxableTotal,
       taxReduction,
       durunuri,
-      isHealthInsuranceExempt,
+      isHealthInsuranceJoin,
       deductions
     });
-  },[amount, isValid, allowances, taxReduction, durunuri, isHealthInsuranceExempt, deductions, onDataChange]);
+  },[amount, isValid, allowances, taxReduction, durunuri, isHealthInsuranceJoin, deductions, onDataChange]);
 
   return (
     <div>
@@ -273,20 +273,20 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
           <input
             type="checkbox"
             id="healthInsuranceExempt"
-            checked={isHealthInsuranceExempt}
-            onChange={(e) => setIsHealthInsuranceExempt(e.target.checked)}
+            checked={isHealthInsuranceJoin}
+            onChange={(e) => setIsHealthInsuranceJoin(e.target.checked)}
             className="peer hidden"
           />
           <div
             className={`
               w-5 h-5 rounded-full border-2
               flex items-center justify-center
-              ${isHealthInsuranceExempt ? 'border-gray-400' : 'border-gray-300'}
+              ${isHealthInsuranceJoin ? 'border-gray-400' : 'border-gray-300'}
             `}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className={`w-3 h-3 ${isHealthInsuranceExempt ? 'text-gray-400' : 'text-gray-300'}`}
+              className={`w-3 h-3 ${isHealthInsuranceJoin ? 'text-gray-400' : 'text-gray-300'}`}
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -295,8 +295,8 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <span className={`ml-2 text-sm font-bold ${isHealthInsuranceExempt ? 'text-gray-500' : 'text-gray-400'}`}>
-            국민·건강보험 미가입
+          <span className={`ml-2 text-sm font-bold ${isHealthInsuranceJoin ? 'text-gray-500' : 'text-gray-400'}`}>
+            국민·건강보험 {isHealthInsuranceJoin ? '가입':'미가입'}
           </span>
         </label>
       </div>
@@ -313,7 +313,7 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
                 value={deductions.nationalPension}
                 onChange={(e) => handleDeductionChange('nationalPension', e.target.value)}
                 placeholder="0"
-                disabled={isHealthInsuranceExempt}
+                disabled={!isHealthInsuranceJoin}
               />
               <span className="ml-1 text-xs text-gray-500">원</span>
             </div>

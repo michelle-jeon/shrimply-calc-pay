@@ -25,7 +25,7 @@ export type RegularCalcData = {
   taxableAllowances: number;
   taxReduction: number;
   durunuri: number; 
-  isHealthInsuranceExempt: boolean; 
+  isHealthInsuranceJoin: boolean; 
   deductions: {
     nationalPension: string;
     employmentInsurance: string;
