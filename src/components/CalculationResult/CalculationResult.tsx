@@ -96,7 +96,7 @@ export default function CalcaulationResult ({ result, onRecalculate,onShowPaysli
 
         {/* 상용직인 경우 상세 내역 표시 */}
         {result.type === "상용직" && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {/* 지급 내역 */}
             <div className="space-y-3">
               {result.baseSalary && (

@@ -294,6 +294,10 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
         holidayAllowance: parseInt(allowances.holiday) || 0,
         nightAllowance: parseInt(allowances.night) || 0
       },
+      nationalPension,
+      healthInsurance,
+      longTermCareInsurance,
+      employmentInsurance
     };
   };
 
