@@ -5,16 +5,22 @@ import DayCalc from "../Calculators/DayCalc";
 import CalcaulationResult from "../CalculationResult/CalculationResult";
 import PayslipView from "../PayslipView/PayslipView";
 import { PayslipInfoData } from "../PayslipInfo/PayslipInfo";
-import taxTable from '../data/taxTable.json'
+import taxTableJson from '../../data/taxTable.json';
+const taxTable: TaxRow[] = taxTableJson;
 
 type CalculatorSectionProps = {
   selectedTab: string;
 };
 
+type TaxRow = {
+  min: number;
+  max: number;
+  tax: number;
+};
+
 type FreeCalcData = {
   amount: number;
   isValid: boolean;
-  
 };
 
 export type RegularCalcData = {
@@ -148,7 +154,7 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
   const calculateRegular = (regulData: RegularCalcData): CalcResultData => {
     const taxableIncome = regulData.baseAmount + regulData.taxableAllowances;
 
-    const matchedRow = taxTable.find(row => taxableIncome >= row.min && taxableIncome <= row.max);
+    const matchedRow = taxTable.find((row: TaxRow) => taxableIncome >= row.min && taxableIncome <= row.max);
     const withholdingTax = matchedRow ? matchedRow.tax : 0;
     const localTax = Math.floor((withholdingTax * 0.1) / 10) * 10;
 

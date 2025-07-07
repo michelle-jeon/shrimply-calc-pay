@@ -10,7 +10,13 @@ export type PayslipInfoData = {
   payDay: string;
 }
 
-export default function PayslipInfo({isOpen,onClose,onSubmit}){
+type PayslipInfoProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  onSubmit: (info: PayslipInfoData) => void;
+};
+
+export default function PayslipInfo({isOpen,onClose,onSubmit}: PayslipInfoProps){
   const [payslipInfo,setPayslipInfo] = useState<PayslipInfoData>({
     companyName: '',
     workerName: '',
