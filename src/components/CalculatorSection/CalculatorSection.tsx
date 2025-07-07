@@ -14,11 +14,22 @@ type CalculatorSectionProps = {
 type FreeCalcData = {
   amount: number;
   isValid: boolean;
+  
 };
 
-type RegularCalcData = {
+export type RegularCalcData = {
   amount: number;
   isValid: boolean;
+  baseAmount: number;
+  nonTaxableAllowances: number;
+  taxableAllowances: number;
+  taxReduction: number;
+  durunuri: number; 
+  isHealthInsuranceExempt: boolean; 
+  deductions: {
+    nationalPension: string;
+    employmentInsurance: string;
+  };
 }
 
 type DayCalcData = {
@@ -65,7 +76,7 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
   const [isCalculating, setIsCalculating] = useState(false);
   const [calculatedResult,setCalculatedResult] = useState<CalcResultData | null>(null);
   const [currentScreen,setCurrentScreen] = useState<ScreenState>('calculator')
-   const [payslipInfo, setPayslipInfo] = useState<PayslipInfoData | null>(null);
+  const [payslipInfo, setPayslipInfo] = useState<PayslipInfoData | null>(null);
 
   useEffect(() => {
     setCurrentScreen("calculator");

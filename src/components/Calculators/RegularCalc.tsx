@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import './Calculators.css'
+import { RegularCalcData } from '../CalculatorSection/CalculatorSection';
 
 type RegularCalcProps = {
-  onDataChange: (data: {amount: number; isValid: boolean}) => void;
+  onDataChange: (data: RegularCalcData) => void;
   selectedTab: string;
 }
 
@@ -30,9 +30,30 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
   const [durunuri, setDurunuri] = useState(0);
   const [isHealthInsuranceExempt, setIsHealthInsuranceExempt] = useState(false);
 
+  //탭 선택될때마다 데이터날리기
   useEffect(() => {
     setAmount('');
     setIsValid(false);
+    setAllowances({
+      meal: '',
+      vehicle: '',
+      childbirth: '',
+      research: '',
+      productionOvertime: '',
+      bonus: '',
+      position: '',
+      annualLeave: '',
+      overtime: '',
+      holiday: '',
+      night: ''
+    });
+    setDeductions({
+      nationalPension: '',
+      employmentInsurance: ''
+    });
+    setTaxReduction(0);
+    setDurunuri(0);
+    setIsHealthInsuranceExempt(false);
   }, [selectedTab]);
 
   // 유효성 검사... 그런데 기본급 0원일수도 있었던듯?
@@ -40,6 +61,7 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
     return !isNaN(parseInt(value)) && parseInt(value) > 0;
   }
 
+  // 인풋 핸들러
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
     const value = e.target.value
     if (/^\d*$/.test(value)) {
@@ -47,7 +69,6 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
       setIsValid(validateAmount(value));
     }
   }
-
   const handleAllowanceChange = (field: string, value: string) => {
     if (/^\d*$/.test(value)) {
       setAllowances(prev => ({
@@ -56,7 +77,6 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
       }));
     }
   }
-
   const handleDeductionChange = (field: string, value: string) => {
     if (/^\d*$/.test(value)) {
       setDeductions(prev => ({
@@ -66,14 +86,56 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
     }
   }
 
+  // 포매터
   const formatNumber = (num: number): string => {
     return num.toLocaleString();
   }
 
+  //수당합계 계산
+  const calculateAllowances = () => {
+    const nonTaxableTotal = Object.values({
+      meal: allowances.meal,
+      vehicle: allowances.vehicle,
+      childbirth: allowances.childbirth,
+      research: allowances.research,
+      productionOvertime: allowances.productionOvertime
+    }).reduce((sum, val) => sum + (parseInt(val) || 0), 0);
+
+    const taxableTotal = Object.values({
+      bonus: allowances.bonus,
+      position: allowances.position,
+      annualLeave: allowances.annualLeave,
+      overtime: allowances.overtime,
+      holiday: allowances.holiday,
+      night: allowances.night
+    }).reduce((sum, val) => sum + (parseInt(val) || 0), 0);
+
+    return { nonTaxableTotal, taxableTotal };
+  };
+
+  // 지급 합계 계산
+  const calculateTotalAmount = () => {
+    const baseAmount = parseInt(amount) || 0;
+    const { nonTaxableTotal, taxableTotal } = calculateAllowances();
+    return baseAmount + nonTaxableTotal + taxableTotal;
+  };
+
   useEffect(()=>{
-    const num = parseInt(amount) || 0;
-    onDataChange({amount: num, isValid});
-  },[amount, isValid, onDataChange]);
+    const baseAmount = parseInt(amount) || 0;
+    const { nonTaxableTotal, taxableTotal } = calculateAllowances();
+    const totalAmount = calculateTotalAmount();
+    onDataChange({
+      amount: totalAmount,
+      isValid,
+      baseAmount,
+      nonTaxableAllowances: nonTaxableTotal,
+      taxableAllowances: taxableTotal,
+      taxReduction,
+      durunuri,
+      isHealthInsuranceExempt,
+      deductions
+    });
+  },[amount, isValid, allowances, taxReduction, durunuri, isHealthInsuranceExempt, deductions, onDataChange]);
 
   return (
     <div>
@@ -277,7 +339,7 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
       <div className="flex justify-between items-center py-5">
         <span className="text-lg font-bold text-gray-900">지급합계</span>
         <span className="text-xl font-bold text-blue-600">
-          {amount ? formatNumber(parseInt(amount)) : '0'} 원
+          {formatNumber(calculateTotalAmount())} 원
         </span>
       </div>
     </div>
