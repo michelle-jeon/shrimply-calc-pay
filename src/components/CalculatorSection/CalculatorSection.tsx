@@ -165,7 +165,6 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
   };
 
   const calculateRegular = (regulData: RegularCalcData): CalcResultData => {
-    console.log(regulData)
     const taxableIncome = regulData.baseAmount + regulData.taxableAllowances;
     let withholdingTax = 0;
     
@@ -230,12 +229,10 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
     const localTax = Math.floor((withholdingTax * 0.1) / 10) * 10;
     const netSalary = regulData.amount - withholdingTax - localTax;
 
-    console.log(withholdingTax)
-    console.log(localTax)
-
+    
     const allowances = regulData.allowances;
     const sumAllowance = regulData.nonTaxableAllowances + regulData.taxableAllowances;
-
+    
     return {
       totSalary: regulData.amount,
       withholdingTax,

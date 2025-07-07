@@ -105,72 +105,34 @@ export default function CalcaulationResult ({ result, onRecalculate,onShowPaysli
                   <span className="">{formatNumber(result.baseSalary)} 원</span>
                 </div>
               )}
-              {result.allowance?.mealAllowance && (
-                <div className="flex justify-between items-center py-2 text-base text-gray-700">
-                  <span className="">식대</span>
-                  <span className="">{formatNumber(result.allowance.mealAllowance)} 원</span>
-                </div>
-              )}
-              {result.allowance?.vehicleAllowance && (
-                <div className="flex justify-between items-center py-2 text-base text-gray-700">
-                  <span className="">차량수당</span>
-                  <span className="">{formatNumber(result.allowance.vehicleAllowance)} 원</span>
-                </div>
-              )}
-              {result.allowance?.productionOverTimeAllowance && (
-                <div className="flex justify-between items-center py-2 text-base text-gray-700">
-                  <span className="">생산연장근로수당</span>
-                  <span className="">{formatNumber(result.allowance.productionOverTimeAllowance)} 원</span>
-                </div>
-              )}
-              {result.allowance?.childcareAllowance && (
-                <div className="flex justify-between items-center py-2 text-base text-gray-700">
-                  <span className="">육아수당</span>
-                  <span className="">{formatNumber(result.allowance.childcareAllowance)} 원</span>
-                </div>
-              )}
-              {result.allowance?.researchAllowance && (
-                <div className="flex justify-between items-center py-2 text-base text-gray-700">
-                  <span className="">연구수당</span>
-                  <span className="">{formatNumber(result.allowance.researchAllowance)} 원</span>
-                </div>
-              )}
-              {result.allowance?.bonusAllowance && (
-                <div className="flex justify-between items-center py-2 text-base text-gray-700">
-                  <span className="">상여수당</span>
-                  <span className="">{formatNumber(result.allowance.bonusAllowance)} 원</span>
-                </div>
-              )}
-              {result.allowance?.positionAllowance && (
-                <div className="flex justify-between items-center py-2 text-base text-gray-700">
-                  <span className="">직책수당</span>
-                  <span className="">{formatNumber(result.allowance.positionAllowance)} 원</span>
-                </div>
-              )}
-              {result.allowance?.annualLeaveAllowance && (
-                <div className="flex justify-between items-center py-2 text-base text-gray-700">
-                  <span className="">연차수당</span>
-                  <span className="">{formatNumber(result.allowance.annualLeaveAllowance)} 원</span>
-                </div>
-              )}
-              {result.allowance?.overTimeAllowance && (
-                <div className="flex justify-between items-center py-2 text-base text-gray-700">
-                  <span className="">연장근로수당</span>
-                  <span className="">{formatNumber(result.allowance.overTimeAllowance)} 원</span>
-                </div>
-              )}
-              {result.allowance?.holidayAllowance && (
-                <div className="flex justify-between items-center py-2 text-base text-gray-700">
-                  <span className="">휴일근로수당</span>
-                  <span className="">{formatNumber(result.allowance.holidayAllowance)} 원</span>
-                </div>
-              )}
-              {result.allowance?.nightAllowance && (
-                <div className="flex justify-between items-center py-2 text-base text-gray-700">
-                  <span className="">야간근로수당</span>
-                  <span className="">{formatNumber(result.allowance.nightAllowance)} 원</span>
-                </div>
-              )}
+              {result.allowance &&
+                [
+                  { key: "mealAllowance", label: "식대" },
+                  { key: "vehicleAllowance", label: "차량수당" },
+                  { key: "productionOverTimeAllowance", label: "생산연장근로수당" },
+                  { key: "childcareAllowance", label: "육아수당" },
+                  { key: "researchAllowance", label: "연구수당" },
+                  { key: "bonusAllowance", label: "상여수당" },
+                  { key: "positionAllowance", label: "직책수당" },
+                  { key: "annualLeaveAllowance", label: "연차수당" },
+                  { key: "overTimeAllowance", label: "연장근로수당" },
+                  { key: "holidayAllowance", label: "휴일근로수당" },
+                  { key: "nightAllowance", label: "야간근로수당" }
+                ].map(({ key, label }) => {
+                  const value = result.allowance?.[key as keyof typeof result.allowance];
+                  if (value !== undefined && value > 0) {
+                    return (
+                      <div
+                        key={key}
+                        className="flex justify-between items-center py-2 text-base text-gray-700"
+                      >
+                        <span>{label}</span>
+                        <span>{formatNumber(value)} 원</span>
+                    </div>
+                  );
+                }
+                return null;
+              })}
             </div>
             
             {/* 공제 내역 */}
