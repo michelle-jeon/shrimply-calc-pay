@@ -166,8 +166,9 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
 
   const calculateRegular = (regulData: RegularCalcData): CalcResultData => {
     const taxableIncome = regulData.baseAmount + regulData.taxableAllowances;
+
+    // ***** 간이세액 계산 *****
     let withholdingTax = 0;
-    
     // 과세 금액이 1,060,000원 미만이면 소득세 0원
     if (taxableIncome < 1060000) {
       withholdingTax = 0;
@@ -225,6 +226,13 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
       const additionalTax = Math.floor(excessAmount * 0.45);
       withholdingTax = baseTax + 31034600 + additionalTax;
     }
+    // ***** 간이세액 계산 끝 *****
+    // 소득세 감면 (0% 초과인 경우)
+    const taxReduction = regulData.taxReduction;
+    if (taxReduction > 0){
+      const reducedTax  = Math.min(withholdingTax * (taxReduction / 100),2000000);
+      withholdingTax = Math.floor((withholdingTax - reducedTax) / 10 ) * 10;
+    }
 
     const localTax = Math.floor((withholdingTax * 0.1) / 10) * 10;
     const netSalary = regulData.amount - withholdingTax - localTax;
@@ -233,6 +241,7 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
     const allowances = regulData.allowances;
     const sumAllowance = regulData.nonTaxableAllowances + regulData.taxableAllowances;
     
+
     return {
       totSalary: regulData.amount,
       withholdingTax,
