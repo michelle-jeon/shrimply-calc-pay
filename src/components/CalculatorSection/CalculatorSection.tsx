@@ -184,7 +184,7 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
     }
   };
   return (
-    <div className="bg-[#ffffff] relative rounded-2xl w-full max-w-[594.77px] p-8">
+    <div className="bg-[#ffffff] relative rounded-2xl w-full max-w-[800px] p-8">
       <p className="text-14 font-bold text-left text-gray-900 mb-4">세후 급여 계산기</p>
       {/* 메인 컨텐츠 영역 */}
       {currentScreen === 'calculator' && (
