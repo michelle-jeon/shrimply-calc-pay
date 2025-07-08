@@ -253,7 +253,7 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
       console.log(pensionBase);
       if (pensionBase < 400000) pensionBase = 400000;
       if (pensionBase > 6370000) pensionBase = 6370000;
-      nationalPension = Math.floor(pensionBase * 0.045);
+      nationalPension = Math.floor(pensionBase * 0.045/10)*10;
       // 건강보험 (월보수액의 3.545%)
       let healthBase = taxableIncome;
       if (healthBase < 279266) healthBase = 279266;
@@ -263,20 +263,21 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
       longTermCareInsurance = Math.floor(taxableIncome * 0.004591/10)*10;
     }
     // 고용보험 (과세소득의 0.9%)
-    const employmentInsuranceBase = parseInt(regulData.deductions.employmentInsurance) || taxableIncome;
-    employmentInsurance = Math.floor(employmentInsuranceBase * 0.009);
+    const employmentInsuranceBase = taxableIncome;
+    employmentInsurance = Math.floor(employmentInsuranceBase * 0.009/10)*10;
     const employmentReductionBase = parseInt(regulData.deductions.employmentInsurance) || employmentInsuranceBase;
 
     // ***** 두루누리 공제 *****
     if (regulData.durunuri > 0) {
-      nationalPension = Math.floor(nationalPension * (1 - regulData.durunuri / 100));
-      employmentInsurance = Math.floor(employmentInsuranceBase - employmentReductionBase*(1 - regulData.durunuri / 100)/10)*10;
-      console.log(nationalPension);
+      let reducedPensionIns = Math.floor(nationalPension * (1 - regulData.durunuri / 100)/10)*10;
+      if(reducedPensionIns > 82800) reducedPensionIns = 82800;
+      nationalPension = nationalPension - reducedPensionIns;
+      
+      let reducedEmploymentIns = Math.floor(employmentReductionBase/100/10)*10;
+      if (reducedEmploymentIns > 16560) reducedEmploymentIns = 16560;
+      employmentInsurance = employmentInsurance - reducedEmploymentIns;
     }
-
-    //!!!! 두루누리 없는 경우 국민연금 원절사해야하고 두루누리잇으면 공제에 원절사....? 뭔소리지
-    //두루누리 지원금이 있을 경우에는 국민연금에 원 절사를 하지 않고, 지원금에 원절사하여 계산함 << 이게 뭔말인지
-
+    
     // ***** 실수령액 계산 *****
     const netSalary = regulData.amount - withholdingTax - localTax - nationalPension - healthInsurance - longTermCareInsurance - employmentInsurance;
 
