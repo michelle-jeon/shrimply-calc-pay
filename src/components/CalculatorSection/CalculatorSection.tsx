@@ -277,7 +277,7 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
       if (reducedEmploymentIns > 16560) reducedEmploymentIns = 16560;
       employmentInsurance = employmentInsurance - reducedEmploymentIns;
     }
-    
+
     // ***** 실수령액 계산 *****
     const netSalary = regulData.amount - withholdingTax - localTax - nationalPension - healthInsurance - longTermCareInsurance - employmentInsurance;
 
@@ -346,7 +346,7 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
   };
   return (
     <div className="bg-[#ffffff] relative rounded-2xl w-full max-w-[800px] p-8">
-      <p className="text-14 font-bold text-left text-gray-900 mb-4">세후 급여 계산기</p>
+      <p className="text-14 font-bold text-left text-gray-900 mb-7">세후 급여 계산기</p>
       {/* 메인 컨텐츠 영역 */}
       {currentScreen === 'calculator' && (
         <>

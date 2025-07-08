@@ -137,7 +137,7 @@ export default function CalcaulationResult ({ result, onRecalculate,onShowPaysli
             
             {/* 공제 내역 */}
             <div className="space-y-3">
-              <div className="flex justify-between items-center py-2 text-base text-gray-700 text-base text-gray-700">
+              <div className="flex justify-between items-center py-2 text-base text-gray-700">
                 <span className="">소득세</span>
                 <span className="">{formatNumber(Math.round(result.withholdingTax))} 원</span>
               </div>

@@ -35,7 +35,7 @@ export default function DayCalc({onDataChange, selectedTab}:DayCalcProps) {
   return (
     <div className='text-left'>
       <div className="flex w-full items-center space-x-4">
-        <label className='text-gray-700 font-medium'>
+        <label className='text-gray-700 font-semibold'>
           지급액 <span className="text-red-500">*</span>
         </label>
         <div className="flex grow items-center border border-gray-300 rounded-md px-3 py-2">
