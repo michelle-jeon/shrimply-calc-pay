@@ -71,14 +71,6 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
   }
   const handleAllowanceChange = (field: string, value: string) => {
     if (/^\d*$/.test(value)) {
-      setAllowances(prev => ({
-        ...prev,
-        [field]: value
-      }));
-    }
-  }
-  const handleDeductionChange = (field: string, value: string) => {
-    if (/^\d*$/.test(value)) {
     const numericValue = parseInt(value) || 0;
 
     // 각 항목의 max값을 찾아서 적용
@@ -105,6 +97,14 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
       }));
     }
   }
+  }
+  const handleDeductionChange = (field: string, value: string) => {
+    if (/^\d*$/.test(value)) {
+      setDeductions(prev => ({
+        ...prev,
+        [field]: value
+      }));
+    }
   }
 
   // 포매터
