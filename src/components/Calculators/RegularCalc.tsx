@@ -79,11 +79,32 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
   }
   const handleDeductionChange = (field: string, value: string) => {
     if (/^\d*$/.test(value)) {
-      setDeductions(prev => ({
+    const numericValue = parseInt(value) || 0;
+
+    // 각 항목의 max값을 찾아서 적용
+    const maxMap: Record<string, number> = {
+      meal: 200000,
+      vehicle: 200000,
+      childbirth: 200000,
+      research: 200000,
+      productionOvertime: 2400000
+    };
+
+    const max = maxMap[field] ?? Infinity;
+
+    if (numericValue <= max) {
+      setAllowances(prev => ({
         ...prev,
         [field]: value
       }));
+    } else {
+      // max보다 큰 값을 입력하면 max로 강제
+      setAllowances(prev => ({
+        ...prev,
+        [field]: max.toString()
+      }));
     }
+  }
   }
 
   // 포매터
@@ -184,7 +205,7 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
                     className="flex-1 text-right text-sm focus:outline-none"
                     value={allowances[item.key as keyof typeof allowances]}
                     onChange={(e) => handleAllowanceChange(item.key, e.target.value)}
-                    placeholder={`최대 ${formatNumber(item.max)}`}
+                    placeholder={`${item.key === 'productionOvertime' ? '연 최대' : '최대'} ${formatNumber(item.max)}`}
                   />
                   <span className="ml-1 text-xs text-gray-500">원</span>
                 </div>
