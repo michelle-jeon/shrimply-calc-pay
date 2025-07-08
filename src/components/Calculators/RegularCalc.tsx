@@ -30,6 +30,26 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
   const [durunuri, setDurunuri] = useState(0);
   const [isHealthInsuranceJoin, setIsHealthInsuranceJoin] = useState(true);
 
+  // 유틸리티 함수
+  const removeCommas = (str: string): string => {
+    return str.replace(/,/g, '');
+  };
+
+  const formatNumberInput = (value: string): string => {
+    if (!value) return '';
+    const number = parseInt(removeCommas(value));
+    return isNaN(number) ? '' : number.toLocaleString();
+  };
+
+  const getNumericValue = (value: string): number => {
+    const cleaned = removeCommas(value);
+    return parseInt(cleaned) || 0;
+  };
+
+  const formatNumber = (num: number): string => {
+    return num.toLocaleString();
+  }
+
   //탭 선택될때마다 데이터날리기
   useEffect(() => {
     setAmount('');
@@ -56,60 +76,68 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
     setIsHealthInsuranceJoin(true);
   }, [selectedTab]);
 
-  // 유효성 검사... 그런데 기본급 0원일수도 있었던듯?
-  const validateAmount = (value:string): boolean => {
-    return !isNaN(parseInt(value)) && parseInt(value) > 0;
+  // 유효성 검사
+  const validateAmount = (value: string): boolean => {
+    const numValue = getNumericValue(value);
+    return !isNaN(numValue) && numValue > 0;
   }
 
   // 인풋 핸들러
-  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
-    const value = e.target.value
-    if (/^\d*$/.test(value)) {
-      setAmount(value);
-      setIsValid(validateAmount(value));
+  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    const cleanValue = removeCommas(value);
+    
+    if (/^\d*$/.test(cleanValue)) {
+      const formatted = formatNumberInput(cleanValue);
+      setAmount(formatted);
+      setIsValid(validateAmount(formatted));
     }
   }
+
   const handleAllowanceChange = (field: string, value: string) => {
-    if (/^\d*$/.test(value)) {
-    const numericValue = parseInt(value) || 0;
+    const cleanValue = removeCommas(value);
+    
+    if (/^\d*$/.test(cleanValue)) {
+      const numericValue = parseInt(cleanValue) || 0;
 
-    // 각 항목의 max값을 찾아서 적용
-    const maxMap: Record<string, number> = {
-      meal: 200000,
-      vehicle: 200000,
-      childbirth: 200000,
-      research: 200000,
-      productionOvertime: 2400000
-    };
+      // 각 항목의 max값을 찾아서 적용
+      const maxMap: Record<string, number> = {
+        meal: 200000,
+        vehicle: 200000,
+        childbirth: 200000,
+        research: 200000,
+        productionOvertime: 2400000
+      };
 
-    const max = maxMap[field] ?? Infinity;
+      const max = maxMap[field] ?? Infinity;
 
-    if (numericValue <= max) {
-      setAllowances(prev => ({
-        ...prev,
-        [field]: value
-      }));
-    } else {
-      // max보다 큰 값을 입력하면 max로 강제
-      setAllowances(prev => ({
-        ...prev,
-        [field]: max.toString()
-      }));
+      if (numericValue <= max) {
+        const formatted = formatNumberInput(cleanValue);
+        setAllowances(prev => ({
+          ...prev,
+          [field]: formatted
+        }));
+      } else {
+        // max보다 큰 값을 입력하면 max로 강제
+        const formatted = formatNumberInput(max.toString());
+        setAllowances(prev => ({
+          ...prev,
+          [field]: formatted
+        }));
+      }
     }
   }
-  }
+
   const handleDeductionChange = (field: string, value: string) => {
-    if (/^\d*$/.test(value)) {
+    const cleanValue = removeCommas(value);
+    
+    if (/^\d*$/.test(cleanValue)) {
+      const formatted = formatNumberInput(cleanValue);
       setDeductions(prev => ({
         ...prev,
-        [field]: value
+        [field]: formatted
       }));
     }
-  }
-
-  // 포매터
-  const formatNumber = (num: number): string => {
-    return num.toLocaleString();
   }
 
   //수당합계 계산
@@ -120,7 +148,7 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
       childbirth: allowances.childbirth,
       research: allowances.research,
       productionOvertime: allowances.productionOvertime
-    }).reduce((sum, val) => sum + (parseInt(val) || 0), 0);
+    }).reduce((sum, val) => sum + getNumericValue(val), 0);
 
     const taxableTotal = Object.values({
       bonus: allowances.bonus,
@@ -129,22 +157,33 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
       overtime: allowances.overtime,
       holiday: allowances.holiday,
       night: allowances.night
-    }).reduce((sum, val) => sum + (parseInt(val) || 0), 0);
+    }).reduce((sum, val) => sum + getNumericValue(val), 0);
 
     return { nonTaxableTotal, taxableTotal };
   };
 
   // 지급 합계 계산
   const calculateTotalAmount = () => {
-    const baseAmount = parseInt(amount) || 0;
+    const baseAmount = getNumericValue(amount);
     const { nonTaxableTotal, taxableTotal } = calculateAllowances();
     return baseAmount + nonTaxableTotal + taxableTotal;
   };
 
-  useEffect(()=>{
-    const baseAmount = parseInt(amount) || 0;
+  useEffect(() => {
+    const baseAmount = getNumericValue(amount);
     const { nonTaxableTotal, taxableTotal } = calculateAllowances();
     const totalAmount = calculateTotalAmount();
+    
+    const numericDeductions = {
+      nationalPension: getNumericValue(deductions.nationalPension).toString(),
+      employmentInsurance: getNumericValue(deductions.employmentInsurance).toString()
+    };
+    
+    const numericAllowances = Object.keys(allowances).reduce((acc, key) => {
+      acc[key] = getNumericValue(allowances[key as keyof typeof allowances]).toString();
+      return acc;
+    }, {} as any);
+
     onDataChange({
       amount: totalAmount,
       isValid,
@@ -154,10 +193,10 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
       taxReduction,
       durunuri,
       isHealthInsuranceJoin,
-      deductions,
-      allowances: allowances
+      deductions: numericDeductions,
+      allowances: numericAllowances
     });
-  },[amount, isValid, allowances, taxReduction, durunuri, isHealthInsuranceJoin, deductions, onDataChange]);
+  }, [amount, isValid, allowances, taxReduction, durunuri, isHealthInsuranceJoin, deductions, onDataChange]);
 
   return (
     <div className='pb-4'>
@@ -188,7 +227,6 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
       <div className="flex flex-col md:flex-row md:space-x-10 text-left md:justify-between pb-3">
         <div className='flex flex-col gap-5 grow pt-5'>
           <span className="text-gray-400 font-semibold">비과세 수당</span>
-          {/* 비과세 수당 */}
           <div className="space-y-3">
             {[
               { key: 'meal', label: '식대', max: 200000 },
@@ -293,46 +331,45 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
       
       {/* 기준소득월액 */}
       <div className="space-y-4 pt-5 text-left">
-       <div className="flex justify-between items-center space-x-4">
-        <span className="text-gray-400 font-semibold">기준소득월액</span>
-        <label
-          htmlFor="healthInsuranceExempt"
-          className={`
-          flex items-center px-2 py-1 rounded cursor-pointer
-          ${isHealthInsuranceJoin ? 'bg-gray-300' : 'bg-gray-100'}
-        `}
-        >
-          <input
-            type="checkbox"
-            id="healthInsuranceExempt"
-            checked={isHealthInsuranceJoin}
-            onChange={(e) => setIsHealthInsuranceJoin(e.target.checked)}
-            className="peer hidden"
-          />
-          <div
+        <div className="flex justify-between items-center space-x-4">
+          <span className="text-gray-400 font-semibold">기준소득월액</span>
+          <label
+            htmlFor="healthInsuranceExempt"
             className={`
-              w-5 h-5 rounded-full border-2
-              flex items-center justify-center
-              ${isHealthInsuranceJoin ? 'border-gray-400' : 'border-gray-300'}
+              flex items-center px-2 py-1 rounded cursor-pointer
+              ${isHealthInsuranceJoin ? 'bg-gray-300' : 'bg-gray-100'}
             `}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className={`w-3 h-3 ${isHealthInsuranceJoin ? 'text-gray-400' : 'text-gray-300'}`}
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="3"
+            <input
+              type="checkbox"
+              id="healthInsuranceExempt"
+              checked={isHealthInsuranceJoin}
+              onChange={(e) => setIsHealthInsuranceJoin(e.target.checked)}
+              className="peer hidden"
+            />
+            <div
+              className={`
+                w-5 h-5 rounded-full border-2
+                flex items-center justify-center
+                ${isHealthInsuranceJoin ? 'border-gray-400' : 'border-gray-300'}
+              `}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <span className={`ml-2 text-sm font-bold ${isHealthInsuranceJoin ? 'text-gray-500' : 'text-gray-400'}`}>
-            국민·건강보험 {isHealthInsuranceJoin ? '가입':'미가입'}
-          </span>
-        </label>
-      </div>
-
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className={`w-3 h-3 ${isHealthInsuranceJoin ? 'text-gray-400' : 'text-gray-300'}`}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="3"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <span className={`ml-2 text-sm font-bold ${isHealthInsuranceJoin ? 'text-gray-500' : 'text-gray-400'}`}>
+              국민·건강보험 {isHealthInsuranceJoin ? '가입':'미가입'}
+            </span>
+          </label>
+        </div>
 
         <div className="flex flex-col md:flex-row md:space-x-10 space-y-5 md:space-y-0 text-left">
           {/* 국민연금 */}
@@ -370,4 +407,3 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
     </div>
   );
 }
-
