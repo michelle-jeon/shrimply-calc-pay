@@ -170,6 +170,7 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
     const sumAllowance = regulData.nonTaxableAllowances + regulData.taxableAllowances;
 
     ////////// 세금 관련 //////////
+    const roundDown10 = (amount: number) => Math.floor(amount / 10) * 10;
     // ***** 간이세액 계산 *****
     let withholdingTax = 0;
     // 과세 금액이 1,060,000원 미만이면 소득세 0원
@@ -192,52 +193,52 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
       const baseTax = 1507400; // 10,000,000원인 경우의 해당 세액
       const excessAmount = taxableIncome - 10000000;
       const additionalTax = Math.floor(excessAmount * 0.98 * 0.35);
-      withholdingTax = baseTax + additionalTax + 25000;
+      withholdingTax = roundDown10(baseTax + additionalTax + 25000);
     }
     // 14,000,000원 초과 28,000,000원 이하
     else if (taxableIncome > 14000000 && taxableIncome <= 28000000) {
       const baseTax = 1507400; // 10,000,000원인 경우의 해당 세액
       const excessAmount = taxableIncome - 14000000;
       const additionalTax = Math.floor(excessAmount * 0.98 * 0.38);
-      withholdingTax = baseTax + 1397000 + additionalTax;
+      withholdingTax = roundDown10(baseTax + 1397000 + additionalTax);
     }
     // 28,000,000원 초과 30,000,000원 이하
     else if (taxableIncome > 28000000 && taxableIncome <= 30000000) {
       const baseTax = 1507400; // 10,000,000원인 경우의 해당 세액
       const excessAmount = taxableIncome - 28000000;
       const additionalTax = Math.floor(excessAmount * 0.98 * 0.40);
-      withholdingTax = baseTax + 6610600 + additionalTax;
+      withholdingTax = roundDown10(baseTax + 6610600 + additionalTax);
     }
     // 30,000,000원 초과 45,000,000원 이하
     else if (taxableIncome > 30000000 && taxableIncome <= 45000000) {
       const baseTax = 1507400; // 10,000,000원인 경우의 해당 세액
       const excessAmount = taxableIncome - 30000000;
       const additionalTax = Math.floor(excessAmount * 0.40);
-      withholdingTax = baseTax + 7394600 + additionalTax;
+      withholdingTax = roundDown10(baseTax + 7394600 + additionalTax);
     }
     // 45,000,000원 초과 87,000,000원 이하
     else if (taxableIncome > 45000000 && taxableIncome <= 87000000) {
       const baseTax = 1507400; // 10,000,000원인 경우의 해당 세액
       const excessAmount = taxableIncome - 45000000;
       const additionalTax = Math.floor(excessAmount * 0.42);
-      withholdingTax = baseTax + 13394600 + additionalTax;
+      withholdingTax = roundDown10(baseTax + 13394600 + additionalTax);
     }
     // 87,000,000원 초과
     else if (taxableIncome > 87000000) {
       const baseTax = 1507400; // 10,000,000원인 경우의 해당 세액
       const excessAmount = taxableIncome - 87000000;
       const additionalTax = Math.floor(excessAmount * 0.45);
-      withholdingTax = baseTax + 31034600 + additionalTax;
+      withholdingTax = roundDown10(baseTax + 31034600 + additionalTax);
     }
     // ***** 간이세액 계산 끝 *****
     // 소득세 감면 (0% 초과인 경우)
     const taxReduction = regulData.taxReduction;
     if (taxReduction > 0){
       const reducedTax  = Math.min(withholdingTax * (taxReduction / 100),2000000);
-      withholdingTax = Math.floor((withholdingTax - reducedTax) / 10 ) * 10;
+      withholdingTax = roundDown10(withholdingTax - reducedTax);
     }
     // 지방세 계산
-    const localTax = Math.floor((withholdingTax * 0.1) / 10) * 10;
+    const localTax = roundDown10(withholdingTax * 0.1);
     
     ////////// 보험료 관련 //////////
     // ***** 보험료 계산 *****
@@ -270,6 +271,7 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
     if (regulData.durunuri > 0) {
       nationalPension = Math.floor(nationalPension * (1 - regulData.durunuri / 100));
       employmentInsurance = Math.floor(employmentInsuranceBase - employmentReductionBase*(1 - regulData.durunuri / 100)/10)*10;
+      console.log(nationalPension);
     }
 
     //!!!! 두루누리 없는 경우 국민연금 원절사해야하고 두루누리잇으면 공제에 원절사....? 뭔소리지
