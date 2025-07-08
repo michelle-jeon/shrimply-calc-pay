@@ -7,6 +7,22 @@ type RegularCalcProps = {
 }
 
 export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps) {
+  const allowanceData = {
+    nonTaxable: [
+      { key: 'meal', label: '식대', max: 200000 },
+      { key: 'vehicle', label: '차량유지비', max: 200000 },
+      { key: 'childbirth', label: '출산 및 보육', max: 200000 },
+      { key: 'research', label: '연구비', max: 200000 },
+      { key: 'productionOvertime', label: '생산직 연장', max: 2400000 }
+    ],
+    taxable: [
+      { key: 'bonus', label: '연장근로' },
+      { key: 'position', label: '야간근로' },
+      { key: 'annualLeave', label: '휴일근로' },
+      { key: 'overtime', label: '상여금' },
+      { key: 'holiday', label: '직급수당' }
+    ]
+  };
   const [amount, setAmount] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(false);
   const [allowances, setAllowances] = useState({
@@ -101,15 +117,8 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
       const numericValue = parseInt(cleanValue) || 0;
 
       // 각 항목의 max값을 찾아서 적용
-      const maxMap: Record<string, number> = {
-        meal: 200000,
-        vehicle: 200000,
-        childbirth: 200000,
-        research: 200000,
-        productionOvertime: 2400000
-      };
-
-      const max = maxMap[field] ?? Infinity;
+       const nonTaxableItem = allowanceData.nonTaxable.find(item => item.key === field);
+      const max = nonTaxableItem?.max ?? Infinity;
 
       if (numericValue <= max) {
         const formatted = formatNumberInput(cleanValue);
@@ -142,22 +151,13 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
 
   //수당합계 계산
   const calculateAllowances = () => {
-    const nonTaxableTotal = Object.values({
-      meal: allowances.meal,
-      vehicle: allowances.vehicle,
-      childbirth: allowances.childbirth,
-      research: allowances.research,
-      productionOvertime: allowances.productionOvertime
-    }).reduce((sum, val) => sum + getNumericValue(val), 0);
+    const nonTaxableTotal = allowanceData.nonTaxable.reduce((sum, item) => 
+      sum + getNumericValue(allowances[item.key as keyof typeof allowances]), 0
+    );
 
-    const taxableTotal = Object.values({
-      bonus: allowances.bonus,
-      position: allowances.position,
-      annualLeave: allowances.annualLeave,
-      overtime: allowances.overtime,
-      holiday: allowances.holiday,
-      night: allowances.night
-    }).reduce((sum, val) => sum + getNumericValue(val), 0);
+    const taxableTotal = allowanceData.taxable.reduce((sum, item) => 
+      sum + getNumericValue(allowances[item.key as keyof typeof allowances]), 0
+    );
 
     return { nonTaxableTotal, taxableTotal };
   };
@@ -228,13 +228,7 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
         <div className='flex flex-col gap-5 grow pt-5'>
           <span className="text-gray-400 font-semibold">비과세 수당</span>
           <div className="space-y-3">
-            {[
-              { key: 'meal', label: '식대', max: 200000 },
-              { key: 'vehicle', label: '차량유지비', max: 200000 },
-              { key: 'childbirth', label: '출산 및 보육', max: 200000 },
-              { key: 'research', label: '연구비', max: 200000 },
-              { key: 'productionOvertime', label: '생산직 연장', max: 2400000 }
-            ].map((item) => (
+            {allowanceData.nonTaxable.map((item) => (
               <div key={item.key} className="flex items-center space-x-2">
                 <label className="text-sm text-gray-600 w-20 font-semibold">{item.label}</label>
                 <div className="flex-1 flex items-center border border-gray-300 rounded px-2 py-1">
@@ -255,13 +249,7 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
         <div className='flex flex-col gap-5 grow pt-5'>
           <span className="text-gray-400 font-semibold">과세 수당</span>
           <div className="space-y-3">
-            {[
-              { key: 'bonus', label: '연장근로' },
-              { key: 'position', label: '야간근로' },
-              { key: 'annualLeave', label: '휴일근로' },
-              { key: 'overtime', label: '상여금' },
-              { key: 'holiday', label: '직급수당' }
-            ].map((item) => (
+            {allowanceData.taxable.map((item) => (
               <div key={item.key} className="flex items-center space-x-2">
                 <label className="text-sm text-gray-600 font-500 w-20 font-semibold">{item.label}</label>
                 <div className="flex-1 flex items-center border border-gray-300 rounded px-2 py-1">
