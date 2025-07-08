@@ -33,7 +33,7 @@ export default function DayCalc({onDataChange, selectedTab}:DayCalcProps) {
   },[amount, isValid, onDataChange]);
 
   return (
-    <div className='text-left'>
+    <div className='text-left pb-4'>
       <div className="flex w-full items-center space-x-4">
         <label className='text-gray-700 font-semibold'>
           지급액 <span className="text-red-500">*</span>

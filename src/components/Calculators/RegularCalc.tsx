@@ -164,7 +164,7 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
         )}
       </div>
       {/* 수당 */}
-      <div className="flex flex-col md:flex-row md:space-x-4 text-left md:justify-between pb-3">
+      <div className="flex flex-col md:flex-row md:space-x-10 text-left md:justify-between pb-3">
         <div className='flex flex-col gap-5 grow pt-5'>
           <span className="text-gray-400 font-semibold">비과세 수당</span>
           {/* 비과세 수당 */}
@@ -228,9 +228,9 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
         </span>
       </div>
       {/* 공제 */}
-      <div className="flex flex-col md:flex-row text-left gap-5 mt-5 pb-5 border-b border-gray-200">
+      <div className="flex flex-col md:flex-row md:space-x-10 text-left pb-5 border-b border-gray-200">
         {/* 소득세 감면 */}
-        <div className="flex w-full items-center">
+        <div className="flex w-full items-center pt-5">
           <label className="text-sm text-gray-600 w-20 font-semibold">소득세 감면</label>
           <div className="flex grow bg-gradient-to-r from-[#ed8e5f33] h-9 relative rounded-lg to-50% to-[#0220470d]">
             {[0, 30, 90].map((value) => (
@@ -250,7 +250,7 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
         </div>
 
         {/* 두루누리 */}
-        <div className="flex w-full items-center">
+        <div className="flex w-full items-center pt-5">
           <label className="text-sm text-gray-600 w-20 font-semibold">두루누리</label>
           <div className="flex grow bg-gradient-to-r from-[#ed8e5f33] h-9 relative rounded-lg to-50% to-[#0220470d]">
             {[0, 80].map((value) => (
@@ -313,9 +313,9 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
       </div>
 
 
-        <div className="grid grid-cols-2 gap-8">
+        <div className="flex flex-col md:flex-row md:space-x-10 space-y-5 md:space-y-0 text-left">
           {/* 국민연금 */}
-          <div className="flex items-center space-x-2">
+          <div className="flex w-full items-center space-x-2">
             <label className="text-sm text-gray-600 w-20 font-semibold">국민연금</label>
             <div className="flex-1 flex items-center border border-gray-300 rounded px-2 py-1">
               <input
@@ -331,7 +331,7 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
           </div>
 
           {/* 고용보험 */}
-          <div className="flex items-center space-x-2">
+          <div className="flex w-full items-center space-x-2">
             <label className="text-sm text-gray-600 w-20 font-semibold">고용보험</label>
             <div className="flex-1 flex items-center border border-gray-300 rounded px-2 py-1">
               <input
