@@ -219,6 +219,7 @@ export default function CalcaulationResult ({ result, onRecalculate,onShowPaysli
         isOpen={payslipOpen}
         onClose={handlePayslipInfoClose}
         onSubmit={handlePayslipInfoSubmit}
+        workerType={result.type}
       />
     </div>
   )

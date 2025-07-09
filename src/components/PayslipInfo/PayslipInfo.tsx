@@ -8,15 +8,17 @@ export type PayslipInfoData = {
   payYear: string;
   payMonth: string;
   payDay: string;
+  workerCountType: '4인 이하' | '5인 이상';
 }
 
 type PayslipInfoProps = {
   isOpen: boolean;
   onClose: () => void;
   onSubmit: (info: PayslipInfoData) => void;
+  workerType:string;
 };
 
-export default function PayslipInfo({isOpen,onClose,onSubmit}: PayslipInfoProps){
+export default function PayslipInfo({isOpen,onClose,onSubmit,workerType}: PayslipInfoProps){
   const [payslipInfo,setPayslipInfo] = useState<PayslipInfoData>({
     companyName: '',
     workerName: '',
@@ -24,7 +26,8 @@ export default function PayslipInfo({isOpen,onClose,onSubmit}: PayslipInfoProps)
     workMonth: '',
     payYear: '',
     payMonth: '',
-    payDay: ''
+    payDay: '',
+    workerCountType: '4인 이하',
   })
 
    // 현재 날짜 정보
@@ -43,7 +46,8 @@ export default function PayslipInfo({isOpen,onClose,onSubmit}: PayslipInfoProps)
         workMonth: currentMonth.toString(),
         payYear: currentYear.toString(),
         payMonth: currentMonth.toString(),
-        payDay: currentDay.toString()
+        payDay: currentDay.toString(),
+        workerCountType: '4인 이하',
       });
     }
   }, [isOpen, currentYear, currentMonth, currentDay]);
@@ -254,6 +258,27 @@ export default function PayslipInfo({isOpen,onClose,onSubmit}: PayslipInfoProps)
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
+          {/* 상시근로자수 */}
+          {workerType === '상용직' && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">상시 근로자수</label>
+              <div className="flex grow bg-gradient-to-r from-[#ed8e5f33] h-9 relative rounded-lg to-50% to-[#0220470d]">
+                {["4인 이하","5인 이상"].map((value, idx)=>(
+                  <button
+                    key={idx}
+                    onClick={() => setPayslipInfo({ ...payslipInfo, workerCountType: value as '4인 이하' | '5인 이상' })}
+                    className={`px-3 py-1 text-sm rounded m-1 grow ${
+                      payslipInfo.workerCountType === value
+                        ? 'bg-white text-orange-600'
+                        : 'text-gray-400 hover:text-gray-600'
+                    }`}
+                  >
+                    {value}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* 근무년월 */}
           <div>
