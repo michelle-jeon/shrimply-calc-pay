@@ -145,25 +145,25 @@ export default function CalcaulationResult ({ result, onRecalculate,onShowPaysli
                 <span className="">지방세</span>
                 <span className="">{formatNumber(Math.round(result.localTax))} 원</span>
               </div>
-              {result.nationalPension && (
+              {result.nationalPension !== undefined && (
                 <div className="flex justify-between items-center py-2 text-base text-gray-700">
                   <span className="">국민연금</span>
                   <span className="">{formatNumber(Math.round(result.nationalPension))} 원</span>
                 </div>
               )}
-              {result.healthInsurance && (
+              {result.healthInsurance !== undefined && (
                 <div className="flex justify-between items-center py-2 text-base text-gray-700">
                   <span className="">건강보험</span>
                   <span className="">{formatNumber(Math.round(result.healthInsurance))} 원</span>
                 </div>
               )}
-              {result.longTermCareInsurance && (
+              {result.longTermCareInsurance !== undefined && (
                 <div className="flex justify-between items-center py-2 text-base text-gray-700">
                   <span className="">장기요양보험</span>
                   <span className="">{formatNumber(Math.round(result.longTermCareInsurance))} 원</span>
                 </div>
               )}
-              {result.employmentInsurance && (
+              {result.employmentInsurance !== undefined && (
                 <div className="flex justify-between items-center py-2 text-base text-gray-700">
                   <span className="">고용보험</span>
                   <span className="">{formatNumber(Math.round(result.employmentInsurance))} 원</span>
