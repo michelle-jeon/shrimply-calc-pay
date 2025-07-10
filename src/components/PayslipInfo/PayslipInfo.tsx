@@ -233,8 +233,8 @@ export default function PayslipInfo({isOpen,onClose,onSubmit,workerType}: Paysli
       onClick={(e) => e.stopPropagation()}>
         <div className="space-y-4 mb-6">
           {/* 사업장명 */}
-          <div className="">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+          <div className="flex gap-5 items-center">
+            <label className="block text-sm font-medium text-gray-700 w-20  text-left">
               사업장명 <span className="text-red-500">*</span>
             </label>
             <input
@@ -242,13 +242,13 @@ export default function PayslipInfo({isOpen,onClose,onSubmit,workerType}: Paysli
               value={payslipInfo.companyName}
               onChange={(e) => setPayslipInfo({...payslipInfo, companyName: e.target.value})}
               placeholder="사업장명을 입력해주세요"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="grow px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
 
           {/* 소득자명 */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+          <div className="flex gap-5 items-center">
+            <label className="block text-sm font-medium text-gray-700 w-20 text-left">
               소득자명 <span className="text-red-500">*</span>
             </label>
             <input
@@ -256,13 +256,13 @@ export default function PayslipInfo({isOpen,onClose,onSubmit,workerType}: Paysli
               value={payslipInfo.workerName}
               onChange={(e) => setPayslipInfo({...payslipInfo, workerName: e.target.value})}
               placeholder="소득자명을 입력해주세요"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="grow px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
           {/* 상시근로자수 */}
           {workerType === '상용직' && (
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">상시 근로자수</label>
+            <div className="flex gap-5 items-center">
+              <label className="block text-sm font-medium text-gray-700 w-20 text-left">상시 근로자수</label>
               <div className="flex grow bg-gradient-to-r from-[#ed8e5f33] h-9 relative rounded-lg to-50% to-[#0220470d]">
                 {["4인 이하","5인 이상"].map((value, idx)=>(
                   <button
@@ -282,8 +282,8 @@ export default function PayslipInfo({isOpen,onClose,onSubmit,workerType}: Paysli
           )}
 
           {/* 근무년월 */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">근무년월</label>
+          <div className="flex gap-5 items-center">
+            <label className="block text-sm font-medium text-gray-700 w-20 text-left">근무년월</label>
             <div className="flex space-x-2">
               <select
                 value={payslipInfo.workYear}
@@ -309,8 +309,8 @@ export default function PayslipInfo({isOpen,onClose,onSubmit,workerType}: Paysli
           </div>
 
           {/* 지급일 */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">지급일</label>
+          <div className="flex gap-5 items-center">
+            <label className="block text-sm font-medium text-gray-700 w-20 text-left">지급일</label>
             <div className="flex space-x-2">
               <select
                 value={payslipInfo.payYear}
