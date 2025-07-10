@@ -233,7 +233,7 @@ export default function PayslipInfo({isOpen,onClose,onSubmit,workerType}: Paysli
       onClick={(e) => e.stopPropagation()}>
         <div className="space-y-4 mb-6">
           {/* 사업장명 */}
-          <div>
+          <div className="">
             <label className="block text-sm font-medium text-gray-700 mb-2">
               사업장명 <span className="text-red-500">*</span>
             </label>
