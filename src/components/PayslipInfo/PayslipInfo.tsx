@@ -358,7 +358,7 @@ export default function PayslipInfo({isOpen,onClose,onSubmit,workerType}: Paysli
             onClick={handleSubmit}
             className={`flex-1 py-4 rounded-lg text-white font-medium text-lg transition-all duration-200 ${
               payslipInfo.companyName && payslipInfo.workerName && payslipInfo.workYear && payslipInfo.workMonth && payslipInfo.payYear && payslipInfo.payMonth && payslipInfo.payDay
-                ? 'bg-red-500 hover:bg-red-600'
+                ? 'bg-orange-500 hover:bg-orange-600'
                 : 'bg-gray-300 cursor-not-allowed'
             }`}
           >

@@ -289,7 +289,7 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
         </button>
         <button
           onClick={onDownload}
-          className="flex-1 py-4 px-6 rounded-2xl text-white font-semibold text-lg bg-red-500 hover:bg-red-600 transition-all duration-200"
+          className="flex-1 py-4 px-6 rounded-2xl text-white font-semibold text-lg bg-orange-500 hover:bg-orange-600 transition-all duration-200"
         >
           저장하기
         </button>
