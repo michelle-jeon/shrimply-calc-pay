@@ -2,7 +2,7 @@ import logo from '../../assets/images/shrimply_logo_color.svg';
 
 export default function Header () {
   return (
-    <header className='mb-10'>
+    <header className='mb-10 pt-6'>
       <div className='flex items-center justify-center' >
         <img src={logo} alt="" style={{"width":'150px'}}/>
       </div>
