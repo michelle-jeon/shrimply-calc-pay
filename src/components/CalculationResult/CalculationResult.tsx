@@ -194,6 +194,12 @@ export default function CalcaulationResult ({ result, onRecalculate,onShowPaysli
                 <span className="">지방세</span>
                 <span className="">{formatNumber(Math.round(result.localTax))} 원</span>
               </div>
+              {result.employmentInsurance !== undefined && (
+                <div className="flex justify-between items-center py-2 text-base text-gray-700">
+                  <span className="">고용보험</span>
+                  <span className="">{formatNumber(Math.round(result.employmentInsurance))} 원</span>
+                </div>
+              )}
             </div>
           </div>
         )}

@@ -311,16 +311,23 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
   };
 
   const calculateDay = (data:DayCalcData): CalcResultData =>{
-    const {amount} = data;
-    const withholdingTax = Math.floor((amount * 0.03) / 10) * 10;
-    const localTax =  Math.floor((amount * 0.003) / 10) * 10;
+    const {amount,workingDays} = data;
+    //일용직 소득금액(월간 받은 총액/월에 근무한 일 수 -15만원)
+    const taxableIncome = amount/workingDays - 1500000;
+    //일평균 결정세액(소득금액*세율*세액공제 후 원절사) 
+    const withholdingTaxBase =  Math.floor(taxableIncome * 0.0006 * 0.0045 /10)*10;
+    //원천세(일평균 결정세액*근무일수)
+    const withholdingTax = withholdingTaxBase < 1000 ? 0:withholdingTaxBase*workingDays;
+    const localTax =  Math.floor(withholdingTax / 10) * 10;
     const netSalary = amount - withholdingTax - localTax;
+    const employmentInsurance = Math.floor(amount * 0.009/10)*10;
 
     return {
       totSalary:amount,
       withholdingTax,
       localTax,
       netSalary,
+      employmentInsurance,
       type:"일용직"
     }
   }
