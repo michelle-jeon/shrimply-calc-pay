@@ -53,6 +53,7 @@ export type RegularCalcData = {
 
 type DayCalcData = {
   amount: number;
+  workingDays: number;
   isValid: boolean;
   
 }
@@ -140,7 +141,7 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
           break;
         case "일용직":
           const dayData = calculatorData as DayCalcData;
-          result = calculateDay(dayData.amount);
+          result = calculateDay(dayData);
           break;
         default:
           throw new Error("알 수 없는 계산 타입");
@@ -309,13 +310,14 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
     };
   };
 
-  const calculateDay = (amt:number): CalcResultData =>{
-    const withholdingTax = Math.floor((amt * 0.03) / 10) * 10;
-    const localTax =  Math.floor((amt * 0.003) / 10) * 10;
-    const netSalary = amt - withholdingTax - localTax;
+  const calculateDay = (data:DayCalcData): CalcResultData =>{
+    const {amount} = data;
+    const withholdingTax = Math.floor((amount * 0.03) / 10) * 10;
+    const localTax =  Math.floor((amount * 0.003) / 10) * 10;
+    const netSalary = amount - withholdingTax - localTax;
 
     return {
-      totSalary:amt,
+      totSalary:amount,
       withholdingTax,
       localTax,
       netSalary,
