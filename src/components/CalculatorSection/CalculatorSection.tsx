@@ -248,10 +248,11 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
     let longTermCareInsurance = 0;
     let employmentInsurance = 0;
     
+    // pensionBase: 국민연금 기준소득월액
+    let pensionBase = Math.floor(parseInt(regulData.deductions.nationalPension)/ 10000) * 10000 || Math.floor(taxableIncome / 1000) * 1000;
+
     if (regulData.isHealthInsuranceJoin) {
       // 국민연금 (기준소득월액의 4.5%)
-      let pensionBase = Math.floor(parseInt(regulData.deductions.nationalPension)/ 10000) * 10000 || Math.floor(taxableIncome / 1000) * 1000;
-      console.log(pensionBase);
       if (pensionBase < 400000) pensionBase = 400000;
       if (pensionBase > 6370000) pensionBase = 6370000;
       nationalPension = Math.floor(pensionBase * 0.045/10)*10;
@@ -263,6 +264,7 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
       // 장기요양보험 (월보수액의 0.4591%)
       longTermCareInsurance = Math.floor(taxableIncome * 0.004591/10)*10;
     }
+    
     // 고용보험 (과세소득의 0.9%)
     const employmentInsuranceBase = taxableIncome;
     employmentInsurance = Math.floor(employmentInsuranceBase * 0.009/10)*10;
@@ -271,11 +273,13 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
     // ***** 두루누리 공제 *****
     if (regulData.durunuri > 0) {
       let reducedPensionIns = Math.floor(nationalPension * (1 - regulData.durunuri / 100)/10)*10;
-      if(reducedPensionIns > 82800) reducedPensionIns = 82800;
+      if(pensionBase >= 2300000 ) reducedPensionIns = 82800;
+      console.log(reducedPensionIns)
       nationalPension = nationalPension - reducedPensionIns;
       
       let reducedEmploymentIns = Math.floor(employmentReductionBase/100/10)*10;
-      if (reducedEmploymentIns > 16560) reducedEmploymentIns = 16560;
+      if (employmentReductionBase >= 2300000) reducedEmploymentIns = 16560;
+      console.log(reducedEmploymentIns)
       employmentInsurance = employmentInsurance - reducedEmploymentIns;
     }
 
