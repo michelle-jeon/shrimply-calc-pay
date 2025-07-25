@@ -28,7 +28,8 @@ export default function PayslipInfo({isOpen,onClose,onSubmit,workerType}: Paysli
     payMonth: '',
     payDay: '',
     workerCountType: '4인 이하',
-  })
+  });
+  const [isValid, setIsValid] = useState(false);
 
    // 현재 날짜 정보
   const today = new Date();
@@ -148,6 +149,20 @@ export default function PayslipInfo({isOpen,onClose,onSubmit,workerType}: Paysli
     
     return days;
   };
+
+  //값 변경 시마다 validation
+  useEffect(() => {
+    const isAllValid =
+      payslipInfo.companyName.trim() !== '' &&
+      payslipInfo.workerName.trim() !== '' &&
+      payslipInfo.workYear !== '' &&
+      payslipInfo.workMonth !== '' &&
+      payslipInfo.payYear !== '' &&
+      payslipInfo.payMonth !== '' &&
+      payslipInfo.payDay !== '';
+
+    setIsValid(isAllValid);
+  }, [payslipInfo]);
 
   //근무 연도 변경 : 월 초기화, 지급일 검증
   const handleWorkYearChange =(newYear:string)=>{
@@ -356,10 +371,8 @@ export default function PayslipInfo({isOpen,onClose,onSubmit,workerType}: Paysli
           </button>
           <button
             onClick={handleSubmit}
-            className={`flex-1 py-4 rounded-lg text-white font-medium text-lg transition-all duration-200 ${
-              payslipInfo.companyName && payslipInfo.workerName && payslipInfo.workYear && payslipInfo.workMonth && payslipInfo.payYear && payslipInfo.payMonth && payslipInfo.payDay
-                ? 'bg-orange-500 hover:bg-orange-600'
-                : 'bg-gray-300 cursor-not-allowed'
+            disabled={!isValid}
+            className={`flex-1 py-4 rounded-lg text-white font-medium text-lg transition-all duration-200 ${isValid? 'bg-orange-500 hover:bg-orange-600': 'bg-gray-300 cursor-not-allowed'
             }`}
           >
             만들기
