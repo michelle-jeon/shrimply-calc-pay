@@ -102,13 +102,15 @@ export const InsuranceRow = styled.div`
   gap: 1rem;
 `;
 
-export const InsuranceLabel = styled.label`
+export const InsuranceLabel = styled.label<{
+  $isChecked?: boolean;
+}>`
   display: flex;
   align-items: center;
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
   cursor: pointer;
-  background-color: ${({ checked }) => (checked ? '#D1D5DB' : '#F3F4F6')};
+  background-color: ${({ $isChecked }) => ($isChecked ? '#D1D5DB' : '#F3F4F6')};
 `;
 
 export const Checkbox = styled.input`

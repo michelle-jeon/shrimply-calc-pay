@@ -3,6 +3,11 @@ import { RegularCalcData } from '../CalculatorSection/CalculatorSection';
 import * as S from './Calculators.styles';
 import * as RS from './RegularCalc.styles';
 
+type RegularCalcProps = {
+  onDataChange: (data: RegularCalcData) => void;
+  selectedTab: string;
+};
+
 export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps) {
   const allowanceData = {
     nonTaxable: [
@@ -309,7 +314,7 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
           <RS.SectionTitle>기준소득월액</RS.SectionTitle>
           <RS.InsuranceLabel
             htmlFor="healthInsuranceExempt"
-            checked={isHealthInsuranceJoin}
+            $isChecked={isHealthInsuranceJoin}
           >
             <RS.Checkbox
               type="checkbox"

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import CalculatorSection from "../components/CalculatorSection/CalculatorSection";
 import CalculatorTabs from "../components/CalculatorTabs/CalculatorTabs";
 import Header from "../components/Header/Header";
