@@ -1,3 +1,5 @@
+import * as S from './PayslipView.styles';
+
 type CalcResultData = {
   type: string;
   totSalary: number;
@@ -59,241 +61,235 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4 sm:p-6 bg-white">
+    <S.PayslipContainer>
       {/* 급여명세서 헤더 */}
-      <div className="text-center mb-8">
-        <h1 className="text-2xl font-bold text-gray-800 mb-6">
+      <S.Header>
+        <S.Title>
           {payslipInfo.workYear}년 {payslipInfo.workMonth}월 임금명세서
-        </h1>
+        </S.Title>
         
         {/* 기본 정보 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-          <div className="flex justify-between items-center">
-            <span className="text-gray-600 font-medium">업무대상</span>
-            <span className="text-gray-800 font-semibold">{payslipInfo.companyName}</span>
-          </div>
-          <div className="flex justify-between items-center">
-            <span className="text-gray-600 font-medium">직원</span>
-            <span className="text-gray-800 font-semibold">{payslipInfo.workerName}</span>
-          </div>
-          <div className="flex justify-between items-center">
-            <span className="text-gray-600 font-medium">지급일</span>
-            <span className="text-gray-800 font-semibold">
+        <S.InfoGrid>
+          <S.InfoRow>
+            <S.InfoLabel>업무대상</S.InfoLabel>
+            <S.InfoValue>{payslipInfo.companyName}</S.InfoValue>
+          </S.InfoRow>
+          <S.InfoRow>
+            <S.InfoLabel>직원</S.InfoLabel>
+            <S.InfoValue>{payslipInfo.workerName}</S.InfoValue>
+          </S.InfoRow>
+          <S.InfoRow>
+            <S.InfoLabel>지급일</S.InfoLabel>
+            <S.InfoValue>
               {payslipInfo.payYear}년 {payslipInfo.payMonth}월 {payslipInfo.payDay}일
-            </span>
-          </div>
-        </div>
-      </div>
+            </S.InfoValue>
+          </S.InfoRow>
+        </S.InfoGrid>
+      </S.Header>
 
       {/* 실수령액 */}
-      <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
-        <div className="flex justify-between items-center">
-          <span className="text-xl font-bold text-gray-800">실수령액</span>
-          <span className="text-2xl font-bold text-green-600">
+      <S.NetSalarySection>
+        <S.NetSalaryRow>
+          <S.NetSalaryLabel>실수령액</S.NetSalaryLabel>
+          <S.NetSalaryAmount>
             {formatNumber(Math.round(result.netSalary))} 원
-          </span>
-        </div>
-      </div>
+          </S.NetSalaryAmount>
+        </S.NetSalaryRow>
+      </S.NetSalarySection>
 
       {/* 지급 및 공제 내역 */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+      <S.DetailsGrid>
         {/* 지급합계 */}
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-          <h3 className="text-lg font-bold text-blue-800 mb-4 text-center">지급합계</h3>
-          <div className="space-y-3">
+        <S.DetailCard>
+          <S.DetailTitle>지급합계</S.DetailTitle>
+          <S.DetailList>
             {result.type === "상용직" ? (
               <>
                 {result.baseSalary && (
-                  <div className="flex justify-between items-center py-2">
-                    <span className="text-gray-700">기본급</span>
-                    <span className="font-semibold text-blue-600">
+                  <S.DetailRow>
+                    <S.DetailLabel>기본급</S.DetailLabel>
+                    <S.DetailAmount>
                       {formatNumber(result.baseSalary)} 원
-                    </span>
-                  </div>
+                    </S.DetailAmount>
+                  </S.DetailRow>
                 )}
                 {result.allowance?.mealAllowance && (
-                  <div className="flex justify-between items-center py-2">
-                    <span className="text-gray-700">식대</span>
-                    <span className="font-semibold text-blue-600">
+                  <S.DetailRow>
+                    <S.DetailLabel>식대</S.DetailLabel>
+                    <S.DetailAmount>
                       {formatNumber(result.allowance.mealAllowance)} 원
-                    </span>
-                  </div>
+                    </S.DetailAmount>
+                  </S.DetailRow>
                 )}
                 {result.allowance?.vehicleAllowance && (
-                  <div className="flex justify-between items-center py-2">
-                    <span className="text-gray-700">차량수당</span>
-                    <span className="font-semibold text-blue-600">
+                  <S.DetailRow>
+                    <S.DetailLabel>차량수당</S.DetailLabel>
+                    <S.DetailAmount>
                       {formatNumber(result.allowance.vehicleAllowance)} 원
-                    </span>
-                  </div>
+                    </S.DetailAmount>
+                  </S.DetailRow>
                 )}
                 {result.allowance?.productionOverTimeAllowance && (
-                  <div className="flex justify-between items-center py-2">
-                    <span className="text-gray-700">연장근로수당</span>
-                    <span className="font-semibold text-blue-600">
+                  <S.DetailRow>
+                    <S.DetailLabel>연장근로수당</S.DetailLabel>
+                    <S.DetailAmount>
                       {formatNumber(result.allowance.productionOverTimeAllowance)} 원
-                    </span>
-                  </div>
+                    </S.DetailAmount>
+                  </S.DetailRow>
                 )}
                 {result.allowance?.childcareAllowance && (
-                  <div className="flex justify-between items-center py-2">
-                    <span className="text-gray-700">육아수당</span>
-                    <span className="font-semibold text-blue-600">
+                  <S.DetailRow>
+                    <S.DetailLabel>육아수당</S.DetailLabel>
+                    <S.DetailAmount>
                       {formatNumber(result.allowance.childcareAllowance)} 원
-                    </span>
-                  </div>
+                    </S.DetailAmount>
+                  </S.DetailRow>
                 )}
                 {result.allowance?.researchAllowance && (
-                  <div className="flex justify-between items-center py-2">
-                    <span className="text-gray-700">연구수당</span>
-                    <span className="font-semibold text-blue-600">
+                  <S.DetailRow>
+                    <S.DetailLabel>연구수당</S.DetailLabel>
+                    <S.DetailAmount>
                       {formatNumber(result.allowance.researchAllowance)} 원
-                    </span>
-                  </div>
+                    </S.DetailAmount>
+                  </S.DetailRow>
                 )}
                 {result.allowance?.bonusAllowance && (
-                  <div className="flex justify-between items-center py-2">
-                    <span className="text-gray-700">상여수당</span>
-                    <span className="font-semibold text-blue-600">
+                  <S.DetailRow>
+                    <S.DetailLabel>상여수당</S.DetailLabel>
+                    <S.DetailAmount>
                       {formatNumber(result.allowance.bonusAllowance)} 원
-                    </span>
-                  </div>
+                    </S.DetailAmount>
+                  </S.DetailRow>
                 )}
                 {result.allowance?.positionAllowance && (
-                  <div className="flex justify-between items-center py-2">
-                    <span className="text-gray-700">직책수당</span>
-                    <span className="font-semibold text-blue-600">
+                  <S.DetailRow>
+                    <S.DetailLabel>직책수당</S.DetailLabel>
+                    <S.DetailAmount>
                       {formatNumber(result.allowance.positionAllowance)} 원
-                    </span>
-                  </div>
+                    </S.DetailAmount>
+                  </S.DetailRow>
                 )}
                 {result.allowance?.annualLeaveAllowance && (
-                  <div className="flex justify-between items-center py-2">
-                    <span className="text-gray-700">연차수당</span>
-                    <span className="font-semibold text-blue-600">
+                  <S.DetailRow>
+                    <S.DetailLabel>연차수당</S.DetailLabel>
+                    <S.DetailAmount>
                       {formatNumber(result.allowance.annualLeaveAllowance)} 원
-                    </span>
-                  </div>
+                    </S.DetailAmount>
+                  </S.DetailRow>
                 )}
                 {result.allowance?.overTimeAllowance && (
-                  <div className="flex justify-between items-center py-2">
-                    <span className="text-gray-700">연장근로수당</span>
-                    <span className="font-semibold text-blue-600">
+                  <S.DetailRow>
+                    <S.DetailLabel>연장근로수당</S.DetailLabel>
+                    <S.DetailAmount>
                       {formatNumber(result.allowance.overTimeAllowance)} 원
-                    </span>
-                  </div>
+                    </S.DetailAmount>
+                  </S.DetailRow>
                 )}
                 {result.allowance?.holidayAllowance && (
-                  <div className="flex justify-between items-center py-2">
-                    <span className="text-gray-700">휴일근로수당</span>
-                    <span className="font-semibold text-blue-600">
+                  <S.DetailRow>
+                    <S.DetailLabel>휴일근로수당</S.DetailLabel>
+                    <S.DetailAmount>
                       {formatNumber(result.allowance.holidayAllowance)} 원
-                    </span>
-                  </div>
+                    </S.DetailAmount>
+                  </S.DetailRow>
                 )}
                 {result.allowance?.nightAllowance && (
-                  <div className="flex justify-between items-center py-2">
-                    <span className="text-gray-700">야간근로수당</span>
-                    <span className="font-semibold text-blue-600">
+                  <S.DetailRow>
+                    <S.DetailLabel>야간근로수당</S.DetailLabel>
+                    <S.DetailAmount>
                       {formatNumber(result.allowance.nightAllowance)} 원
-                    </span>
-                  </div>
+                    </S.DetailAmount>
+                  </S.DetailRow>
                 )}
               </>
             ) : (
-              <div className="flex justify-between items-center py-2">
-                <span className="text-gray-700">지급액</span>
-                <span className="font-semibold text-blue-600">
+              <S.DetailRow>
+                <S.DetailLabel>지급액</S.DetailLabel>
+                <S.DetailAmount>
                   {formatNumber(result.totSalary)} 원
-                </span>
-              </div>
+                </S.DetailAmount>
+              </S.DetailRow>
             )}
-          </div>
-          <div className="border-t border-blue-300 mt-4 pt-4">
-            <div className="flex justify-between items-center">
-              <span className="text-lg font-bold text-blue-800">총 지급액</span>
-              <span className="text-lg font-bold text-blue-600">
+          </S.DetailList>
+          <S.TotalRow>
+            <S.InfoRow>
+              <S.TotalLabel>총 지급액</S.TotalLabel>
+              <S.TotalAmount>
                 {formatNumber(result.totSalary)} 원
-              </span>
-            </div>
-          </div>
-        </div>
+              </S.TotalAmount>
+            </S.InfoRow>
+          </S.TotalRow>
+        </S.DetailCard>
 
         {/* 공제합계 */}
-        <div className="bg-red-50 border border-red-200 rounded-lg p-6">
-          <h3 className="text-lg font-bold text-red-800 mb-4 text-center">공제합계</h3>
-          <div className="space-y-3">
-            <div className="flex justify-between items-center py-2">
-              <span className="text-gray-700">소득세</span>
-              <span className="font-semibold text-red-600">
+        <S.DetailCard $isDeduction>
+          <S.DetailTitle $isDeduction>공제합계</S.DetailTitle>
+          <S.DetailList>
+            <S.DetailRow>
+              <S.DetailLabel>소득세</S.DetailLabel>
+              <S.DetailAmount $isDeduction>
                 {formatNumber(Math.round(result.withholdingTax))} 원
-              </span>
-            </div>
-            <div className="flex justify-between items-center py-2">
-              <span className="text-gray-700">지방세</span>
-              <span className="font-semibold text-red-600">
+              </S.DetailAmount>
+            </S.DetailRow>
+            <S.DetailRow>
+              <S.DetailLabel>지방세</S.DetailLabel>
+              <S.DetailAmount $isDeduction>
                 {formatNumber(Math.round(result.localTax))} 원
-              </span>
-            </div>
+              </S.DetailAmount>
+            </S.DetailRow>
             {result.nationalPension && (
-              <div className="flex justify-between items-center py-2">
-                <span className="text-gray-700">국민연금</span>
-                <span className="font-semibold text-red-600">
+              <S.DetailRow>
+                <S.DetailLabel>국민연금</S.DetailLabel>
+                <S.DetailAmount $isDeduction>
                   {formatNumber(Math.round(result.nationalPension))} 원
-                </span>
-              </div>
+                </S.DetailAmount>
+              </S.DetailRow>
             )}
             {result.healthInsurance && (
-              <div className="flex justify-between items-center py-2">
-                <span className="text-gray-700">건강보험</span>
-                <span className="font-semibold text-red-600">
+              <S.DetailRow>
+                <S.DetailLabel>건강보험</S.DetailLabel>
+                <S.DetailAmount $isDeduction>
                   {formatNumber(Math.round(result.healthInsurance))} 원
-                </span>
-              </div>
+                </S.DetailAmount>
+              </S.DetailRow>
             )}
             {result.longTermCareInsurance && (
-              <div className="flex justify-between items-center py-2">
-                <span className="text-gray-700">장기요양보험</span>
-                <span className="font-semibold text-red-600">
+              <S.DetailRow>
+                <S.DetailLabel>장기요양보험</S.DetailLabel>
+                <S.DetailAmount $isDeduction>
                   {formatNumber(Math.round(result.longTermCareInsurance))} 원
-                </span>
-              </div>
+                </S.DetailAmount>
+              </S.DetailRow>
             )}
             {result.employmentInsurance && (
-              <div className="flex justify-between items-center py-2">
-                <span className="text-gray-700">고용보험</span>
-                <span className="font-semibold text-red-600">
+              <S.DetailRow>
+                <S.DetailLabel>고용보험</S.DetailLabel>
+                <S.DetailAmount $isDeduction>
                   {formatNumber(Math.round(result.employmentInsurance))} 원
-                </span>
-              </div>
+                </S.DetailAmount>
+              </S.DetailRow>
             )}
-          </div>
-          <div className="border-t border-red-300 mt-4 pt-4">
-            <div className="flex justify-between items-center">
-              <span className="text-lg font-bold text-red-800">총 공제액</span>
-              <span className="text-lg font-bold text-red-600">
+          </S.DetailList>
+          <S.TotalRow $isDeduction>
+            <S.InfoRow>
+              <S.TotalLabel $isDeduction>총 공제액</S.TotalLabel>
+              <S.TotalAmount $isDeduction>
                 {formatNumber(Math.round(getTotalDeduction()))} 원
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+              </S.TotalAmount>
+            </S.InfoRow>
+          </S.TotalRow>
+        </S.DetailCard>
+      </S.DetailsGrid>
 
       {/* 버튼들 */}
-      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-        <button
-          onClick={onBack}
-          className="flex-1 py-4 px-6 rounded-2xl text-gray-700 font-semibold text-lg bg-gray-200 hover:bg-gray-300 transition-all duration-200"
-        >
+      <S.ButtonContainer>
+        <S.BackButton onClick={onBack}>
           뒤로
-        </button>
-        <button
-          onClick={onDownload}
-          className="flex-1 py-4 px-6 rounded-2xl text-white font-semibold text-lg bg-orange-500 hover:bg-orange-600 transition-all duration-200"
-        >
+        </S.BackButton>
+        <S.DownloadButton onClick={onDownload}>
           저장하기
-        </button>
-      </div>
-    </div>
+        </S.DownloadButton>
+      </S.ButtonContainer>
+    </S.PayslipContainer>
   );
 }

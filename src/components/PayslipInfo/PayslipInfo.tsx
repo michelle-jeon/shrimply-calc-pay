@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import * as S from './PayslipInfo.styles';
+import * as RS from '../Calculators/RegularCalc.styles';
 
 export type PayslipInfoData = {
   companyName: string;
@@ -243,142 +245,125 @@ export default function PayslipInfo({isOpen,onClose,onSubmit,workerType}: Paysli
 
   //열림
   return (
-     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" onClick={onClose}>
-      <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4"
-      onClick={(e) => e.stopPropagation()}>
-        <div className="space-y-4 mb-6">
+     <S.ModalOverlay onClick={onClose}>
+      <S.ModalContent onClick={(e) => e.stopPropagation()}>
+        <S.InputSection>
           {/* 사업장명 */}
-          <div className="flex gap-5 items-center">
-            <label className="block text-sm font-medium text-gray-700 w-20  text-left">
-              사업장명 <span className="text-red-500">*</span>
-            </label>
-            <input
+          <S.InputRow>
+            <S.Label className="required">
+              사업장명
+            </S.Label>
+            <S.Input
               type="text"
               value={payslipInfo.companyName}
               onChange={(e) => setPayslipInfo({...payslipInfo, companyName: e.target.value})}
               placeholder="사업장명을 입력해주세요"
-              className="grow px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
-          </div>
+          </S.InputRow>
 
           {/* 소득자명 */}
-          <div className="flex gap-5 items-center">
-            <label className="block text-sm font-medium text-gray-700 w-20 text-left">
-              소득자명 <span className="text-red-500">*</span>
-            </label>
-            <input
+          <S.InputRow>
+            <S.Label className="required">
+              소득자명
+            </S.Label>
+            <S.Input
               type="text"
               value={payslipInfo.workerName}
               onChange={(e) => setPayslipInfo({...payslipInfo, workerName: e.target.value})}
               placeholder="소득자명을 입력해주세요"
-              className="grow px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
-          </div>
+          </S.InputRow>
           {/* 상시근로자수 */}
           {workerType === '상용직' && (
-            <div className="flex gap-5 items-center">
-              <label className="block text-sm font-medium text-gray-700 w-20 text-left">상시 근로자수</label>
-              <div className="flex grow bg-gradient-to-r from-[#ed8e5f33] h-9 relative rounded-lg to-50% to-[#0220470d]">
+            <S.InputRow>
+              <S.Label>상시 근로자수</S.Label>
+              <RS.ToggleButtonContainer>
                 {["4인 이하","5인 이상"].map((value, idx)=>(
-                  <button
+                  <RS.ToggleButton
                     key={idx}
                     onClick={() => setPayslipInfo({ ...payslipInfo, workerCountType: value as '4인 이하' | '5인 이상' })}
-                    className={`px-3 py-1 text-sm rounded m-1 grow ${
-                      payslipInfo.workerCountType === value
-                        ? 'bg-white text-orange-600'
-                        : 'text-gray-400 hover:text-gray-600'
-                    }`}
+                    $isActive={payslipInfo.workerCountType === value}
                   >
                     {value}
-                  </button>
+                  </RS.ToggleButton>
                 ))}
-              </div>
-            </div>
+              </RS.ToggleButtonContainer>
+            </S.InputRow>
           )}
 
           {/* 근무년월 */}
-          <div className="flex gap-5 items-center">
-            <label className="block text-sm font-medium text-gray-700 w-20 text-left">근무년월</label>
+          <S.InputRow>
+            <S.Label>근무년월</S.Label>
             <div className="flex space-x-2">
-              <select
+              <S.Select
                 value={payslipInfo.workYear}
                 onChange={(e) => handleWorkYearChange(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">선택</option>
                 {getAvailableYears().map(year => (
                   <option key={year} value={year}>{year}년</option>
                 ))}
-              </select>
-              <select
+              </S.Select>
+              <S.Select
                 value={payslipInfo.workMonth}
                 onChange={(e)=>handleWorkMonthChange(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">선택</option>
                 {getAvailableMonths(payslipInfo.workYear).map(month => (
                   <option key={month} value={month}>{month}월</option>
                 ))}
-              </select>
+              </S.Select>
             </div>
-          </div>
+          </S.InputRow>
 
           {/* 지급일 */}
-          <div className="flex gap-5 items-center">
-            <label className="block text-sm font-medium text-gray-700 w-20 text-left">지급일</label>
+          <S.InputRow>
+            <S.Label>지급일</S.Label>
             <div className="flex space-x-2">
-              <select
+              <S.Select
                 value={payslipInfo.payYear}
                 onChange={(e)=>handlePayYearChange(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">선택</option>
                 {getAvailablePayYears().map(year => (
                   <option key={year} value={year}>{year}년</option>
                 ))}
-              </select>
-              <select
+              </S.Select>
+              <S.Select
                 value={payslipInfo.payMonth}
                 onChange={(e)=>handlePayMonthChange(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">월 선택</option>
                 {getAvailablePayMonths(payslipInfo.payYear).map(month => (
                   <option key={month} value={month}>{month}월</option>
                 ))}
-              </select>
-              <select
+              </S.Select>
+              <S.Select
                 value={payslipInfo.payDay}
                 onChange={(e)=>handlePayDayChange(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">일 선택</option>
                 {getAvailableDays(payslipInfo.payYear, payslipInfo.payMonth).map(day => (
                   <option key={day} value={day}>{day}일</option>
                 ))}
-              </select>
+              </S.Select>
             </div>
-          </div>
-        </div>
+          </S.InputRow>
+        </S.InputSection>
 
         {/* 버튼들 */}
-        <div className="flex space-x-3">
-          <button
-            onClick={onClose}
-            className="flex-1 py-4 rounded-lg text-gray-700 font-medium text-lg border border-gray-300 hover:bg-gray-50 transition-all duration-200"
-          >
+        <S.ButtonContainer>
+          <S.CloseButton onClick={onClose}>
             뒤로
-          </button>
-          <button
+          </S.CloseButton>
+          <S.SubmitButton
             onClick={handleSubmit}
             disabled={!isValid}
-            className={`flex-1 py-4 rounded-lg text-white font-medium text-lg transition-all duration-200 ${isValid? 'bg-orange-500 hover:bg-orange-600': 'bg-gray-300 cursor-not-allowed'
-            }`}
           >
             만들기
-          </button>
-        </div>
-      </div>
-    </div>
+          </S.SubmitButton>
+        </S.ButtonContainer>
+      </S.ModalContent>
+    </S.ModalOverlay>
   )
 }

@@ -6,6 +6,8 @@ import CalcaulationResult from "../CalculationResult/CalculationResult";
 import PayslipView from "../PayslipView/PayslipView";
 import { PayslipInfoData } from "../PayslipInfo/PayslipInfo";
 import taxTableJson from '../../data/taxTable.json';
+import * as S from './CalculatorSection.styles';
+
 const taxTable: TaxRow[] = taxTableJson;
 
 type CalculatorSectionProps = {
@@ -365,26 +367,18 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
     }
   };
   return (
-    <div className="bg-[#ffffff] relative rounded-2xl w-full max-w-[800px] p-8">
-      <p className="text-14 font-bold text-left text-gray-900 mb-7">세후 급여 계산기</p>
+    <S.SectionContainer>
+      <S.SectionTitle>세후 급여 계산기</S.SectionTitle>
       {/* 메인 컨텐츠 영역 */}
       {currentScreen === 'calculator' && (
         <>
           {renderCalculatorInput()}
-          <button
+          <S.CalculateButton
             onClick={calculateAsType}
             disabled={!isButtonEnabled || isCalculating}
-            className={`w-full py-3 rounded-xl text-white font-medium text-lg mt-6 transition-all duration-200 ${
-              isButtonEnabled && !isCalculating
-                ? 'bg-orange-500 hover:bg-orange-600 cursor-pointer'
-                : 'bg-gray-300 cursor-not-allowed'
-            }`}
-            style={{
-              cursor: !isButtonEnabled || isCalculating ? 'default' : 'pointer',
-            }}
           >
             {isCalculating ? '계산 중...' : '계산하기'}
-          </button>
+          </S.CalculateButton>
         </>
       )}
 
@@ -404,6 +398,6 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
         onDownload={handlePayslipDownload}
         />
       )}
-    </div>
+    </S.SectionContainer>
   )
 }

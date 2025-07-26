@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PayslipInfo, { PayslipInfoData } from "../PayslipInfo/PayslipInfo";
+import * as S from './CalculationResult.styles';
 
 type CalcResultData = {
   type: string;
@@ -65,45 +66,45 @@ export default function CalcaulationResult ({ result, onRecalculate,onShowPaysli
   }
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4 sm:p-6 bg-white">
+    <S.ResultContainer>
       <div>
         {/* 실수령액 */}
-        <div className="mb-6">
-          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 pb-6 border-b border-gray-200">
-            <span className="text-lg font-bold text-gray-800">실수령액</span>
-            <span className="text-lg font-bold text-green-500">
+        <S.NetSalarySection>
+          <S.NetSalaryRow>
+            <S.NetSalaryLabel>실수령액</S.NetSalaryLabel>
+            <S.NetSalaryAmount>
               {formatNumber(Math.round(result.netSalary))} 원
-            </span>
-          </div>
-        </div>
+            </S.NetSalaryAmount>
+          </S.NetSalaryRow>
+        </S.NetSalarySection>
 
         {/* 지급합계/공제합계 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 mb-4">
-          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 pb-4 border-b border-gray-200">
-            <span className="text-base font-semibold text-gray-500">지급합계</span>
-            <span className="text-base font-bold text-red-500">
+        <S.SummarySection>
+          <S.SummaryRow>
+            <S.SummaryLabel>지급합계</S.SummaryLabel>
+            <S.SummaryAmount>
               {formatNumber(result.totSalary)} 원
-            </span>
-          </div>
+            </S.SummaryAmount>
+          </S.SummaryRow>
           
-          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 pb-4 border-b border-gray-200">
-            <span className="text-base font-semibold text-gray-500">공제합계</span>
-            <span className="text-base font-bold text-blue-500">
+          <S.SummaryRow>
+            <S.SummaryLabel>공제합계</S.SummaryLabel>
+            <S.SummaryAmount $isDeduction>
               {formatNumber(Math.round(getTotalDeduction()))} 원
-            </span>
-          </div>
-        </div>
+            </S.SummaryAmount>
+          </S.SummaryRow>
+        </S.SummarySection>
 
         {/* 상용직인 경우 상세 내역 표시 */}
         {result.type === "상용직" && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <S.DetailsGrid>
             {/* 지급 내역 */}
-            <div className="space-y-3">
+            <S.DetailSection>
               {result.baseSalary && (
-                <div className="flex justify-between items-center py-2 text-base text-gray-700">
-                  <span className="">기본급</span>
-                  <span className="">{formatNumber(result.baseSalary)} 원</span>
-                </div>
+                <S.DetailRow>
+                  <span>기본급</span>
+                  <span>{formatNumber(result.baseSalary)} 원</span>
+                </S.DetailRow>
               )}
               {result.allowance &&
                 [
@@ -122,104 +123,95 @@ export default function CalcaulationResult ({ result, onRecalculate,onShowPaysli
                   const value = result.allowance?.[key as keyof typeof result.allowance];
                   if (value !== undefined && value > 0) {
                     return (
-                      <div
-                        key={key}
-                        className="flex justify-between items-center py-2 text-base text-gray-700"
-                      >
+                      <S.DetailRow key={key}>
                         <span>{label}</span>
                         <span>{formatNumber(value)} 원</span>
-                    </div>
+                    </S.DetailRow>
                   );
                 }
                 return null;
               })}
-            </div>
+            </S.DetailSection>
             
             {/* 공제 내역 */}
-            <div className="space-y-3">
-              <div className="flex justify-between items-center py-2 text-base text-gray-700">
-                <span className="">소득세</span>
-                <span className="">{formatNumber(Math.round(result.withholdingTax))} 원</span>
-              </div>
-              <div className="flex justify-between items-center py-2 text-base text-gray-700">
-                <span className="">지방세</span>
-                <span className="">{formatNumber(Math.round(result.localTax))} 원</span>
-              </div>
+            <S.DetailSection>
+              <S.DetailRow>
+                <span>소득세</span>
+                <span>{formatNumber(Math.round(result.withholdingTax))} 원</span>
+              </S.DetailRow>
+              <S.DetailRow>
+                <span>지방세</span>
+                <span>{formatNumber(Math.round(result.localTax))} 원</span>
+              </S.DetailRow>
               {result.nationalPension !== undefined && (
-                <div className="flex justify-between items-center py-2 text-base text-gray-700">
-                  <span className="">국민연금</span>
-                  <span className="">{formatNumber(Math.round(result.nationalPension))} 원</span>
-                </div>
+                <S.DetailRow>
+                  <span>국민연금</span>
+                  <span>{formatNumber(Math.round(result.nationalPension))} 원</span>
+                </S.DetailRow>
               )}
               {result.healthInsurance !== undefined && (
-                <div className="flex justify-between items-center py-2 text-base text-gray-700">
-                  <span className="">건강보험</span>
-                  <span className="">{formatNumber(Math.round(result.healthInsurance))} 원</span>
-                </div>
+                <S.DetailRow>
+                  <span>건강보험</span>
+                  <span>{formatNumber(Math.round(result.healthInsurance))} 원</span>
+                </S.DetailRow>
               )}
               {result.longTermCareInsurance !== undefined && (
-                <div className="flex justify-between items-center py-2 text-base text-gray-700">
-                  <span className="">장기요양보험</span>
-                  <span className="">{formatNumber(Math.round(result.longTermCareInsurance))} 원</span>
-                </div>
+                <S.DetailRow>
+                  <span>장기요양보험</span>
+                  <span>{formatNumber(Math.round(result.longTermCareInsurance))} 원</span>
+                </S.DetailRow>
               )}
               {result.employmentInsurance !== undefined && (
-                <div className="flex justify-between items-center py-2 text-base text-gray-700">
-                  <span className="">고용보험</span>
-                  <span className="">{formatNumber(Math.round(result.employmentInsurance))} 원</span>
-                </div>
+                <S.DetailRow>
+                  <span>고용보험</span>
+                  <span>{formatNumber(Math.round(result.employmentInsurance))} 원</span>
+                </S.DetailRow>
               )}
-            </div>
-          </div>
+            </S.DetailSection>
+          </S.DetailsGrid>
         )}
 
         {/* 프리랜서/일용직인 경우 간단한 내역 */}
         {(result.type === "프리랜서" || result.type === "일용직") && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+          <S.DetailsGrid>
             {/* 지급 내역 */}
-            <div className="space-y-3">
-              <div className="flex justify-between items-center py-2 text-base text-gray-700">
-                <span className="">지급액</span>
-                <span className="">{formatNumber(result.totSalary)} 원</span>
-              </div>
-            </div>
+            <S.DetailSection>
+              <S.DetailRow>
+                <span>지급액</span>
+                <span>{formatNumber(result.totSalary)} 원</span>
+              </S.DetailRow>
+            </S.DetailSection>
             
             {/* 공제 내역 */}
-            <div className="space-y-3">
-              <div className="flex justify-between items-center py-2 text-base text-gray-700">
-                <span className="">소득세</span>
-                <span className="">{formatNumber(Math.round(result.withholdingTax))} 원</span>
-              </div>
-              <div className="flex justify-between items-center py-2 text-base text-gray-700">
-                <span className="">지방세</span>
-                <span className="">{formatNumber(Math.round(result.localTax))} 원</span>
-              </div>
+            <S.DetailSection>
+              <S.DetailRow>
+                <span>소득세</span>
+                <span>{formatNumber(Math.round(result.withholdingTax))} 원</span>
+              </S.DetailRow>
+              <S.DetailRow>
+                <span>지방세</span>
+                <span>{formatNumber(Math.round(result.localTax))} 원</span>
+              </S.DetailRow>
               {result.employmentInsurance !== undefined && (
-                <div className="flex justify-between items-center py-2 text-base text-gray-700">
-                  <span className="">고용보험</span>
-                  <span className="">{formatNumber(Math.round(result.employmentInsurance))} 원</span>
-                </div>
+                <S.DetailRow>
+                  <span>고용보험</span>
+                  <span>{formatNumber(Math.round(result.employmentInsurance))} 원</span>
+                </S.DetailRow>
               )}
-            </div>
-          </div>
+            </S.DetailSection>
+          </S.DetailsGrid>
         )}
       </div>
 
       {/* 버튼들 */}
-      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8">
-        <button
-          onClick={onRecalculate}
-          className="flex-1 py-4 px-6 rounded-2xl text-gray-700 font-semibold text-lg bg-gray-200 hover:bg-gray-300 transition-all duration-200"
-        >
+      <S.ButtonContainer>
+        <S.RecalculateButton onClick={onRecalculate}>
           다시 계산하기
-        </button>
-        <button
-          onClick={handlePayslipClick}
-          className="flex-1 py-4 px-6 rounded-2xl text-white font-semibold text-lg bg-orange-500 hover:bg-orange-600 transition-all duration-200"
-        >
+        </S.RecalculateButton>
+        <S.PayslipButton onClick={handlePayslipClick}>
           임금명세서
-        </button>
-      </div>
+        </S.PayslipButton>
+      </S.ButtonContainer>
       {/*  */}
       <PayslipInfo 
         isOpen={payslipOpen}
@@ -227,6 +219,6 @@ export default function CalcaulationResult ({ result, onRecalculate,onShowPaysli
         onSubmit={handlePayslipInfoSubmit}
         workerType={result.type}
       />
-    </div>
+    </S.ResultContainer>
   )
 }

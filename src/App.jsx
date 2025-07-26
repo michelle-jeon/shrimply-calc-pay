@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './App.css'
+import * as S from './App.styles'
 import './styles/global.css'
 import Home from './pages/Home'
 import { createBrowserRouter } from 'react-router-dom'
@@ -8,9 +8,9 @@ import { createBrowserRouter } from 'react-router-dom'
 
 function App() {
   return (
-    <>
+    <S.AppContainer>
       <Home />
-    </>
+    </S.AppContainer>
   )
 }
 

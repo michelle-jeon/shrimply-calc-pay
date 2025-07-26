@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import * as S from './Calculators.styles';
 
 type FreeCalcProps = {
   onDataChange: (data: {amount: number; isValid: boolean}) => void;
@@ -33,28 +34,27 @@ export default function FreeCalc({onDataChange, selectedTab}:FreeCalcProps) {
   },[amount, isValid, onDataChange]);
 
   return (
-    <div className='text-left pb-4'>
-      <div className="flex w-full items-center space-x-4">
-        <label className='text-gray-700 font-semibold'>
-          지급액 <span className="text-red-500">*</span>
-        </label>
-        <div className="flex grow items-center border border-gray-300 rounded-md px-3 py-2">
-          <input 
+    <S.CalculatorContainer>
+      <S.InputRow>
+        <S.Label className='required'>
+          지급액
+        </S.Label>
+        <S.InputWrapper>
+          <S.Input 
             type="text"
-            className='grow text-right w-full focus:outline-none'
             value={amount}
             onChange={handleAmountChange}
             placeholder='0'
           />
-          <span className="ml-2 text-gray-500">원</span>
-        </div>
-      </div>
+          <S.CurrencyLabel>원</S.CurrencyLabel>
+        </S.InputWrapper>
+      </S.InputRow>
       {amount && !isValid && (
-        <p className="">
+        <S.ErrorMessage>
           1원 이상 입력해주세요.
-        </p>
+        </S.ErrorMessage>
       )}
-    </div>
+    </S.CalculatorContainer>
   );
 }
 

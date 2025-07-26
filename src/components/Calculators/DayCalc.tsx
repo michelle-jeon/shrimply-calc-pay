@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import * as S from './Calculators.styles';
 
 type DayCalcProps = {
   onDataChange: (data: {amount: number; workingDays:number; isValid: boolean}) => void;
@@ -36,42 +37,40 @@ export default function DayCalc({onDataChange, selectedTab}:DayCalcProps) {
   },[amount, workingDays, isValid, onDataChange]);
 
   return (
-    <div className='text-left pb-4'>
-      <div className="flex w-full items-center space-x-4">
-        <label className='text-gray-700 font-semibold' style={{'width':'60px'}}>
-          지급액 <span className="text-red-500">*</span>
-        </label>
-        <div className="flex grow items-center border border-gray-300 rounded-md px-3 py-2">
-          <input 
+    <S.CalculatorContainer>
+      <S.InputRow>
+        <S.Label className='required'>
+          지급액
+        </S.Label>
+        <S.InputWrapper>
+          <S.Input 
             type="text"
-            className='grow text-right w-full focus:outline-none'
             value={amount}
             onChange={handleAmountChange}
             placeholder='0'
           />
-          <span className="ml-2 text-gray-500">원</span>
-        </div>
-      </div>
-      <div className="flex w-full items-center space-x-4">
-        <label className='text-gray-700 font-semibold' style={{'width':'60px'}}>근무일수</label>
-        <select 
+          <S.CurrencyLabel>원</S.CurrencyLabel>
+        </S.InputWrapper>
+      </S.InputRow>
+      <S.InputRow>
+        <S.Label>근무일수</S.Label>
+        <S.Select 
           value={workingDays}
           onChange={(e)=>setWorkingDays(parseInt(e.target.value))}
-          className='border border-gray-300 flex grow text-right rounded-md px-3 py-2 mt-1'
         >
           <option value="{0}">선택</option>
           {[...Array(31)].map((_, i)=>(
               <option key={i+1} value={i+1}>{i+1}일</option>
             ))
           }
-        </select>
-      </div>
+        </S.Select>
+      </S.InputRow>
       {amount && !isValid && (
-        <p className="">
+        <S.ErrorMessage>
           1원 이상 입력해주세요.
-        </p>
+        </S.ErrorMessage>
       )}
-    </div>
+    </S.CalculatorContainer>
   );
 }
 

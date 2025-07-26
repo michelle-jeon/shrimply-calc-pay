@@ -1,12 +1,13 @@
 import logo from '../../assets/images/shrimply_logo_color.svg';
+import * as S from './Header.styles';
 
 export default function Header () {
   return (
-    <header className='mb-10 pt-6'>
-      <div className='flex items-center justify-center' >
-        <img src={logo} alt="" style={{"width":'150px'}}/>
-      </div>
-      <p className='text-xs mt-2'style={{"color":'#EF6878'}}>세후 급여 계산기</p>
-    </header>
+    <S.HeaderContainer>
+      <S.LogoContainer>
+        <S.Logo src={logo} alt="" />
+      </S.LogoContainer>
+      <S.Subtitle>세후 급여 계산기</S.Subtitle>
+    </S.HeaderContainer>
   )
 }

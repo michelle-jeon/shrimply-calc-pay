@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
 import { RegularCalcData } from '../CalculatorSection/CalculatorSection';
-
-type RegularCalcProps = {
-  onDataChange: (data: RegularCalcData) => void;
-  selectedTab: string;
-}
+import * as S from './Calculators.styles';
+import * as RS from './RegularCalc.styles';
 
 export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps) {
   const allowanceData = {
@@ -199,152 +196,130 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
   }, [amount, isValid, allowances, taxReduction, durunuri, isHealthInsuranceJoin, deductions, onDataChange]);
 
   return (
-    <div className='pb-4'>
+    <S.CalculatorContainer>
       {/* 기본급 */}
       <div className='text-left pb-3'>
-        <div className="flex w-full items-center space-x-4">
-          <label className='text-gray-700 font-semibold'>
-            기본급 <span className="text-red-500">*</span>
-          </label>
-          <div className="flex grow items-center border border-gray-300 rounded-md px-3 py-2">
-            <input 
+        <S.InputRow>
+          <S.Label className='required'>
+            기본급
+          </S.Label>
+          <S.InputWrapper>
+            <S.Input 
               type="text"
-              className='grow text-right w-full focus:outline-none'
               value={amount}
               onChange={handleAmountChange}
               placeholder='0'
             />
-            <span className="ml-2 text-gray-500">원</span>
-          </div>
-        </div>
+            <S.CurrencyLabel>원</S.CurrencyLabel>
+          </S.InputWrapper>
+        </S.InputRow>
         {amount && !isValid && (
-          <p className="pt-2 text-red-500">
+          <S.ErrorMessage>
             1원 이상 입력해주세요.
-          </p>
+          </S.ErrorMessage>
         )}
       </div>
       {/* 수당 */}
       <div className="flex flex-col md:flex-row md:space-x-10 text-left md:justify-between pb-3">
-        <div className='flex flex-col gap-5 grow pt-5'>
-          <span className="text-gray-400 font-semibold">비과세 수당</span>
+        <RS.AllowanceSection>
+          <RS.SectionTitle>비과세 수당</RS.SectionTitle>
           <div className="space-y-3">
             {allowanceData.nonTaxable.map((item) => (
-              <div key={item.key} className="flex items-center space-x-2">
-                <label className="text-sm text-gray-600 w-20 font-semibold">{item.label}</label>
-                <div className="flex-1 flex items-center border border-gray-300 rounded px-2 py-1">
-                  <input
+              <RS.AllowanceRow key={item.key}>
+                <RS.AllowanceLabel>{item.label}</RS.AllowanceLabel>
+                <S.InputWrapper>
+                  <S.Input
                     type="text"
-                    className="flex-1 text-right text-sm focus:outline-none"
                     value={allowances[item.key as keyof typeof allowances]}
                     onChange={(e) => handleAllowanceChange(item.key, e.target.value)}
                     placeholder={`${item.key === 'productionOvertime' ? '연 최대' : '최대'} ${formatNumber(item.max)}`}
                   />
-                  <span className="ml-1 text-xs text-gray-500">원</span>
-                </div>
-              </div>
+                  <S.CurrencyLabel>원</S.CurrencyLabel>
+                </S.InputWrapper>
+              </RS.AllowanceRow>
             ))}
           </div>
-        </div>
+        </RS.AllowanceSection>
         {/* 과세 수당 */}
-        <div className='flex flex-col gap-5 grow pt-5'>
-          <span className="text-gray-400 font-semibold">과세 수당</span>
+        <RS.AllowanceSection>
+          <RS.SectionTitle>과세 수당</RS.SectionTitle>
           <div className="space-y-3">
             {allowanceData.taxable.map((item) => (
-              <div key={item.key} className="flex items-center space-x-2">
-                <label className="text-sm text-gray-600 font-500 w-20 font-semibold">{item.label}</label>
-                <div className="flex-1 flex items-center border border-gray-300 rounded px-2 py-1">
-                  <input
+              <RS.AllowanceRow key={item.key}>
+                <RS.AllowanceLabel>{item.label}</RS.AllowanceLabel>
+                <S.InputWrapper>
+                  <S.Input
                     type="text"
-                    className="flex-1 text-right text-sm focus:outline-none"
                     value={allowances[item.key as keyof typeof allowances]}
                     onChange={(e) => handleAllowanceChange(item.key, e.target.value)}
                     placeholder="0"
                   />
-                  <span className="ml-1 text-xs text-gray-500">원</span>
-                </div>
-              </div>
+                  <S.CurrencyLabel>원</S.CurrencyLabel>
+                </S.InputWrapper>
+              </RS.AllowanceRow>
             ))}
           </div>
-        </div>
+        </RS.AllowanceSection>
       </div>
       {/* 지급합계 */}
-      <div className="flex justify-between items-center py-5 border-b border-gray-200">
-        <span className="text-lg font-bold text-gray-900">지급합계</span>
-        <span className="text-xl font-bold text-blue-600">
+      <RS.TotalAmountRow>
+        <RS.TotalAmountLabel>지급합계</RS.TotalAmountLabel>
+        <RS.TotalAmount>
           {formatNumber(calculateTotalAmount())} 원
-        </span>
-      </div>
+        </RS.TotalAmount>
+      </RS.TotalAmountRow>
       {/* 공제 */}
-      <div className="flex flex-col md:flex-row md:space-x-10 text-left pb-5 border-b border-gray-200">
+      <RS.DeductionSection>
         {/* 소득세 감면 */}
-        <div className="flex w-full items-center pt-5">
-          <label className="text-sm text-gray-600 w-20 font-semibold">소득세 감면</label>
-          <div className="flex grow bg-gradient-to-r from-[#ed8e5f33] h-9 relative rounded-lg to-50% to-[#0220470d]">
+        <RS.DeductionRow>
+          <RS.AllowanceLabel>소득세 감면</RS.AllowanceLabel>
+          <RS.ToggleButtonContainer>
             {[0, 30, 90].map((value) => (
-              <button
+              <RS.ToggleButton
                 key={value}
                 onClick={() => setTaxReduction(value)}
-                className={`px-3 py-1 text-sm rounded m-1 grow ${
-                  taxReduction === value
-                    ? 'bg-white text-orange-600'
-                    : 'text-gray-400 hover:text-gray-600'
-                }`}
+                $isActive={taxReduction === value}
               >
                 {value}%
-              </button>
+              </RS.ToggleButton>
             ))}
-          </div>
-        </div>
+          </RS.ToggleButtonContainer>
+        </RS.DeductionRow>
 
         {/* 두루누리 */}
-        <div className="flex w-full items-center pt-5">
-          <label className="text-sm text-gray-600 w-20 font-semibold">두루누리</label>
-          <div className="flex grow bg-gradient-to-r from-[#ed8e5f33] h-9 relative rounded-lg to-50% to-[#0220470d]">
+        <RS.DeductionRow>
+          <RS.AllowanceLabel>두루누리</RS.AllowanceLabel>
+          <RS.ToggleButtonContainer>
             {[0, 80].map((value) => (
-              <button
+              <RS.ToggleButton
                 key={value}
                 onClick={() => setDurunuri(value)}
-                className={`px-3 py-1 text-sm rounded m-1 grow ${
-                  durunuri === value
-                    ? 'bg-white text-orange-600'
-                    : 'text-gray-400 hover:text-gray-600'
-                }`}
+                $isActive={durunuri === value}
               >
                 {value}%
-              </button>
+              </RS.ToggleButton>
             ))}
-          </div>
-        </div>
-      </div>
+          </RS.ToggleButtonContainer>
+        </RS.DeductionRow>
+      </RS.DeductionSection>
       
       {/* 기준소득월액 */}
-      <div className="space-y-4 pt-5 text-left">
-        <div className="flex justify-between items-center space-x-4">
-          <span className="text-gray-400 font-semibold">기준소득월액</span>
-          <label
+      <RS.InsuranceContainer>
+        <RS.InsuranceRow>
+          <RS.SectionTitle>기준소득월액</RS.SectionTitle>
+          <RS.InsuranceLabel
             htmlFor="healthInsuranceExempt"
-            className={`
-              flex items-center px-2 py-1 rounded cursor-pointer
-              ${isHealthInsuranceJoin ? 'bg-gray-300' : 'bg-gray-100'}
-            `}
+            checked={isHealthInsuranceJoin}
           >
-            <input
+            <RS.Checkbox
               type="checkbox"
               id="healthInsuranceExempt"
               checked={isHealthInsuranceJoin}
               onChange={(e) => setIsHealthInsuranceJoin(e.target.checked)}
-              className="peer hidden"
             />
-            <div
-              className={`
-                w-5 h-5 rounded-full border-2
-                flex items-center justify-center
-                ${isHealthInsuranceJoin ? 'border-gray-400' : 'border-gray-300'}
-              `}
-            >
+            <RS.CheckboxIcon $isChecked={isHealthInsuranceJoin}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className={`w-3 h-3 ${isHealthInsuranceJoin ? 'text-gray-400' : 'text-gray-300'}`}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -352,46 +327,44 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
               </svg>
-            </div>
-            <span className={`ml-2 text-sm font-bold ${isHealthInsuranceJoin ? 'text-gray-500' : 'text-gray-400'}`}>
+            </RS.CheckboxIcon>
+            <RS.InsuranceText $isChecked={isHealthInsuranceJoin}>
               국민·건강보험 {isHealthInsuranceJoin ? '가입':'미가입'}
-            </span>
-          </label>
-        </div>
+            </RS.InsuranceText>
+          </RS.InsuranceLabel>
+        </RS.InsuranceRow>
 
         <div className="flex flex-col md:flex-row md:space-x-10 space-y-5 md:space-y-0 text-left">
           {/* 국민연금 */}
-          <div className="flex w-full items-center space-x-2">
-            <label className="text-sm text-gray-600 w-20 font-semibold">국민연금</label>
-            <div className="flex-1 flex items-center border border-gray-300 rounded px-2 py-1">
-              <input
+          <S.InputRow>
+            <RS.AllowanceLabel>국민연금</RS.AllowanceLabel>
+            <S.InputWrapper>
+              <S.Input
                 type="text"
-                className="flex-1 text-right text-sm focus:outline-none"
                 value={deductions.nationalPension}
                 onChange={(e) => handleDeductionChange('nationalPension', e.target.value)}
                 placeholder="0"
                 disabled={!isHealthInsuranceJoin}
               />
-              <span className="ml-1 text-xs text-gray-500">원</span>
-            </div>
-          </div>
+              <S.CurrencyLabel>원</S.CurrencyLabel>
+            </S.InputWrapper>
+          </S.InputRow>
 
           {/* 고용보험 */}
-          <div className="flex w-full items-center space-x-2">
-            <label className="text-sm text-gray-600 w-20 font-semibold">고용보험</label>
-            <div className="flex-1 flex items-center border border-gray-300 rounded px-2 py-1">
-              <input
+          <S.InputRow>
+            <RS.AllowanceLabel>고용보험</RS.AllowanceLabel>
+            <S.InputWrapper>
+              <S.Input
                 type="text"
-                className="flex-1 text-right text-sm focus:outline-none"
                 value={deductions.employmentInsurance}
                 onChange={(e) => handleDeductionChange('employmentInsurance', e.target.value)}
                 placeholder="0"
               />
-              <span className="ml-1 text-xs text-gray-500">원</span>
-            </div>
-          </div>
+              <S.CurrencyLabel>원</S.CurrencyLabel>
+            </S.InputWrapper>
+          </S.InputRow>
         </div>
-      </div>
-    </div>
+      </RS.InsuranceContainer>
+    </S.CalculatorContainer>
   );
 }
