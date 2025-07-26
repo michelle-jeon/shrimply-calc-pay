@@ -2,7 +2,7 @@ import { useCallback, useState, useEffect } from "react";
 import FreeCalc from "../Calculators/FreeCalc";
 import RegularCalc from "../Calculators/RegularCalc";
 import DayCalc from "../Calculators/DayCalc";
-import CalcaulationResult from "../CalculationResult/CalculationResult";
+import CalculationResult from "../CalculationResult/CalculationResult";
 import PayslipView from "../PayslipView/PayslipView";
 import { PayslipInfoData } from "../PayslipInfo/PayslipInfo";
 import taxTableJson from '../../data/taxTable.json';
@@ -383,7 +383,7 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
       )}
 
       {currentScreen === 'result' && calculatedResult && (
-        <CalcaulationResult 
+        <CalculationResult 
         result={calculatedResult}
         onRecalculate={handleRecalculate}
         onShowPayslip={handleShowPayslip}

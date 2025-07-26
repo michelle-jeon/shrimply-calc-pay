@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import CalcuatorSection from "../components/CalculatorSection/CalculatorSection";
-import CalcuatorTabs from "../components/CalculatorTabs/CalculatorTabs";
-import Header from "../components/Header/Header";import styled from 'styled-components';
+import CalculatorSection from "../components/CalculatorSection/CalculatorSection";
+import CalculatorTabs from "../components/CalculatorTabs/CalculatorTabs";
+import Header from "../components/Header/Header";
+import styled from 'styled-components';
 const HomeContainer = styled.div`
   .container {
     display: flex;
@@ -16,15 +17,17 @@ const HomeContainer = styled.div`
   }
 `;
 
+const S = { HomeContainer };
+
 export default function Home(){
   const [selectedTab, setSelectedTab] = useState("프리랜서");
   return (
-    <HomeContainer>
+    <S.HomeContainer>
       <Header />
       <div className="container">
-        <CalcuatorTabs selectedTab={selectedTab} onTabChange={setSelectedTab} />
-        <CalcuatorSection selectedTab={selectedTab} />
+        <CalculatorTabs selectedTab={selectedTab} onTabChange={setSelectedTab} />
+        <CalculatorSection selectedTab={selectedTab} />
       </div>
-    </HomeContainer>
+    </S.HomeContainer>
   )
 }
