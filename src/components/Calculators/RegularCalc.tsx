@@ -322,19 +322,56 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
               checked={isHealthInsuranceJoin}
               onChange={(e) => setIsHealthInsuranceJoin(e.target.checked)}
             />
-            <RS.CheckboxIcon $isChecked={isHealthInsuranceJoin}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="3"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
+            <RS.CheckboxIcon 
+              $isChecked={isHealthInsuranceJoin}
+            >
+              {isHealthInsuranceJoin ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="15"
+                  height="15"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M10.6484 6.13998L7.38174 9.40665C7.26507 9.52332 7.1484 9.58165 6.9734 9.58165C6.7984 9.58165 6.68174 9.52332 6.56507 9.40665L4.58174 7.42332C4.3484 7.18998 4.3484 6.83998 4.58174 6.60665C4.81507 6.37332 5.16507 6.37332 5.3984 6.60665L6.9734 8.18165L9.83174 5.32332C10.0651 5.08998 10.4151 5.08998 10.6484 5.32332C10.8817 5.55665 10.8817 5.90665 10.6484 6.13998Z"
+                    fill="#001D3A"
+                    fillOpacity="0.18"
+                  />
+                  <path
+                    d="M7.61491 1.93998C10.5316 1.93998 12.8649 4.27332 12.8649 7.18998C12.8649 10.1066 10.5316 12.44 7.61491 12.44C4.69824 12.44 2.36491 10.1066 2.36491 7.18998C2.36491 4.27332 4.69824 1.93998 7.61491 1.93998ZM7.61491 0.773315C4.05658 0.773315 1.19824 3.63165 1.19824 7.18998C1.19824 10.7483 4.05658 13.6066 7.61491 13.6066C11.1732 13.6066 14.0316 10.7483 14.0316 7.18998C14.0316 3.63165 11.1732 0.773315 7.61491 0.773315Z"
+                    fill="#001D3A"
+                    fillOpacity="0.18"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M11.5 6.15002C11.5 9.18752 9.0375 11.65 6 11.65C2.9625 11.65 0.5 9.18752 0.5 6.15002C0.5 3.11252 2.9625 0.650024 6 0.650024C9.0375 0.650024 11.5 3.11252 11.5 6.15002Z"
+                    fill="#EF6878"
+                  />
+                  <path
+                    d="M3.75 5.98805L5.458 7.69605L8.25 4.90405"
+                    stroke="white"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              )}
             </RS.CheckboxIcon>
+
             <RS.InsuranceText $isChecked={isHealthInsuranceJoin}>
-              국민·건강보험 {isHealthInsuranceJoin ? '가입':'미가입'}
+              고용·산재만 가입했어요
             </RS.InsuranceText>
           </RS.InsuranceLabel>
         </RS.InsuranceRow>

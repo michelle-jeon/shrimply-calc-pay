@@ -100,6 +100,7 @@ export const InsuranceRow = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  padding-bottom: 1.25rem;
 `;
 
 export const InsuranceLabel = styled.label<{
@@ -110,7 +111,6 @@ export const InsuranceLabel = styled.label<{
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
   cursor: pointer;
-  background-color: ${({ $isChecked }) => ($isChecked ? '#D1D5DB' : '#F3F4F6')};
 `;
 
 export const Checkbox = styled.input`
@@ -120,26 +120,18 @@ export const Checkbox = styled.input`
 export const CheckboxIcon = styled.div<{
   $isChecked: boolean;
 }>`
-  width: 1.25rem;
-  height: 1.25rem;
-  border-radius: 9999px;
-  border: 2px solid ${({ $isChecked }) => ($isChecked ? '#9CA3AF' : '#D1D5DB')};
+  width: 1.5rem;
+  height: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  svg {
-    width: 0.75rem;
-    height: 0.75rem;
-    color: ${({ $isChecked }) => ($isChecked ? '#9CA3AF' : '#D1D5DB')};
-  }
 `;
 
 export const InsuranceText = styled.span<{
   $isChecked: boolean;
 }>`
-  margin-left: 0.5rem;
+  
   font-size: 0.875rem;
   font-weight: 700;
-  color: ${({ $isChecked }) => ($isChecked ? '#6B7280' : '#9CA3AF')};
+  color: ${({ $isChecked }) => ($isChecked ? '#444' : '#EF6878')};
 `;
