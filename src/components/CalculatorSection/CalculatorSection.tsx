@@ -277,19 +277,23 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
     }
     
     // 고용보험 (과세소득의 0.9%)
+    console.log(`과세금액:${taxableIncome}`)
     const employmentInsuranceBase = taxableIncome;
-    employmentInsurance = Math.floor(employmentInsuranceBase * 0.009/10)*10;
-    console.log(employmentInsurance);
+    console.log(`employmentInsuranceBase: ${employmentInsuranceBase}`);
+    console.log(`실제 계산된 금액: ${employmentInsuranceBase * 0.009}`);
+    employmentInsurance = Math.floor(Math.round(employmentInsuranceBase * 0.009) / 10) * 10;
+    console.log(`(지원제외)고용보험료: ${employmentInsurance}`);
     // ***** 두루누리 있는 경우
     if (regulData.durunuri > 0) {
       //고용보험 신고금액(원절사)*고용보험요율*두루누리공제 > 원절사
-      const employmentReductionBase = Math.floor((parseInt(regulData.deductions.employmentInsurance) || taxableIncome )/10)*10;
-      console.log(employmentReductionBase);
+      const employmentReductionBase = parseInt(regulData.deductions.employmentInsurance) || taxableIncome;
+      console.log(`고용보험 신고금액 원절사: ${employmentReductionBase}`);
       let reducedEmploymentIns = Math.floor(employmentReductionBase * 0.009 * (regulData.durunuri / 100)/10)*10;
-      console.log(reducedEmploymentIns);
+      console.log(`고용보험 지원금(신고금액에 요율이랑 두루누리 곱한것): ${reducedEmploymentIns}`);
       if (employmentReductionBase >= 2300000) reducedEmploymentIns = 16560;
+      console.log(`아까구한 고용보험료: ${employmentInsurance}`);
       employmentInsurance = employmentInsurance- reducedEmploymentIns;
-      console.log(employmentInsurance);
+      console.log(`지원금 뺀 실제고용보험료: ${employmentInsurance}`);
     }
 
     // ***** 실수령액 계산 *****
