@@ -56,7 +56,7 @@ export default function DayCalc({onDataChange, selectedTab}:DayCalcProps) {
         <S.Label>근무일수</S.Label>
         <S.Select 
           value={workingDays}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setWorkingDays(parseInt(e.target.value))}
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setWorkingDays(parseInt(e.target.value))}
         >
           <option value="{0}">선택</option>
           {[...Array(31)].map((_, i)=>(

@@ -246,7 +246,7 @@ export default function PayslipInfo({isOpen,onClose,onSubmit,workerType}: Paysli
   //열림
   return (
      <S.ModalOverlay onClick={onClose}>
-      <S.ModalContent onClick={(e: React.ChangeEvent<HTMLInputElement>) => e.stopPropagation()}>
+      <S.ModalContent onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}>
         <S.InputSection>
           {/* 사업장명 */}
           <S.InputRow>
@@ -297,7 +297,7 @@ export default function PayslipInfo({isOpen,onClose,onSubmit,workerType}: Paysli
             <div className="flex space-x-2">
               <S.Select
                 value={payslipInfo.workYear}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleWorkYearChange(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleWorkYearChange(e.target.value)}
               >
                 <option value="">선택</option>
                 {getAvailableYears().map(year => (
@@ -306,7 +306,7 @@ export default function PayslipInfo({isOpen,onClose,onSubmit,workerType}: Paysli
               </S.Select>
               <S.Select
                 value={payslipInfo.workMonth}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>)=>handleWorkMonthChange(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>)=>handleWorkMonthChange(e.target.value)}
               >
                 <option value="">선택</option>
                 {getAvailableMonths(payslipInfo.workYear).map(month => (
@@ -322,7 +322,7 @@ export default function PayslipInfo({isOpen,onClose,onSubmit,workerType}: Paysli
             <div className="flex space-x-2">
               <S.Select
                 value={payslipInfo.payYear}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>)=>handlePayYearChange(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>)=>handlePayYearChange(e.target.value)}
               >
                 <option value="">선택</option>
                 {getAvailablePayYears().map(year => (
@@ -331,7 +331,7 @@ export default function PayslipInfo({isOpen,onClose,onSubmit,workerType}: Paysli
               </S.Select>
               <S.Select
                 value={payslipInfo.payMonth}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>)=>handlePayMonthChange(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>)=>handlePayMonthChange(e.target.value)}
               >
                 <option value="">월 선택</option>
                 {getAvailablePayMonths(payslipInfo.payYear).map(month => (
@@ -340,7 +340,7 @@ export default function PayslipInfo({isOpen,onClose,onSubmit,workerType}: Paysli
               </S.Select>
               <S.Select
                 value={payslipInfo.payDay}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>)=>handlePayDayChange(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>)=>handlePayDayChange(e.target.value)}
               >
                 <option value="">일 선택</option>
                 {getAvailableDays(payslipInfo.payYear, payslipInfo.payMonth).map(day => (
