@@ -236,7 +236,7 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
                   <S.Input
                     type="text"
                     value={allowances[item.key as keyof typeof allowances]}
-                    onChange={(e) => handleAllowanceChange(item.key, e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleAllowanceChange(item.key, e.target.value)}
                     placeholder={`${item.key === 'productionOvertime' ? '연 최대' : '최대'} ${formatNumber(item.max)}`}
                   />
                   <S.CurrencyLabel>원</S.CurrencyLabel>
@@ -256,7 +256,7 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
                   <S.Input
                     type="text"
                     value={allowances[item.key as keyof typeof allowances]}
-                    onChange={(e) => handleAllowanceChange(item.key, e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleAllowanceChange(item.key, e.target.value)}
                     placeholder="0"
                   />
                   <S.CurrencyLabel>원</S.CurrencyLabel>
@@ -320,7 +320,7 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
               type="checkbox"
               id="healthInsuranceExempt"
               checked={isHealthInsuranceJoin}
-              onChange={(e) => setIsHealthInsuranceJoin(e.target.checked)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setIsHealthInsuranceJoin(e.target.checked)}
             />
             <RS.CheckboxIcon 
               $isChecked={isHealthInsuranceJoin}
@@ -384,7 +384,7 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
               <S.Input
                 type="text"
                 value={deductions.nationalPension}
-                onChange={(e) => handleDeductionChange('nationalPension', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleDeductionChange('nationalPension', e.target.value)}
                 placeholder="0"
                 disabled={!isHealthInsuranceJoin}
               />
@@ -399,7 +399,7 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
               <S.Input
                 type="text"
                 value={deductions.employmentInsurance}
-                onChange={(e) => handleDeductionChange('employmentInsurance', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleDeductionChange('employmentInsurance', e.target.value)}
                 placeholder="0"
               />
               <S.CurrencyLabel>원</S.CurrencyLabel>
