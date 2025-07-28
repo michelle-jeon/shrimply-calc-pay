@@ -132,7 +132,7 @@ export const DetailAmount = styled.span<{
   color: ${({ $isDeduction }) => ($isDeduction ? '#DC2626' : '#2563EB')};
 `;
 
-export const TotalRow = styled.div`
+export const TotalRow = styled.div<{ $isDeduction?: boolean }>`
   border-top: 1px solid ${({ $isDeduction }) => ($isDeduction ? '#FCA5A5' : '#93C5FD')};
   margin-top: 1rem;
   padding-top: 1rem;

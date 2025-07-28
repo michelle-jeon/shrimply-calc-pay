@@ -211,7 +211,7 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
               </S.DetailRow>
             )}
           </S.DetailList>
-          <S.TotalRow>
+          <S.TotalRow >
             <S.InfoRow>
               <S.TotalLabel>총 지급액</S.TotalLabel>
               <S.TotalAmount>
