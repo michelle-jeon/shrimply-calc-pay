@@ -4,6 +4,7 @@ import App from './App.jsx'
 import './index.css'
 import './output.css'
 import {PostHogProvider} from 'posthog-js/react';
+import posthog from 'posthog-js';
 
 const options = {
   api_host: import.meta.env.VITE_PUBLIC_POSTHOG_HOST,
