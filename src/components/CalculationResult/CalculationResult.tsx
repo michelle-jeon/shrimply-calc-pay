@@ -39,7 +39,7 @@ type CalculationResultProps = {
 
 export default function CalcaulationResult ({ result, onRecalculate,onShowPayslip }: CalculationResultProps) {
   const [payslipOpen,setPayslipOpen] = useState(false);
-
+  const [payslipInfoData, setPayslipInfoData] = useState<PayslipInfoData | null>(null);
   const formatNumber = (num: number) => {
     return num.toLocaleString('ko-KR');
   };
