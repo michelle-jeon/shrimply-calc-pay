@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import * as S from './App.styles'
 import './styles/global.css'
 import Home from './pages/Home'
