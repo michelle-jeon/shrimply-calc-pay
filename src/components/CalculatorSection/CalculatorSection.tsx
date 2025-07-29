@@ -154,8 +154,8 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
   }
 
   const calculateFree = (amt: number): CalcResultData => {
-    const withholdingTax = Math.floor((amt * 0.03) / 10) * 10;
-    const localTax =  Math.floor((withholdingTax * 0.1) / 10) * 10;
+    const withholdingTax = Math.floor(amt * 3/100 / 10) * 10;
+    const localTax =  Math.floor(withholdingTax /10 / 10) * 10;
     const netSalary = amt - withholdingTax - localTax;
     
     return {
@@ -195,42 +195,42 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
     else if (taxableIncome > 10000000 && taxableIncome <= 14000000) {
       const baseTax = 1507400; // 10,000,000원인 경우의 해당 세액
       const excessAmount = taxableIncome - 10000000;
-      const additionalTax = Math.floor(excessAmount * 0.98 * 0.35);
+      const additionalTax = Math.floor(excessAmount * 98/100 * 35/100);
       withholdingTax = roundDown10(baseTax + additionalTax + 25000);
     }
     // 14,000,000원 초과 28,000,000원 이하
     else if (taxableIncome > 14000000 && taxableIncome <= 28000000) {
       const baseTax = 1507400; // 10,000,000원인 경우의 해당 세액
       const excessAmount = taxableIncome - 14000000;
-      const additionalTax = Math.floor(excessAmount * 0.98 * 0.38);
+      const additionalTax = Math.floor(excessAmount * 98/100 * 38/100);
       withholdingTax = roundDown10(baseTax + 1397000 + additionalTax);
     }
     // 28,000,000원 초과 30,000,000원 이하
     else if (taxableIncome > 28000000 && taxableIncome <= 30000000) {
       const baseTax = 1507400; // 10,000,000원인 경우의 해당 세액
       const excessAmount = taxableIncome - 28000000;
-      const additionalTax = Math.floor(excessAmount * 0.98 * 0.40);
+      const additionalTax = Math.floor(excessAmount * 98/100 * 40/100);
       withholdingTax = roundDown10(baseTax + 6610600 + additionalTax);
     }
     // 30,000,000원 초과 45,000,000원 이하
     else if (taxableIncome > 30000000 && taxableIncome <= 45000000) {
       const baseTax = 1507400; // 10,000,000원인 경우의 해당 세액
       const excessAmount = taxableIncome - 30000000;
-      const additionalTax = Math.floor(excessAmount * 0.40);
+      const additionalTax = Math.floor(excessAmount * 40/100);
       withholdingTax = roundDown10(baseTax + 7394600 + additionalTax);
     }
     // 45,000,000원 초과 87,000,000원 이하
     else if (taxableIncome > 45000000 && taxableIncome <= 87000000) {
       const baseTax = 1507400; // 10,000,000원인 경우의 해당 세액
       const excessAmount = taxableIncome - 45000000;
-      const additionalTax = Math.floor(excessAmount * 0.42);
+      const additionalTax = Math.floor(excessAmount * 42/100);
       withholdingTax = roundDown10(baseTax + 13394600 + additionalTax);
     }
     // 87,000,000원 초과
     else if (taxableIncome > 87000000) {
       const baseTax = 1507400; // 10,000,000원인 경우의 해당 세액
       const excessAmount = taxableIncome - 87000000;
-      const additionalTax = Math.floor(excessAmount * 0.45);
+      const additionalTax = Math.floor(excessAmount * 45/100);
       withholdingTax = roundDown10(baseTax + 31034600 + additionalTax);
     }
     // ***** 간이세액 계산 끝 *****
@@ -259,21 +259,21 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
       if(regulData.durunuri>0){ 
         //두루누리 지원금이 있을 경우에는 국민연금에 원 절사를 하지 않고, 지원금에 원절사하여 계산함
         const orginalNationalPension = pensionBase * 0.045;
-        let reducedPensionIns = Math.floor(pensionBase * 0.045 * (regulData.durunuri/100)/10)*10;
+        let reducedPensionIns = Math.floor(pensionBase * 45/1000 * (regulData.durunuri/100)/10)*10;
         if(pensionBase >= 2300000 ) reducedPensionIns = 82800;
         nationalPension = orginalNationalPension - reducedPensionIns;
       }else{ 
       // ***** 두루누리 없는 경우
-        nationalPension = Math.floor(pensionBase * 0.045/10)*10;
+        nationalPension = Math.floor(pensionBase * 45/1000/10)*10;
       }
 
       // 건강보험 (월보수액의 3.545%)
       let healthBase = taxableIncome;
       if (healthBase < 279266) healthBase = 279266;
       if (healthBase > 12705698) healthBase = 12705698;
-      healthInsurance = Math.floor(healthBase * 0.03545 / 10) * 10;
+      healthInsurance = Math.floor(healthBase * 3545 / 100000 / 10) * 10;
       // 장기요양보험 (월보수액의 0.4591%)
-      longTermCareInsurance = Math.floor(taxableIncome * 0.004591/10)*10;
+      longTermCareInsurance = Math.floor(taxableIncome * 4591 / 1000000/10)*10;
     }
     
     // 고용보험 (과세소득의 0.9%)
@@ -281,14 +281,14 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
     const employmentInsuranceBase = taxableIncome;
     console.log(`employmentInsuranceBase: ${employmentInsuranceBase}`);
     console.log(`실제 계산된 금액: ${employmentInsuranceBase * 0.009}`);
-    employmentInsurance = Math.floor(Math.round(employmentInsuranceBase * 0.009) / 10) * 10;
+    employmentInsurance = Math.floor(Math.round(employmentInsuranceBase * 9)/1000 / 10) * 10;
     console.log(`(지원제외)고용보험료: ${employmentInsurance}`);
     // ***** 두루누리 있는 경우
     if (regulData.durunuri > 0) {
       //고용보험 신고금액(원절사)*고용보험요율*두루누리공제 > 원절사
       const employmentReductionBase = parseInt(regulData.deductions.employmentInsurance) || taxableIncome;
       console.log(`고용보험 신고금액 원절사: ${employmentReductionBase}`);
-      let reducedEmploymentIns = Math.floor(employmentReductionBase * 0.009 * (regulData.durunuri / 100)/10)*10;
+      let reducedEmploymentIns = Math.floor(employmentReductionBase * 9 / 1000 * (regulData.durunuri / 100)/10)*10;
       console.log(`고용보험 지원금(신고금액에 요율이랑 두루누리 곱한것): ${reducedEmploymentIns}`);
       if (employmentReductionBase >= 2300000) reducedEmploymentIns = 16560;
       console.log(`아까구한 고용보험료: ${employmentInsurance}`);
@@ -332,11 +332,11 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
     //일용직 소득금액(월간 받은 총액/월에 근무한 일 수 -15만원)
     const taxableIncome = amount/workingDays - 150000;
     //일평균 결정세액(소득금액*세율*세액공제 후 원절사) 
-    const withholdingTaxBase =  Math.floor(taxableIncome * 0.06 * 0.45 /10)*10;
+    const withholdingTaxBase =  Math.floor(taxableIncome * 6 /100 * 45 /100 /10)*10;
     //원천세(일평균 결정세액*근무일수)
     const withholdingTax = withholdingTaxBase < 1000 ? 0:withholdingTaxBase*workingDays;
-    const localTax =  Math.floor((withholdingTax*0.1) / 10) * 10;
-    const employmentInsurance = Math.floor(amount * 0.009/10)*10;
+    const localTax =  Math.floor( withholdingTax/10 / 10) * 10;
+    const employmentInsurance = Math.floor( amount *9 /1000/10)*10;
     const netSalary = amount - withholdingTax - localTax - employmentInsurance;
 
     return {
