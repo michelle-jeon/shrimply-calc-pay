@@ -405,7 +405,7 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
         isButtonEnabled={isButtonEnabled}
         onCalculate={calculateAsType}
         onRecalculate={handleRecalculate}
-        onShowPayslip={handleShowPayslip}
+        // onShowPayslip={handleShowPayslip}
         onBack={handlePayslipBack}
         onDownload={handlePayslipDownload}
        />

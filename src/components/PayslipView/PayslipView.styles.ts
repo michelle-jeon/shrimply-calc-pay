@@ -180,17 +180,17 @@ export const BackButton = styled.button`
   }
 `;
 
-export const DownloadButton = styled.button`
-  flex: 1;
-  padding: 1rem 1.5rem;
-  border-radius: 1rem;
-  font-weight: 600;
-  font-size: 1.125rem;
-  color: white;
-  background-color: #F97316;
-  transition: all 0.2s ease-in-out;
+// export const DownloadButton = styled.button`
+//   flex: 1;
+//   padding: 1rem 1.5rem;
+//   border-radius: 1rem;
+//   font-weight: 600;
+//   font-size: 1.125rem;
+//   color: white;
+//   background-color: #F97316;
+//   transition: all 0.2s ease-in-out;
 
-  &:hover {
-    background-color: #EA580C;
-  }
-`;
+//   &:hover {
+//     background-color: #EA580C;
+//   }
+// `;

@@ -7,7 +7,6 @@ type MainButtonAreaProps = {
   onCalculate: () => void;
   onRecalculate: () => void;
   onShowPayslip: (payslipData: PayslipInfoData) => void;
-  payslipData: PayslipInfoData;
   onBack: () => void;
   onDownload: () => void;
 };
@@ -37,7 +36,7 @@ export default function MainButtonArea({ currentScreen,isCalculating,isButtonEna
   if (currentScreen === 'payslip') {
     return (
       <S.ButtonContainerFixed>
-        <S.BackButton onClick={onBack}>뒤로</S.BackButton>
+        {/* <S.BackButton onClick={onBack}>뒤로</S.BackButton> */}
         <S.DownloadButton onClick={onDownload}>저장하기</S.DownloadButton>
       </S.ButtonContainerFixed>
     );
