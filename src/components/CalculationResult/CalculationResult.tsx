@@ -204,14 +204,14 @@ export default function CalcaulationResult ({ result, onRecalculate,onShowPaysli
       </div>
 
       {/* 버튼들 */}
-      {/* <S.ButtonContainer>
+      <S.ButtonContainer>
         <S.RecalculateButton onClick={onRecalculate}>
           다시 계산하기
         </S.RecalculateButton>
         <S.PayslipButton onClick={handlePayslipClick}>
           임금명세서
         </S.PayslipButton>
-      </S.ButtonContainer> */}
+      </S.ButtonContainer>
       {/*  */}
       <PayslipInfo 
         isOpen={payslipOpen}

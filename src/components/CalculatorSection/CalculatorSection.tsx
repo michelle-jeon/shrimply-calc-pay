@@ -7,7 +7,6 @@ import PayslipView from "../PayslipView/PayslipView";
 import { PayslipInfoData } from "../PayslipInfo/PayslipInfo";
 import taxTableJson from '../../data/taxTable.json';
 import * as S from './CalculatorSection.styles';
-import MainButtonArea from "../MainButtonArea/MainButtonArea";
 
 const taxTable: TaxRow[] = taxTableJson;
 
@@ -378,7 +377,18 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
       {currentScreen === 'calculator' && (
         <>
           {renderCalculatorInput()}
-         
+          <S.ButtonContainerFixed>
+            <S.CalcuatedAmountBox>
+              <S.CalculatedKey>지급총액</S.CalculatedKey>
+              <S.CalculatedAmount>{calculatedResult?calculatedResult.totSalary.toLocaleString():0} 원</S.CalculatedAmount>
+            </S.CalcuatedAmountBox>
+            <S.CalculateButton
+              onClick={calculateAsType}
+              disabled={!isButtonEnabled || isCalculating}
+            >
+              {isCalculating ? '계산 중...' : '계산하기'}
+            </S.CalculateButton>
+          </S.ButtonContainerFixed>
         </>
       )}
 
@@ -398,17 +408,6 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
         onDownload={handlePayslipDownload}
         />
       )}
-      
-       <MainButtonArea
-        currentScreen={currentScreen}
-        isCalculating={isCalculating}
-        isButtonEnabled={isButtonEnabled}
-        onCalculate={calculateAsType}
-        onRecalculate={handleRecalculate}
-        // onShowPayslip={handleShowPayslip}
-        onBack={handlePayslipBack}
-        onDownload={handlePayslipDownload}
-       />
     </S.SectionContainer>
   )
 }
