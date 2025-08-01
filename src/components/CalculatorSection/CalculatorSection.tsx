@@ -380,7 +380,7 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
           <S.ButtonContainerFixed>
             <S.CalcuatedAmountBox>
               <S.CalculatedKey>지급총액</S.CalculatedKey>
-              <S.CalculatedAmount>{calculatedResult?calculatedResult.totSalary.toLocaleString():0} 원</S.CalculatedAmount>
+              <S.CalculatedAmount>{calculatorData?.amount?.toLocaleString?.() ?? 0} 원</S.CalculatedAmount>
             </S.CalcuatedAmountBox>
             <S.CalculateButton
               onClick={calculateAsType}
