@@ -372,7 +372,7 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
   };
   return (
     <S.SectionContainer>
-      <S.SectionTitle>세후 급여 계산기</S.SectionTitle>
+      {/* <S.SectionTitle>세후 급여 계산기</S.SectionTitle> */}
       {/* 메인 컨텐츠 영역 */}
       {currentScreen === 'calculator' && (
         <>

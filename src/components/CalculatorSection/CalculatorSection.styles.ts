@@ -2,12 +2,10 @@
 import styled from 'styled-components';
 
 export const SectionContainer = styled.div`
-  background-color: #ffffff;
   position: relative;
   border-radius: 1rem;
   width: 100%;
-  max-width: 800px;
-  padding: 2rem;
+  max-width: 700px;
 `;
 
 export const SectionTitle = styled.p`
