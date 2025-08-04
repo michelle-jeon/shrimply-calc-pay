@@ -7,7 +7,6 @@ export const PayslipContainer = styled.div`
   margin: 0 auto;
   text-align: left;
   background-color: white;
-  min-width:320px;
 `;
 
 export const Header = styled.div`
@@ -135,6 +134,7 @@ export const ButtonContainerFixed = styled.div`
   left:0;
   box-shadow: 0px -3px 10px 0px rgba(0, 0, 0, 0.10);
   padding:20px;
+  min-width:320px;
 `
 
 export const ButtonContainer = styled.div`

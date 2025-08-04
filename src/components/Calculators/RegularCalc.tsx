@@ -267,12 +267,12 @@ export default function RegularCalc({onDataChange, selectedTab}:RegularCalcProps
         </RS.AllowanceSection>
       </div>
       {/* 지급합계 */}
-      <RS.TotalAmountRow>
+      {/* <RS.TotalAmountRow>
         <RS.TotalAmountLabel>지급합계</RS.TotalAmountLabel>
         <RS.TotalAmount>
           {formatNumber(calculateTotalAmount())} 원
         </RS.TotalAmount>
-      </RS.TotalAmountRow>
+      </RS.TotalAmountRow> */}
       {/* 공제 */}
       <RS.DeductionSection>
         {/* 소득세 감면 */}
