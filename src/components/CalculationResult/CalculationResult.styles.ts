@@ -5,29 +5,28 @@ export const ResultContainer = styled.div`
   width: 100%;
   max-width: 48rem;
   margin: 0 auto;
-  padding: 1rem;
+  // padding: 1rem;
   background-color: white;
 
   @media (min-width: 640px) {
-    padding: 1.5rem;
+    // padding: 1.5rem;
   }
 `;
 
 export const NetSalarySection = styled.div`
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 `;
 
 export const NetSalaryRow = styled.div`
   display: flex;
-  flex-direction: column;
   gap: 0.5rem;
-  padding-bottom: 1.5rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid #E5E7EB;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
   @media (min-width: 640px) {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
   }
 `;
 
@@ -57,16 +56,12 @@ export const SummarySection = styled.div`
 
 export const SummaryRow = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.5rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid #E5E7EB;
-
-  @media (min-width: 640px) {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const SummaryLabel = styled.span`
@@ -121,18 +116,13 @@ export const ButtonContainerFixed = styled.div`
 
 export const ButtonContainer = styled.div`
   display:flex;
-  flex-direction: column;
   gap: 0.75rem;
-
-  @media (min-width: 640px) {
-    flex-direction: row;
-    gap: 1rem;
-    justify-content:flex-end;
-  }
+  gap: 1rem;
+  flex-direction: row;
+  justify-content:flex-end;
 `;
 
 export const RecalculateButton = styled.button`
-  width:200px;
   padding: 1rem 1.5rem;
   border-radius: 1rem;
   font-weight: 600;
@@ -140,14 +130,17 @@ export const RecalculateButton = styled.button`
   color: #374151;
   background-color: #E5E7EB;
   transition: all 0.2s ease-in-out;
-
+  min-width:200px;
+  @media (max-width: 640px) {
+    flex:1;
+  }
   &:hover {
     background-color: #D1D5DB;
   }
 `;
 
 export const PayslipButton = styled.button`
-  flex: 1;
+  flex: 2;
   max-width:400px;
   padding: 1rem 1.5rem;
   border-radius: 1rem;

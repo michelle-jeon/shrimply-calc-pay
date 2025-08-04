@@ -69,22 +69,18 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
         </S.Title>
         
         {/* 기본 정보 */}
-        <S.InfoGrid>
+        <S.InfoRowWrap>
           <S.InfoRow>
-            <S.InfoLabel>업무대상</S.InfoLabel>
-            <S.InfoValue>{payslipInfo.companyName}</S.InfoValue>
+            <S.NameLabel>{payslipInfo.companyName}</S.NameLabel>
+            <S.NameLabel>{payslipInfo.workerName}</S.NameLabel>
           </S.InfoRow>
           <S.InfoRow>
-            <S.InfoLabel>직원</S.InfoLabel>
-            <S.InfoValue>{payslipInfo.workerName}</S.InfoValue>
-          </S.InfoRow>
-          <S.InfoRow>
-            <S.InfoLabel>지급일</S.InfoLabel>
+            <S.InfoValue>지급일</S.InfoValue>
             <S.InfoValue>
               {payslipInfo.payYear}년 {payslipInfo.payMonth}월 {payslipInfo.payDay}일
             </S.InfoValue>
           </S.InfoRow>
-        </S.InfoGrid>
+        </S.InfoRowWrap>
       </S.Header>
 
       {/* 실수령액 */}
@@ -101,7 +97,14 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
       <S.DetailsGrid>
         {/* 지급합계 */}
         <S.DetailCard>
-          <S.DetailTitle>지급합계</S.DetailTitle>
+          <S.TotalRow >
+            <S.InfoRow>
+              <S.TotalLabel>지급합계</S.TotalLabel>
+              <S.TotalAmount>
+                {formatNumber(result.totSalary)} 원
+              </S.TotalAmount>
+            </S.InfoRow>
+          </S.TotalRow>
           <S.DetailList>
             {result.type === "상용직" ? (
               <>
@@ -204,21 +207,14 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
               </>
             ) : (
               <S.DetailRow>
-                <S.DetailLabel>지급액</S.DetailLabel>
+                <S.DetailLabel>기본급</S.DetailLabel>
                 <S.DetailAmount>
                   {formatNumber(result.totSalary)} 원
                 </S.DetailAmount>
               </S.DetailRow>
             )}
           </S.DetailList>
-          <S.TotalRow >
-            <S.InfoRow>
-              <S.TotalLabel>총 지급액</S.TotalLabel>
-              <S.TotalAmount>
-                {formatNumber(result.totSalary)} 원
-              </S.TotalAmount>
-            </S.InfoRow>
-          </S.TotalRow>
+          
         </S.DetailCard>
 
         {/* 공제합계 */}
