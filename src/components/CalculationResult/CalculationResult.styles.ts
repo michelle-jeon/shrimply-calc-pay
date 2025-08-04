@@ -109,20 +109,30 @@ export const DetailRow = styled.div`
   color: #374151;
 `;
 
+export const ButtonContainerFixed = styled.div`
+  width:100%;
+  background-color:#fff;
+  position:fixed;
+  bottom:0;
+  left:0;
+  box-shadow: 0px -3px 10px 0px rgba(0, 0, 0, 0.10);
+  padding:20px;
+`
+
 export const ButtonContainer = styled.div`
-  display: flex;
+  display:flex;
   flex-direction: column;
   gap: 0.75rem;
-  margin-top: 2rem;
 
   @media (min-width: 640px) {
     flex-direction: row;
     gap: 1rem;
+    justify-content:flex-end;
   }
 `;
 
 export const RecalculateButton = styled.button`
-  flex: 1;
+  
   padding: 1rem 1.5rem;
   border-radius: 1rem;
   font-weight: 600;
@@ -138,6 +148,7 @@ export const RecalculateButton = styled.button`
 
 export const PayslipButton = styled.button`
   flex: 1;
+  max-width:400px;
   padding: 1rem 1.5rem;
   border-radius: 1rem;
   font-weight: 600;
