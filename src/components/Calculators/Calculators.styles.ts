@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 export const CalculatorContainer = styled.div`
   text-align: left;
-  padding-bottom: 1rem;
+  // padding-bottom: 1rem;
+  padding: 0 2rem
 `;
 
 export const InputRow = styled.div`

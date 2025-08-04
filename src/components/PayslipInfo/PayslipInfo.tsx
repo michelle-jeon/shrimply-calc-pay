@@ -353,9 +353,9 @@ export default function PayslipInfo({isOpen,onClose,onSubmit,workerType}: Paysli
 
         {/* 버튼들 */}
         <S.ButtonContainer>
-          <S.CloseButton onClick={onClose}>
+          {/* <S.CloseButton onClick={onClose}>
             뒤로
-          </S.CloseButton>
+          </S.CloseButton> */}
           <S.SubmitButton
             onClick={handleSubmit}
             disabled={!isValid}

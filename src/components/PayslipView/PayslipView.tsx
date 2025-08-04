@@ -61,7 +61,8 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
   };
 
   return (
-    <S.PayslipContainer>
+    <div>
+    <S.PayslipContainer id='payslip-content'>
       {/* 급여명세서 헤더 */}
       <S.Header>
         <S.Title>
@@ -276,6 +277,7 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
         </S.DetailCard>
       </S.DetailsGrid>
 
+    </S.PayslipContainer>
       {/* 버튼들 */}
       <S.ButtonContainerFixed>
         <S.ButtonContainer>
@@ -287,6 +289,6 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
           </S.DownloadButton>
         </S.ButtonContainer>
         </S.ButtonContainerFixed>
-    </S.PayslipContainer>
+    </div>
   );
 }

@@ -5,6 +5,7 @@ export const ResultContainer = styled.div`
   width: 100%;
   max-width: 48rem;
   margin: 0 auto;
+  padding: 0 2rem;
   // padding: 1rem;
   background-color: white;
 

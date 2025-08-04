@@ -6,6 +6,9 @@ import CalculationResult from "../CalculationResult/CalculationResult";
 import PayslipView from "../PayslipView/PayslipView";
 import { PayslipInfoData } from "../PayslipInfo/PayslipInfo";
 import taxTableJson from '../../data/taxTable.json';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+
 import * as S from './CalculatorSection.styles';
 
 const taxTable: TaxRow[] = taxTableJson;
@@ -121,10 +124,33 @@ export default function CalcuatorSection({ selectedTab }: CalculatorSectionProps
     setPayslipInfo(null);
   }
 
-   const handlePayslipDownload = () => {
-    // 저장 로직 구현
-    console.log('급여명세서 저장하기');
-  }
+   const handlePayslipDownload = async () => {
+    const element = document.getElementById('payslip-content');
+    if (!element) return;
+
+    const canvas = await html2canvas(element, {
+      scale: 2, // 해상도 높이기 위해 확대 (이미지 선명하게)
+      useCORS: true, // 외부 이미지 사용할 경우 CORS 허용
+    });
+
+    const imgData = canvas.toDataURL('image/png');
+    const pdf = new jsPDF({
+      orientation: 'portrait',
+      unit: 'mm',
+      format: 'a4',
+    });
+
+    const imgProps = pdf.getImageProperties(imgData);
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+    pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+    const name = payslipInfo?.workerName ?? '';
+    const month = payslipInfo?.payMonth ? `${parseInt(payslipInfo.payMonth)}월` : '';
+    const fileName = `${name} ${month} 급여명세서.pdf`;
+
+    pdf.save(fileName);
+  };
   
   //*********계산*********
   const calculateAsType = () =>{

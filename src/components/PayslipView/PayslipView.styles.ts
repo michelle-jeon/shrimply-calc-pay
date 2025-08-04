@@ -7,6 +7,7 @@ export const PayslipContainer = styled.div`
   margin: 0 auto;
   text-align: left;
   background-color: white;
+  padding: 0 2rem;
 `;
 
 export const Header = styled.div`

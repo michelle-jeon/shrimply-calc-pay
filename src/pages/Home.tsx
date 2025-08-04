@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import Footer from "../components/Footer/Footer";
 const HomeContainer = styled.div`
 
-    padding: 2rem;
+    // padding: 2rem;
   .container {
     display: flex;
     flex-direction: column;
