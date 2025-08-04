@@ -214,29 +214,35 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
               </S.DetailRow>
             )}
           </S.DetailList>
-          
         </S.DetailCard>
 
         {/* 공제합계 */}
-        <S.DetailCard $isDeduction>
-          <S.DetailTitle $isDeduction>공제합계</S.DetailTitle>
+        <S.DetailCard>
+          <S.TotalRow>
+            <S.InfoRow>
+              <S.TotalLabel $isDeduction>공제합계</S.TotalLabel>
+              <S.TotalAmount $isDeduction>
+                {formatNumber(Math.round(getTotalDeduction()))} 원
+              </S.TotalAmount>
+            </S.InfoRow>
+          </S.TotalRow>
           <S.DetailList>
             <S.DetailRow>
               <S.DetailLabel>소득세</S.DetailLabel>
-              <S.DetailAmount $isDeduction>
+              <S.DetailAmount>
                 {formatNumber(Math.round(result.withholdingTax))} 원
               </S.DetailAmount>
             </S.DetailRow>
             <S.DetailRow>
               <S.DetailLabel>지방세</S.DetailLabel>
-              <S.DetailAmount $isDeduction>
+              <S.DetailAmount>
                 {formatNumber(Math.round(result.localTax))} 원
               </S.DetailAmount>
             </S.DetailRow>
             {result.nationalPension && (
               <S.DetailRow>
                 <S.DetailLabel>국민연금</S.DetailLabel>
-                <S.DetailAmount $isDeduction>
+                <S.DetailAmount>
                   {formatNumber(Math.round(result.nationalPension))} 원
                 </S.DetailAmount>
               </S.DetailRow>
@@ -244,7 +250,7 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
             {result.healthInsurance && (
               <S.DetailRow>
                 <S.DetailLabel>건강보험</S.DetailLabel>
-                <S.DetailAmount $isDeduction>
+                <S.DetailAmount>
                   {formatNumber(Math.round(result.healthInsurance))} 원
                 </S.DetailAmount>
               </S.DetailRow>
@@ -252,7 +258,7 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
             {result.longTermCareInsurance && (
               <S.DetailRow>
                 <S.DetailLabel>장기요양보험</S.DetailLabel>
-                <S.DetailAmount $isDeduction>
+                <S.DetailAmount>
                   {formatNumber(Math.round(result.longTermCareInsurance))} 원
                 </S.DetailAmount>
               </S.DetailRow>
@@ -260,20 +266,13 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
             {result.employmentInsurance && (
               <S.DetailRow>
                 <S.DetailLabel>고용보험</S.DetailLabel>
-                <S.DetailAmount $isDeduction>
+                <S.DetailAmount>
                   {formatNumber(Math.round(result.employmentInsurance))} 원
                 </S.DetailAmount>
               </S.DetailRow>
             )}
           </S.DetailList>
-          <S.TotalRow $isDeduction>
-            <S.InfoRow>
-              <S.TotalLabel $isDeduction>총 공제액</S.TotalLabel>
-              <S.TotalAmount $isDeduction>
-                {formatNumber(Math.round(getTotalDeduction()))} 원
-              </S.TotalAmount>
-            </S.InfoRow>
-          </S.TotalRow>
+          
         </S.DetailCard>
       </S.DetailsGrid>
 

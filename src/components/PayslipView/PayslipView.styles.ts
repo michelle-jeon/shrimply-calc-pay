@@ -3,15 +3,11 @@ import styled from 'styled-components';
 
 export const PayslipContainer = styled.div`
   width: 100%;
-  max-width: 48rem;
+  max-width: 46rem;
   margin: 0 auto;
   text-align: left;
-  // padding: 1rem;
   background-color: white;
-
-  @media (min-width: 640px) {
-    // padding: 1.5rem;
-  }
+  min-width:320px;
 `;
 
 export const Header = styled.div`
@@ -40,8 +36,7 @@ export const InfoRow = styled.div`
 `;
 
 export const NameLabel = styled.span`
-  
-  font-weight: 600;
+  font-weight: 700;
 `;
 
 export const InfoValue = styled.span`
@@ -50,9 +45,7 @@ export const InfoValue = styled.span`
 
 export const NetSalarySection = styled.div`
   border-bottom: 1px solid rgba(0, 27, 55, 0.10);
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
+  padding: 1.5rem 0;
 `;
 
 export const NetSalaryRow = styled.div`
@@ -62,7 +55,7 @@ export const NetSalaryRow = styled.div`
 `;
 
 export const NetSalaryLabel = styled.span`
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: 700;
   color: #1F2937;
 `;
@@ -75,33 +68,22 @@ export const NetSalaryAmount = styled.span`
 
 export const DetailsGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
+   grid-template-columns: 1fr 1fr;
+  width:100%;
   gap: 2rem;
   margin-bottom: 2rem;
-
-  @media (min-width: 1024px) {
-    grid-template-columns: 1fr 1fr;
-  }
 `;
 
-export const DetailCard = styled.div<{
-  $isDeduction?: boolean;
-}>`
+export const DetailCard = styled.div`
+width:100%;
   border-radius: 0.5rem;
-  padding: 1.5rem;
+  display:flex;
+  flex-direction:column;
 `;
 
-export const DetailTitle = styled.h3<{
-  $isDeduction?: boolean;
-}>`
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: ${({ $isDeduction }) => ($isDeduction ? '#991B1B' : '#1E40AF')};
-  margin-bottom: 1rem;
-  text-align: center;
-`;
 
 export const DetailList = styled.div`
+  padding:1rem 0;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -112,37 +94,35 @@ export const DetailRow = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 0;
+  font-size:0.9rem;
 `;
 
 export const DetailLabel = styled.span`
   color: #374151;
-`;
-
-export const DetailAmount = styled.span<{
-  $isDeduction?: boolean;
-}>`
   font-weight: 600;
-  color: ${({ $isDeduction }) => ($isDeduction ? '#DC2626' : '#2563EB')};
 `;
 
-export const TotalRow = styled.div<{ $isDeduction?: boolean }>`
-  border-top: 1px solid ${({ $isDeduction }) => ($isDeduction ? '#FCA5A5' : '#93C5FD')};
-  margin-top: 1rem;
-  padding-top: 1rem;
+export const DetailAmount = styled.span`
+  font-weight: 600;
+  color:#4E5968;
+`;
+
+export const TotalRow = styled.div`
+  padding: 1.5rem 0 ;
+  font-size: 1rem;
+  border-bottom:1px solid rgba(0, 27, 55, 0.10);
 `;
 
 export const TotalLabel = styled.span<{
   $isDeduction?: boolean;
 }>`
-  font-size: 1.125rem;
   font-weight: 700;
-  color: ${({ $isDeduction }) => ($isDeduction ? '#991B1B' : '#1E40AF')};
 `;
 
 export const TotalAmount = styled.span<{
   $isDeduction?: boolean;
 }>`
-  font-size: 1.125rem;
+  font-size: 16px;
   font-weight: 700;
   color: ${({ $isDeduction }) => ($isDeduction ? '#DC2626' : '#2563EB')};
 `;

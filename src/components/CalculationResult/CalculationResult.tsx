@@ -79,27 +79,18 @@ export default function CalcaulationResult ({ result, onRecalculate,onShowPaysli
         </S.NetSalarySection>
 
         {/* 지급합계/공제합계 */}
-        <S.SummarySection>
-          <S.SummaryRow>
-            <S.SummaryLabel>지급합계</S.SummaryLabel>
-            <S.SummaryAmount>
-              {formatNumber(result.totSalary)} 원
-            </S.SummaryAmount>
-          </S.SummaryRow>
-          
-          <S.SummaryRow>
-            <S.SummaryLabel>공제합계</S.SummaryLabel>
-            <S.SummaryAmount $isDeduction>
-              {formatNumber(Math.round(getTotalDeduction()))} 원
-            </S.SummaryAmount>
-          </S.SummaryRow>
-        </S.SummarySection>
 
         {/* 상용직인 경우 상세 내역 표시 */}
         {result.type === "상용직" && (
           <S.DetailsGrid>
             {/* 지급 내역 */}
             <S.DetailSection>
+        <S.SummaryRow>
+          <S.SummaryLabel>지급합계</S.SummaryLabel>
+          <S.SummaryAmount>
+            {formatNumber(result.totSalary)} 원
+          </S.SummaryAmount>
+        </S.SummaryRow>
               {result.baseSalary && (
                 <S.DetailRow>
                   <span>기본급</span>
@@ -135,6 +126,12 @@ export default function CalcaulationResult ({ result, onRecalculate,onShowPaysli
             
             {/* 공제 내역 */}
             <S.DetailSection>
+              <S.SummaryRow>
+            <S.SummaryLabel>공제합계</S.SummaryLabel>
+            <S.SummaryAmount $isDeduction>
+              {formatNumber(Math.round(getTotalDeduction()))} 원
+            </S.SummaryAmount>
+          </S.SummaryRow>
               <S.DetailRow>
                 <span>소득세</span>
                 <span>{formatNumber(Math.round(result.withholdingTax))} 원</span>
@@ -176,6 +173,12 @@ export default function CalcaulationResult ({ result, onRecalculate,onShowPaysli
           <S.DetailsGrid>
             {/* 지급 내역 */}
             <S.DetailSection>
+              <S.SummaryRow>
+          <S.SummaryLabel>지급합계</S.SummaryLabel>
+          <S.SummaryAmount>
+            {formatNumber(result.totSalary)} 원
+          </S.SummaryAmount>
+        </S.SummaryRow>
               <S.DetailRow>
                 <span>지급액</span>
                 <span>{formatNumber(result.totSalary)} 원</span>
@@ -184,6 +187,12 @@ export default function CalcaulationResult ({ result, onRecalculate,onShowPaysli
             
             {/* 공제 내역 */}
             <S.DetailSection>
+              <S.SummaryRow>
+            <S.SummaryLabel>공제합계</S.SummaryLabel>
+            <S.SummaryAmount $isDeduction>
+              {formatNumber(Math.round(getTotalDeduction()))} 원
+            </S.SummaryAmount>
+          </S.SummaryRow>
               <S.DetailRow>
                 <span>소득세</span>
                 <span>{formatNumber(Math.round(result.withholdingTax))} 원</span>
