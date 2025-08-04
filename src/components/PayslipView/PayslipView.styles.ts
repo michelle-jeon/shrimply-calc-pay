@@ -154,6 +154,16 @@ export const TotalAmount = styled.span<{
   color: ${({ $isDeduction }) => ($isDeduction ? '#DC2626' : '#2563EB')};
 `;
 
+export const ButtonContainerFixed = styled.div`
+  width:100%;
+  background-color:#fff;
+  position:fixed;
+  bottom:0;
+  left:0;
+  box-shadow: 0px -3px 10px 0px rgba(0, 0, 0, 0.10);
+  padding:20px;
+`
+
 export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -162,11 +172,12 @@ export const ButtonContainer = styled.div`
   @media (min-width: 640px) {
     flex-direction: row;
     gap: 1rem;
+    justify-content:flex-end;
   }
 `;
 
 export const BackButton = styled.button`
-  flex: 1;
+  width:200px;
   padding: 1rem 1.5rem;
   border-radius: 1rem;
   font-weight: 600;
@@ -182,6 +193,7 @@ export const BackButton = styled.button`
 
 export const DownloadButton = styled.button`
   flex: 1;
+  max-width:400px;
   padding: 1rem 1.5rem;
   border-radius: 1rem;
   font-weight: 600;

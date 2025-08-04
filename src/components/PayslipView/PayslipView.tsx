@@ -282,14 +282,16 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
       </S.DetailsGrid>
 
       {/* 버튼들 */}
-      <S.ButtonContainer>
-        <S.BackButton onClick={onBack}>
-          뒤로
-        </S.BackButton>
-        <S.DownloadButton onClick={onDownload}>
-          저장하기
-        </S.DownloadButton>
-      </S.ButtonContainer>
+      <S.ButtonContainerFixed>
+        <S.ButtonContainer>
+          <S.BackButton onClick={onBack}>
+            뒤로
+          </S.BackButton>
+          <S.DownloadButton onClick={onDownload}>
+            저장하기
+          </S.DownloadButton>
+        </S.ButtonContainer>
+        </S.ButtonContainerFixed>
     </S.PayslipContainer>
   );
 }

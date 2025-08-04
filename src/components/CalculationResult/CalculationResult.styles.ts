@@ -132,7 +132,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const RecalculateButton = styled.button`
-  
+  width:200px;
   padding: 1rem 1.5rem;
   border-radius: 1rem;
   font-weight: 600;
