@@ -117,7 +117,7 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
                     </S.DetailAmount>
                   </S.DetailRow>
                 )}
-                {result.allowance?.mealAllowance && (
+                { result.allowance?.mealAllowance !== undefined && result.allowance?.mealAllowance > 0 && (
                   <S.DetailRow>
                     <S.DetailLabel>식대</S.DetailLabel>
                     <S.DetailAmount>
@@ -125,7 +125,7 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
                     </S.DetailAmount>
                   </S.DetailRow>
                 )}
-                {result.allowance?.vehicleAllowance && (
+                { result.allowance?.vehicleAllowance !== undefined && result.allowance?.vehicleAllowance > 0 && (
                   <S.DetailRow>
                     <S.DetailLabel>차량수당</S.DetailLabel>
                     <S.DetailAmount>
@@ -133,7 +133,7 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
                     </S.DetailAmount>
                   </S.DetailRow>
                 )}
-                {result.allowance?.productionOverTimeAllowance && (
+                { result.allowance?.productionOverTimeAllowance !== undefined && result.allowance?.productionOverTimeAllowance > 0 && (
                   <S.DetailRow>
                     <S.DetailLabel>연장근로수당</S.DetailLabel>
                     <S.DetailAmount>
@@ -141,7 +141,7 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
                     </S.DetailAmount>
                   </S.DetailRow>
                 )}
-                {result.allowance?.childcareAllowance && (
+                { result.allowance?.childcareAllowance !== undefined && result.allowance?.childcareAllowance > 0 && (
                   <S.DetailRow>
                     <S.DetailLabel>육아수당</S.DetailLabel>
                     <S.DetailAmount>
@@ -149,7 +149,7 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
                     </S.DetailAmount>
                   </S.DetailRow>
                 )}
-                {result.allowance?.researchAllowance && (
+                { result.allowance?.researchAllowance !== undefined && result.allowance?.researchAllowance > 0 && (
                   <S.DetailRow>
                     <S.DetailLabel>연구수당</S.DetailLabel>
                     <S.DetailAmount>
@@ -157,7 +157,7 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
                     </S.DetailAmount>
                   </S.DetailRow>
                 )}
-                {result.allowance?.bonusAllowance && (
+                { result.allowance?.bonusAllowance !== undefined && result.allowance?.bonusAllowance > 0 && (
                   <S.DetailRow>
                     <S.DetailLabel>상여수당</S.DetailLabel>
                     <S.DetailAmount>
@@ -165,7 +165,7 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
                     </S.DetailAmount>
                   </S.DetailRow>
                 )}
-                {result.allowance?.positionAllowance && (
+                { result.allowance?.positionAllowance !== undefined && result.allowance?.positionAllowance > 0 && (
                   <S.DetailRow>
                     <S.DetailLabel>직책수당</S.DetailLabel>
                     <S.DetailAmount>
@@ -173,7 +173,7 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
                     </S.DetailAmount>
                   </S.DetailRow>
                 )}
-                {result.allowance?.annualLeaveAllowance && (
+                { result.allowance?.annualLeaveAllowance !== undefined && result.allowance?.annualLeaveAllowance > 0 && (
                   <S.DetailRow>
                     <S.DetailLabel>연차수당</S.DetailLabel>
                     <S.DetailAmount>
@@ -181,7 +181,7 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
                     </S.DetailAmount>
                   </S.DetailRow>
                 )}
-                {result.allowance?.overTimeAllowance && (
+                { result.allowance?.overTimeAllowance !== undefined && result.allowance?.overTimeAllowance > 0 && (
                   <S.DetailRow>
                     <S.DetailLabel>연장근로수당</S.DetailLabel>
                     <S.DetailAmount>
@@ -189,7 +189,7 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
                     </S.DetailAmount>
                   </S.DetailRow>
                 )}
-                {result.allowance?.holidayAllowance && (
+                { result.allowance?.holidayAllowance !== undefined && result.allowance?.holidayAllowance > 0 && (
                   <S.DetailRow>
                     <S.DetailLabel>휴일근로수당</S.DetailLabel>
                     <S.DetailAmount>
@@ -197,7 +197,7 @@ export default function PayslipView({ result, payslipInfo, onBack, onDownload }:
                     </S.DetailAmount>
                   </S.DetailRow>
                 )}
-                {result.allowance?.nightAllowance && (
+                { result.allowance?.nightAllowance !== undefined && result.allowance?.nightAllowance > 0 && (
                   <S.DetailRow>
                     <S.DetailLabel>야간근로수당</S.DetailLabel>
                     <S.DetailAmount>
