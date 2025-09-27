@@ -76,10 +76,10 @@ Vercel을 통해 자동 배포가 설정되어 있습니다.
 
 ```
 src/
-├── components/          # 재사용 가능한 UI 컴포넌트
-├── hooks/              # 커스텀 훅
-├── utils/              # 유틸리티 함수 (계산 로직 포함)
-├── types/              # TypeScript 타입 정의
+├── assets/             # 이미지 등 에셋
+├── components/         # 재사용 가능한 UI 컴포넌트
+├── data/               # 간이세액표 등 json 데이터
+├── pages/              # root 페이지 레이아웃
 ├── styles/             # 글로벌 스타일 및 테마
 └── App.tsx             # 메인 애플리케이션 컴포넌트
 ```
