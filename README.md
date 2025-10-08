@@ -34,7 +34,7 @@
 git clone https://github.com/michelle-jeon/shrimply-calc-pay.git
 
 # 프로젝트 디렉토리로 이동
-cd salary-calculator
+cd shrimply-calc-pay
 
 # 의존성 설치
 npm install
